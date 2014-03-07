@@ -444,4 +444,13 @@ border-radius: 1em;
 	}
 }
 
+/*======================= FB Send Button =================================*/
+
+.fb_iframe_widget {
+display: inline-block;
+position: relative;
+margin-top: 20px;
+height: 50px;
+}
+
 
