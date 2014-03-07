@@ -1,4 +1,5 @@
 <div class="container">
+  <div id="section0" class="section">
   <div class="showvotes">
 
     <div class="row push-below-header"> <!-- Section containing Gifter & Giftee, Gift Icon, & Arrow -->
@@ -21,14 +22,17 @@
     </div>
     
   </div>
-
+</div>
+  <!-- <div id="section1" class="section"> -->
   <div id="item_list" class="row">
       
-  </div>      
+  <!-- </div>  --> 
+  </div>    
 
 </div><!-- END container div and voting_page div-->
 
 <div class="row">
+
 <div class="col-md-5 voting-page" id="accomplice-photos"><span id="voters_text">Voters</span></div>
 </div>
 <%= render text: File.read("app/views/templates.txt").html_safe %>
@@ -101,7 +105,8 @@ var checkVoted = function(){
 
 // }, 400);
 </script>
-<script type="text/javascript">
+
+// <script type="text/javascript">
     $(document).ready(function() {
         $.fn.fullpage({ 
           autoScrolling: false,            
