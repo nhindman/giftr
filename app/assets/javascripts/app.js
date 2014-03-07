@@ -84,6 +84,8 @@ var poll;
 var user;
 var vote;
 
+var mq = window.matchMedia( "(min-width: 500px)" );
+
 $(document).ready(function() {    
 
   var user_id; 

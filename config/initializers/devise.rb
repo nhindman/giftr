@@ -251,6 +251,6 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 
   require "omniauth-facebook"
-  config.omniauth :facebook, "294324634052609", "bfdab646d434dfd0712aab9d0d7a7cef", { :scope => "user_photos,friends_photos,offline_access,email" }
+  config.omniauth :facebook, "561575507272927", "9a56942c3ef85fa93fa4b116118c6d86", { :scope => "user_photos,friends_photos,offline_access,email" }
   
 end
