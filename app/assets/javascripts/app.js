@@ -29,6 +29,7 @@ function resetSelector(){
             // console.log("facebook message fired"),
             method: 'send',
             to: [accomplice],
+            display: 'popup'
             link: "http://shielded-sands-2955.herokuapp.com/polls/" + poll_id,
             redirect_uri: window.location.host+"/polls/"+poll_id  
             }, fbCallback)
