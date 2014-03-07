@@ -1,22 +1,3 @@
-// var PotentialRecipientView = Backbone.View.extend({
-//   render: function(){
-//     FB.ui(
-//       {method: 'apprequests',
-//         message: 'My Great Request',
-//         to: []
-//       },
-//       function(){
-//         console.log(arguments)
-//       }
-//     );
-//   }
-// })
-
-
-// function showChoice(){
-//   new PotentialRecipientView({el: $('#recipient')}).render();
-// }
-
 
 function resetSelector(){
   $('#fs-user-list').empty();
@@ -112,7 +93,7 @@ $(document).ready(function() {
   $.ajaxSetup({ cache: true });
   $.getScript('//connect.facebook.net/en_US/all.js', function(){
     FB.init({
-      appId: '672582269450694',
+      appId: '561575507272927',
     });     
     $('#loginbutton,#feedbutton').removeAttr('disabled');
 
