@@ -128,7 +128,7 @@ $(document).ready(function() {
   $.ajaxSetup({ cache: true });
   $.getScript('//connect.facebook.net/en_US/all.js', function(){
     FB.init({
-      appId: '294324634052609',
+      appId: '672582269450694',
     });     
     $('#loginbutton,#feedbutton').removeAttr('disabled');
 
@@ -185,7 +185,7 @@ $(document).ready(function() {
       onClose: function(){
         $('#recipient').attr('src', "http://graph.facebook.com/" + friend_id + "/picture?type=large").attr('width', "180px")
         setTimeout(function(){
-          window.location = '/polls#secondPage'
+          window.location = '/polls#ƒondPage'
         }, 1200);
         
       }
