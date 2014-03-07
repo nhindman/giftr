@@ -41,14 +41,14 @@ function resetSelector(){
 
       var FB_notification = function(accomplice, poll_id){
         FB.api('https://graph.facebook.com/', 'post', {
-            id: "http://giftadvisor.herokuapp.com/polls/" + poll_id,
+            id: "http://shielded-sands-2955.herokuapp.com/polls/" + poll_id,
             scrape: true
           }, function(response){
             FB.ui({
             // console.log("facebook message fired"),
             method: 'send',
             to: [accomplice],
-            link: "http://giftadvisor.herokuapp.com/polls/" + poll_id,
+            link: "http://shielded-sands-2955.herokuapp.com/polls/" + poll_id,
             redirect_uri: window.location.host+"/polls/"+poll_id  
             }, fbCallback)
           })
@@ -102,22 +102,6 @@ var recipient_name;
 var poll;
 var user;
 var vote;
-
-
-
-// var FB_notification = function(accomplice, poll_id){
-//     var url = "http://giftadvisor.herokuapp.com/polls/" + poll_id
-//     console.log(url)
-//     FB.ui({
-//     // console.log("facebook message fired"),
-//     method: 'send',
-//     to: [accomplice],
-//     message: "Help me Buy a Gift",
-//     link: "http://giftadvisor.herokuapp.com/polls/" + poll_id
-//   }, function(response){
-//   })
-// }
-
 
 $(document).ready(function() {    
 
