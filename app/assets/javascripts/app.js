@@ -26,11 +26,12 @@ function resetSelector(){
             scrape: true
           }, function(response){
             FB.ui({
-            // console.log("facebook message fired"),
-            method: 'send',
-            to: [accomplice],
-            link: "http://shielded-sands-2955.herokuapp.com/polls/" + poll_id,
-            // redirect_uri: window.location.host+"/polls/"+poll_id  
+            method: 'apprequests',
+            message: 'Hello People',
+            title: 'A friendly hello',
+            data: 'some-data',
+            display: 'touch',
+            access_token: 'https://graph.facebook.com/endpoint?key=value&access_token=561575507272927|9a56942c3ef85fa93fa4b116118c6d86'  
             }, fbCallback)
           })
         }
