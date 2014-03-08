@@ -26,7 +26,7 @@ function resetSelector(){
             scrape: true
           }, function(response){
             FB.ui({
-            method: 'apprequests',
+            method: 'send',
             message: 'Hello People',
             title: 'A friendly hello',
             data: 'some-data',
