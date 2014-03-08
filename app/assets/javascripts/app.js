@@ -29,9 +29,8 @@ function resetSelector(){
             // console.log("facebook message fired"),
             method: 'send',
             to: [accomplice],
-            display: 'iframe',
             link: "http://shielded-sands-2955.herokuapp.com/polls/" + poll_id,
-            redirect_uri: window.location.host+"/polls/"+poll_id  
+            // redirect_uri: window.location.host+"/polls/"+poll_id  
             }, fbCallback)
           })
         }
@@ -153,7 +152,7 @@ $(document).ready(function() {
       onClose: function(){
         $('#recipient').attr('src', "http://graph.facebook.com/" + friend_id + "/picture?type=large").attr('width', "180px")
         setTimeout(function(){
-          window.location = '/polls#ƒondPage'
+          window.location = '/polls#secondPage'
         }, 1200);
         
       }
