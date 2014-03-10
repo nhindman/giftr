@@ -26,11 +26,10 @@ function resetSelector(){
             scrape: true
           }, function(response){
             FB.ui({
-            method: 'send',
+            method: 'apprequests',
             message: 'Hello People',
             title: 'A friendly hello',
             data: 'some-data',
-            display: 'touch',
             access_token: 'https://graph.facebook.com/endpoint?key=value&access_token=561575507272927|9a56942c3ef85fa93fa4b116118c6d86'  
             }, fbCallback)
           })

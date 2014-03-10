@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303190019) do
+ActiveRecord::Schema.define(version: 20140310201032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140303190019) do
     t.integer  "creator_id"
     t.string   "recipient_name"
     t.string   "recipient_photo"
-    t.integer  "recipient_fb_id"
+    t.integer  "recipient_fb_id", limit: 8
     t.string   "description"
     t.datetime "end_date"
     t.datetime "created_at"
