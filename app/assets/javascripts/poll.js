@@ -20,8 +20,13 @@ var User = Backbone.Model.extend({
 })
 
 var Photo = Backbone.Model.extend({
-  url: "/photos"
+  url: "/photos",
+
+  defaults: {
+    url: "not yet"
+  }
 })
+
 
 var UserList = Backbone.Collection.extend({
   model: User, 
@@ -51,16 +56,26 @@ var ItemFormView = Backbone.View.extend({
   }, 
 
   scrapeImage: function(e) {
-    e.preventDefault();
     console.log("scraper clicked!");
-    return this.handleScrape(e);
+    e.preventDefault();
+    this.createImage();
+    $('#gift-one').remove()
+    $('#gift-two').remove()
+    $('#gift-three').remove()
   },
 
-  handleScrape: function(e) {
-    e.preventDefault();
-    console.log("handleScrape fired!");
-
-
+  createImage: function() {
+    // e.preventDefault();
+    console.log("createImage fired!");
+    // var reader = new FileReader();
+    //   reader.onload = (function(theFile) {
+        photoListView.collection.create({
+          url: $('#new_item_url').val(),
+          poll_id: poll.id,
+          // image: reader.result
+        })
+      // });
+    // reader.readAsDataURL(file);
   },
 
   addItemToPoll: function(e){
@@ -112,6 +127,81 @@ var ItemFormView = Backbone.View.extend({
 
 })
 
+var PhotoList = Backbone.Collection.extend({
+  model: Photo, 
+  url: "/photos"
+})
+
+var PhotoView = Backbone.View.extend({
+  initialize: function() {
+    this.render();
+  }, 
+  events: {
+
+  }, 
+  resetValues: function() {
+    _.each( $('input'), function(input){
+      $(input).val('');
+    })
+  }, 
+  render: function(){
+    var self = this;
+    this.$el.html(this.model.attributes);
+    this.$el.attr('id', 'item-id-'+this.model.attributes.id);
+    var image = this.model.attributes.url;
+    self.$el.attr('class', 'item col-lg-3 col-md-3');
+    var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
+    this.$el.html(spinner)
+    var img = $('<img>');
+    img.attr('src', image);
+    img.className = "hiddenImage";
+    img.load(function(event){
+      // console.log (website)
+        spinner.remove();
+        self.$el.attr('style', 'background-image:url("'+image+'")');
+        // // self.$el.wrap("<a href="+website+"></a>");
+        // $("a").attr("target", "_blank");
+      })
+    this.resetValues();
+    return this;
+  }
+
+})
+
+
+var PhotoListView = Backbone.View.extend({
+  initialize: function(){
+    // this.is_buttons = is_buttons || false;
+    this.collection = new PhotoList();
+    this.photoViews = []
+    this.collection.fetch({data: {poll_id: poll.id}});
+    this.listenTo(this.collection, "all", this.render)
+  },
+
+  el: function(){
+   return $('#item_list') 
+  },
+
+  render: function() {
+
+    var self = this;
+    _.each(this.photoViews, function(view){
+      view.remove();
+    })
+    this.photoViews = []
+    _.each(this.collection.models, function(photo){
+      var new_view = new PhotoView({
+        model: photo
+      });
+      self.photoViews.push(new_view)
+      self.$el.append(new_view.render().$el)
+    })
+
+
+  }
+
+})
+
 var ItemList = Backbone.Collection.extend({
   model: Item, 
   url: "/items"
@@ -126,12 +216,12 @@ var ItemView = Backbone.View.extend({
     "click .edit": "enterEdit",
     "click [data-action='vote']" : 'vote', 
   },
-  template: function(attrs){
-    html_string = $('#items_template').html();
-    // console.log(html_string)
-    var template_func = _.template(html_string)
-    return template_func(attrs)
-  },
+  // template: function(attrs){
+  //   html_string = $('#items_template').html();
+  //   // console.log(html_string)
+  //   var template_func = _.template(html_string)
+  //   return template_func(attrs)
+  // },
 
   resetValues: function() {
     _.each( $('input'), function(input){
@@ -141,11 +231,11 @@ var ItemView = Backbone.View.extend({
 
   render: function(){
     var self = this;
-    this.$el.html(this.template(this.model.attributes));
+    this.$el.html(this.model.attributes);
     this.$el.attr('id', 'item-id-'+this.model.attributes.id);
     var image = this.model.attributes.url;
     var website = 'http://'+this.model.attributes.website+'/';
-    console.log(website)
+    // console.log(website)
     self.$el.attr('class', 'item col-lg-3 col-md-3');
     var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
     this.$el.html(spinner)
@@ -310,8 +400,10 @@ var itemSetup = function (options){
   // window.poll = new Poll();
   // window.pollView = new PollView({model: poll});
   window.itemsListView = new ItemListView(options); 
+  window.photoListView = new PhotoListView(options);
   window.itemformView = new ItemFormView();
   window.item = new Item();
+  window.photo = new Photo(); 
   // window.itemView = new ItemView({model: item});
   
 }

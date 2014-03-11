@@ -204,6 +204,76 @@ $(document).ready(function() {
 //    });
 //  }
 
+// var PhotoView = Backbone.View.extend({
+//   initialize: function() {
+//     this.render();
+//   }, 
+//   events: {
+
+//   }, 
+//   resetValues: function() {
+//     _.each( $('input'), function(input){
+//       $(input).val('');
+//     })
+//   }, 
+//   render: function(){
+//     var self = this;
+//     this.$el.html(this.model.attributes);
+//     this.$el.attr('id', 'item-id-'+this.model.attributes.id);
+//     var image = this.model.attributes.url;
+//     self.$el.attr('class', 'item col-lg-3 col-md-3');
+//     var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
+//     this.$el.html(spinner)
+//     var img = $('<img>');
+//     img.attr('src', image);
+//     img.className = "hiddenImage";
+//     img.load(function(event){
+//       // console.log (website)
+//         spinner.remove();
+//         self.$el.attr('style', 'background-image:url("'+image+'")');
+//         // // self.$el.wrap("<a href="+website+"></a>");
+//         // $("a").attr("target", "_blank");
+//       })
+//     this.resetValues();
+//     return this;
+//   }
+
+// })
+
+
+// var PhotoListView = Backbone.View.extend({
+//   initialize: function(is_buttons){
+//     // this.is_buttons = is_buttons || false;
+//     this.collection = new PhotoList();
+//     this.photoViews = []
+//     this.collection.fetch({data: {item_id: item.id}});
+//     this.listenTo(this.collection, "all", this.render)
+//   },
+
+//   el: function(){
+//    return $('#item_list') 
+//   },
+
+//   render: function() {
+
+//     var self = this;
+//     _.each(this.photoViews, function(view){
+//       view.remove();
+//     })
+//     this.photoViews = []
+//     _.each(this.collection.models, function(photo){
+//       var new_view = new PhotoView({
+//         model: photo
+//       });
+//       self.Views.push(new_view)
+//       self.$el.append(new_view.render().$el)
+//     })
+
+
+//   }
+
+// })
+
 
 
 

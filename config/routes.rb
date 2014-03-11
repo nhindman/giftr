@@ -8,6 +8,7 @@ Giftr::Application.routes.draw do
   resources :items
   resources :polls
   resources :votes
+  resources :photos
 
   root :to => 'welcome#index'
 
