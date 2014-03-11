@@ -19,6 +19,10 @@ var User = Backbone.Model.extend({
   }
 })
 
+var Photo = Backbone.Model.extend({
+  url: "/photos"
+})
+
 var UserList = Backbone.Collection.extend({
   model: User, 
   url: "/users"
@@ -55,6 +59,8 @@ var ItemFormView = Backbone.View.extend({
   handleScrape: function(e) {
     e.preventDefault();
     console.log("handleScrape fired!");
+
+
   },
 
   addItemToPoll: function(e){
