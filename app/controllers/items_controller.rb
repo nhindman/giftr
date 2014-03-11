@@ -16,10 +16,10 @@ class ItemsController < ApplicationController
 
   def create
     item = Item.new
-    item.name = params[:item][:name]
+    item.name = params[:item][:name]  
     item.website = params[:item][:website]
     item.poll_id = params[:item][:poll_id]
-    data = params[:image]
+    data = params[:image] 
     data_index = data.index('base64') + 7
     filedata = data.slice(data_index, data.length)
     decoded_image = Base64.decode64(filedata)

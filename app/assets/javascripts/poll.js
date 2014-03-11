@@ -24,93 +24,6 @@ var UserList = Backbone.Collection.extend({
   url: "/users"
 })
 
-
-// var PollFormView = Backbone.View.extend({
-//   initialize: function(){
-//     this.render()
-//   }, 
-//   render: function(){
-
-//   }, 
-//   events: {
-//     "click .add_item_button": "addPoll"
-//   }, 
-//   //trying to create poll when add gift clicked but only if poll does not already exist
-//   addPoll: function(e){
-//     e.preventDefault();
-//     // trying to only create poll once with below conditional
-//     // if (typeof poll !== 'undefined') {
-//     //   console.log("poll already exists")
-//     // } else {
-//       console.log("creating poll")
-//       console.log(pollListView.collection)
-//       pollListView.collection.create({ 
-//         description: "not yet", 
-//         end_date: "not yet"
-//     }); 
-//     // }
-//     },
-
-//   el: function() {
-//     return $('#new_item_form')
-//   }
-// })
-
-// var PollList = Backbone.Collection.extend({
-//   model: Poll, 
-//   url: "/polls"
-// })
-
-// var PollView = Backbone.View.extend({
-//   initialize: function(){
-//     this.render();
-//   }, 
-//   events: {
-//     //may want to add edit and delete later
-//   }, 
-//   template: function(attrs){
-//     html_string = $('#polls_template').html();
-//     var template_func = _.template(html_string)
-//     return template_func(attrs)
-//   },
-//   render: function() {
-//     this.$el.html(this.template(this.model.attributes));
-//     return this
-//   },
-
-// })
-
-// var PollListView = Backbone.View.extend({
-//   initialize: function(){
-//     this.collection = new PollList();
-//     // this.itemViews = []
-
-//     this.collection.fetch();
-//     this.listenTo(this.collection, "all", this.render)
-//   },
-
-//   el: function(){
-//     return $('#item_list')
-//   }, 
-
-//   render: function() {
-
-//     // var self = this;
-//     // _.each(this.itemViews, function(view){
-//     //   view.remove();
-//     // })
-//     // this.itemViews = []
-//     _.each(this.collection.models, function(poll){
-//       var new_view = new PollView({
-//         model: poll
-//       });
-//       // self.itemViews.push(new_view)
-//       // self.$el.prepend(new_view.render().$el)
-//     })
-
-//   }
-// })
-
 var Item = Backbone.Model.extend({
   url: '/items',
 
@@ -130,8 +43,19 @@ var ItemFormView = Backbone.View.extend({
   }, 
   events: {
     "click .add_item_button": "addItemToPoll",
-    // "click .add_item_button": "addFinishButton"
+    "click .scraper": "scrapeImage",
   }, 
+
+  scrapeImage: function(e) {
+    e.preventDefault();
+    console.log("scraper clicked!");
+    return this.handleScrape(e);
+  },
+
+  handleScrape: function(e) {
+    e.preventDefault();
+    console.log("handleScrape fired!");
+  },
 
   addItemToPoll: function(e){
     console.log("file button clicked")
@@ -195,7 +119,6 @@ var ItemView = Backbone.View.extend({
     "click .delete": "deleteActivity",
     "click .edit": "enterEdit",
     "click [data-action='vote']" : 'vote', 
-    "click .item": "itemLink",
   },
   template: function(attrs){
     html_string = $('#items_template').html();
@@ -253,19 +176,9 @@ var ItemView = Backbone.View.extend({
     console.log(voteList.models)
     appendVotesToItems(voteList.models);
     toggleVoteOption()
-  }, 
-
-  itemLink: function(){
-    console.log("itemLink fired");
-    var website = this.model.attributes.website;
-    window.location = '"'+website+'"'
   }
 
 })
-// var ItemVoteView = Backbone.View.extend({
-//   this.collection = new ItemList
-//   this.collection.fetch({data: poll.id})
-// })
 
 var ItemListView = Backbone.View.extend({
   initialize: function(is_buttons){

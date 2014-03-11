@@ -71,7 +71,6 @@ function resetSelector(){
 }
 
 
-
 var mutual_friends_array = [];
 var my_friends = [];
 var exclusions;

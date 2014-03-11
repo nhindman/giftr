@@ -165,7 +165,7 @@ i {
 	height: 200px;
 	width: 200px;
 	margin-top: 2em;
-	margin-bottom: 4em;
+	margin-bottom: 7em;
 	border: solid 0.7em #fafafa;
 	border-radius: 0.7em;
 
@@ -193,6 +193,28 @@ i {
 	background-image: url("bg_images/baseball5.jpg");
 }
 
+#poll_buttons {
+	display: block !important;
+}
+
+#new_item_url {
+	margin-top: 7px !important;
+}
+
+#new_item_form {
+	position: relative;
+	bottom: 40px;
+}
+
+#poll_buttons > .uploader {
+	position: relative;
+	top: 0px;
+}
+
+#poll_buttons > .selector {
+	position: relative;
+	top: 3px;
+}
 /*---------------------------- Splash Page 3 Styling ------------------------------------------*/
 
 #splash-page-3 { 
@@ -241,6 +263,7 @@ top: -150px;
 
 #app-setup-page-2 div { /* CHANGE THIS NAME SOON */
 	position: relative;
+	top: -60px;
 	display: inline-block;
 }
 
@@ -287,7 +310,7 @@ top: -150px;
 }
 
 .add_item_button {
-	margin: 1em auto;
+	margin: -2.5em auto;
 }
 
 .poll-creation-item-selection .item {
@@ -295,6 +318,8 @@ top: -150px;
  	width: 200px;
 	height: 200px;
 	margin: 0em 1em 3em 1em;
+	position: relative !important;
+	top: -10px !important;
 /*  background-size: cover;
   background-position: center;
   margin: 4em 1em 5em 1em;
@@ -326,6 +351,7 @@ top: -150px;
 .gift_image {
 	width: 200px;
 	height: 200px;
+	margin-bottom: 10px;
 }
 
 .hiddenImage {
@@ -455,9 +481,24 @@ border-radius: 1em;
 
 @media all and (max-width: 992px){
 	#item_list .item {
-		width: 250px;
-		margin: 0 auto 1.2em auto;		
+		w/*idth: 250px;*/
+		margin: 0 auto 3.2em auto;		
 		display: block;
+	}
+}
+
+@media all and (max-width: 992px){
+	.splash-page-section-wrapper img {
+		/*width: 250px;*/
+		margin: 0 auto 3em auto;		
+		display: block;
+	}
+}
+
+@media all and (max-width: 610px){
+	#gift-three {
+		/*width: 250px;*/
+		margin-bottom: 25px !important;
 	}
 }
 
