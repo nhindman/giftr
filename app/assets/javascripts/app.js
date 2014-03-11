@@ -27,7 +27,7 @@ function resetSelector(){
           }, function(response){
             FB.ui({
             method: 'feed',
-            to: [accomplice],
+            to: accomplice,
             link: "http://shielded-sands-2955.herokuapp.com/polls/" + poll_id,
             caption: 'hi',
             // access_token: 'https://graph.facebook.com/endpoint?key=value&access_token=561575507272927|9a56942c3ef85fa93fa4b116118c6d86'  
