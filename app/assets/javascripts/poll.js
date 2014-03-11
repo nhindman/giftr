@@ -215,7 +215,8 @@ var ItemView = Backbone.View.extend({
     this.$el.html(this.template(this.model.attributes));
     this.$el.attr('id', 'item-id-'+this.model.attributes.id);
     var image = this.model.attributes.url;
-    var website = this.model.attributes.website;
+    var website = 'http://'+this.model.attributes.website+'/';
+    console.log(website)
     self.$el.attr('class', 'item col-lg-3 col-md-3');
     var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
     this.$el.html(spinner)
@@ -226,7 +227,8 @@ var ItemView = Backbone.View.extend({
       // console.log (website)
         spinner.remove();
         self.$el.attr('style', 'background-image:url("'+image+'")');
-        self.$el.wrap("<a href="+website+"></a>")
+        self.$el.wrap("<a href="+website+"></a>");
+        $("a").attr("target", "_blank");
       })
     // var aTag = document.createElement('a');
     // aTag.setAttribute('href', '"'+website+'"');
