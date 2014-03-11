@@ -38,7 +38,8 @@ function resetSelector(){
       var fbCallback = function(){
         console.log(i++)
         if (i === accomplices.length){
-          window.location = "/polls/" + poll.id
+          console.log("holler!")
+          // window.location = "/polls/" + poll.id
         }
       }
         _.each(accomplices, function(accomplice){
