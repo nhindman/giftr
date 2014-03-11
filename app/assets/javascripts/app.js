@@ -81,6 +81,8 @@ var recipient_name;
 var poll;
 var user;
 var vote;
+var gift_idea;
+var website;
 
 var mq = window.matchMedia( "(min-width: 500px)" );
 
@@ -151,7 +153,7 @@ $(document).ready(function() {
         $('#recipient').attr('src', "http://graph.facebook.com/" + friend_id + "/picture?type=large").attr('width', "180px")
         setTimeout(function(){
           window.location = '/polls#secondPage'
-        }, 1200);
+        }, 1000);
         
       }
     });

@@ -471,7 +471,9 @@ border-radius: 1em;
 	top: 1440px;
 }
 
-
+.poll-creation-item-selection {
+	cursor: pointer;
+}
 
 
 

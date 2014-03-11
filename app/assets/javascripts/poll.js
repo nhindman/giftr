@@ -148,6 +148,7 @@ var ItemFormView = Backbone.View.extend({
       reader.onload = (function(theFile) {
         itemsListView.collection.create({
           name: $('#new_item_name_input').val(),
+          website: $('#new_item_url').val(),
           poll_id: poll.id,
           image: reader.result
         })
@@ -193,7 +194,8 @@ var ItemView = Backbone.View.extend({
   events: {
     "click .delete": "deleteActivity",
     "click .edit": "enterEdit",
-    "click [data-action='vote']" : 'vote'
+    "click [data-action='vote']" : 'vote', 
+    "click .item": "itemLink",
   },
   template: function(attrs){
     html_string = $('#items_template').html();
@@ -211,40 +213,30 @@ var ItemView = Backbone.View.extend({
   render: function(){
     var self = this;
     this.$el.html(this.template(this.model.attributes));
-    this.$el.attr('id', 'item-id-'+this.model.attributes.id)
-    // this.$el.attr('class', "hiddenImage")
-    var image = this.model.attributes.url
-    self.$el.attr('class', 'item col-lg-3 col-md-3')
-    var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>")
+    this.$el.attr('id', 'item-id-'+this.model.attributes.id);
+    var image = this.model.attributes.url;
+    var website = this.model.attributes.website;
+    self.$el.attr('class', 'item col-lg-3 col-md-3');
+    var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
     this.$el.html(spinner)
     var img = $('<img>');
-    img.attr('src', image)
-    img.className = "hiddenImage"
+    img.attr('src', image);
+    img.className = "hiddenImage";
     img.load(function(event){
-      console.log ("onload fired")
-        // self.$el.removeClass('hiddenImage')
+      // console.log (website)
         spinner.remove();
-        self.$el.attr('style', 'background-image:url("'+image+'")')
-
+        self.$el.attr('style', 'background-image:url("'+image+'")');
+        self.$el.wrap("<a href="+website+"></a>")
       })
+    // var aTag = document.createElement('a');
+    // aTag.setAttribute('href', '"'+website+'"');
+    // aTag.innerHTML = "Gift Link";
+    // self.$el.append(aTag);
+    // this.resetValues();
     this.resetValues();
     return this;
-
-  // afterImageIsInDbCallMe: function(img_url){
-  //     console.log("i have run")
-  //     // lazy-show images after loading
-  //     var img = document.createElement('img')
-  //     img.src = img_url
-  //     img.className = "hiddenImage"
-  //     img.onload = function(event){
-  //       img.className = ""
-  //     }
-  //     document.getElementById('item_list').appendChild(img)
-  //     return img
-  //   },
-
-
     },
+  
   vote: function(){
     // console.log(votes.responseJSON);
     // this.$('button').remove();
@@ -259,7 +251,14 @@ var ItemView = Backbone.View.extend({
     console.log(voteList.models)
     appendVotesToItems(voteList.models);
     toggleVoteOption()
+  }, 
+
+  itemLink: function(){
+    console.log("itemLink fired");
+    var website = this.model.attributes.website;
+    window.location = '"'+website+'"'
   }
+
 })
 // var ItemVoteView = Backbone.View.extend({
 //   this.collection = new ItemList

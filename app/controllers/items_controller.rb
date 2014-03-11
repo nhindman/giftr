@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
   def create
     item = Item.new
     item.name = params[:item][:name]
+    item.website = params[:item][:website]
     item.poll_id = params[:item][:poll_id]
     data = params[:image]
     data_index = data.index('base64') + 7
