@@ -71,7 +71,8 @@ var ItemFormView = Backbone.View.extend({
     //   reader.onload = (function(theFile) {
         photoListView.collection.create({
           url: $('#new_item_url').val(),
-          poll_id: poll.id,
+          website: $('#new_item_url').val(),
+          poll_id: poll.id
           // image: reader.result
         })
       // });
@@ -136,6 +137,7 @@ var PhotoView = Backbone.View.extend({
     this.$el.attr('id', 'item-id-'+this.model.attributes.id);
     console.log(this.model.attributes.url)
     var image = this.model.attributes.url;
+    var website = 'http://'+this.model.attributes.website+'/';
     self.$el.attr('class', 'item col-lg-3 col-md-3');
     var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
     this.$el.html(spinner)
@@ -147,8 +149,8 @@ var PhotoView = Backbone.View.extend({
       // console.log (website)
         spinner.remove();
         self.$el.attr('style', 'background-image:url("'+image+'")');
-        // // self.$el.wrap("<a href="+website+"></a>");
-        // $("a").attr("target", "_blank");
+        self.$el.wrap("<a href="+website+"></a>");
+        $("a").attr("target", "_blank");
       })
     this.resetValues();
     return this;

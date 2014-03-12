@@ -15,6 +15,7 @@ end
 def create
   photo = Photo.new
   photo.poll_id = params[:photo][:poll_id]
+  photo.website = params[:photo][:website]
   photo.save!
   scrape_this_page = params[:photo][:url]
   page = MetaInspector.new(scrape_this_page)
