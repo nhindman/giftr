@@ -22,9 +22,9 @@ var User = Backbone.Model.extend({
 var Photo = Backbone.Model.extend({
   url: "/photos",
 
-  defaults: {
-    url: "not yet"
-  }
+  // defaults: {
+  //   url: "not yet"
+  // }
 })
 
 
@@ -123,7 +123,7 @@ var PhotoView = Backbone.View.extend({
     this.render();
   }, 
   events: {
-
+    "click [data-action='vote']": 'vote',
   }, 
   resetValues: function() {
     _.each( $('input'), function(input){
@@ -134,34 +134,51 @@ var PhotoView = Backbone.View.extend({
     console.log("photoview render fired")
     var self = this;
     this.$el.html(this.model.attributes);
-    this.$el.attr('id', 'item-id-'+this.model.attributes.id);
-    console.log(this.model.attributes.url)
-    var image = this.model.attributes.url;
+    console.log("this.model.attributes here")
+    console.log(this.model.attributes)
+    var image = this.model.attributes.url
     var website = 'http://'+this.model.attributes.website+'/';
-    self.$el.attr('class', 'item col-lg-3 col-md-3');
-    var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
-    this.$el.html(spinner)
-    var img = $('<img>');
-    img.attr('src', image);
-    console.log(image)
-    img.className = "hiddenImage";
-    img.load(function(event){
-      // console.log (website)
-        spinner.remove();
-        self.$el.attr('style', 'background-image:url("'+image+'")');
-        self.$el.wrap("<a href="+website+"></a>");
-        $("a").attr("target", "_blank");
-      })
+    this.$el.wrap("<a href="+website+"></a>");
+    $("a").attr("target", "_blank");
+    this.$el.attr('style', 'background-image:url("'+image+'")');
+    console.log("this.model.attributes.url here:")
+    console.log(this.model.attributes.url);
+    this.$el.attr('id', 'item-id-'+this.model.attributes.id);
+    // console.log(this.model.attributes.url)
+    // var website = 'http://'+this.model.attributes.website+'/';
+    this.$el.attr('class', 'item col-lg-3 col-md-3');
+    // var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
+    // this.$el.html(spinner)
+    // var img = $('<img>');
+    // img.attr('src', image);
+    // // console.log(image)
+    // // img.className = "hiddenImage";
+    // img.load(function(event){
+    //     console.log ("img load fired")
+    //     spinner.remove();
+    //     self.$el.attr('style', 'background-image:url("'+image+'")');
+    //     self.$el.wrap("<a href="+website+"></a>");
+    //     $("a").attr("target", "_blank");
+    //   })
     this.resetValues();
     return this;
+  }, 
+  vote: function(){
+    var votedphoto = voteList.findWhere({user_id: user.id});
+    votedphoto.attributes.photo_id = this.model.id;
+    votedphoto.save({}, {
+        url: "/votes/"+votedphoto.id
+    });
+    appendVotesToPhotos(voteList.models);
+    toggleVoteOption()
   }
 
 })
 
 
 var PhotoListView = Backbone.View.extend({
-  initialize: function(){
-    // this.is_buttons = is_buttons || false;
+  initialize: function(is_buttons){
+    this.is_buttons = is_buttons || false;
     this.collection = new PhotoList();
     this.photoViews = []
     this.collection.fetch({data: {poll_id: poll.id}});
@@ -192,6 +209,36 @@ var PhotoListView = Backbone.View.extend({
 
 })
 
+var PhotoVoteListView = Backbone.View.extend({
+  initialize: function(){
+    this.collection = new PhotoList();
+    this.photoViews = []
+    this.collection.fetch({data: {poll_id: poll.id}});
+    this.listenTo(this.collection, "all", this.render)
+  },
+  el: function(){
+    return $('#item_list')
+  },
+  render: function() {
+
+    var self = this;
+    _.each(this.photoViews, function(view){
+      view.remove();
+    })
+
+    this.photoViews = []
+
+    _.each(this.collection.models, function(photo){
+      var new_view = new PhotoView({
+        model: photo
+      });
+      self.photoViews.push(new_view)
+      self.$el.append(new_view.render().$el.append("<button class=\"btn btn-lg btn-danger\" data-action='vote'>Vote!</button>"))
+    })
+
+  }
+})
+
 var ItemList = Backbone.Collection.extend({
   model: Item, 
   url: "/items"
@@ -204,7 +251,7 @@ var ItemView = Backbone.View.extend({
   events: {
     "click .delete": "deleteActivity",
     "click .edit": "enterEdit",
-    "click [data-action='vote']" : 'vote', 
+    "click [data-action='vote']": 'vote', 
   },
   // template: function(attrs){
   //   html_string = $('#items_template').html();
@@ -377,37 +424,29 @@ var VoteListView = Backbone.View.extend({
 
   renderVote: function(vote){
     vote.view = new VoteView({model: vote});
-    this.$el.prepend(vote.view.render().el)
-    return this
+    this.$el.prepend(vote.view.render().el);
+    return this;
   }
 });
 
 
 var itemSetup = function (options){
-  
-  // window.pollListView = new PollListView(); 
-  // window.pollformView = new PollFormView();
-  // window.poll = new Poll();
-  // window.pollView = new PollView({model: poll});
   window.itemsListView = new ItemListView(options); 
   window.photoListView = new PhotoListView(options);
   window.itemformView = new ItemFormView();
   window.item = new Item();
   window.photo = new Photo(); 
-  // window.itemView = new ItemView({model: item});
-  
 }
 
 
 var itemVoteSetup = function (){
-  // window.pollListView = new PollListView(); 
-  // window.pollformView = new PollFormView();
-  // window.poll = new Poll();
-  // window.pollView = new PollView({model: poll});
-  window.itemVoteListView = new ItemVoteListView(); 
+  window.itemVoteListView = new ItemVoteListView();
+  window.photoVoteListView = new PhotoVoteListView(); 
   window.itemformView = new ItemFormView();
   window.item = new Item();
+  window.photo = new Photo();
   window.itemView = new ItemView({model: item});
+  window.photoView = new PhotoView({model: photo})
 }
 
 var appendVotesToItems = function(votes){
@@ -417,6 +456,17 @@ var appendVotesToItems = function(votes){
       $vote_img = $(selector);
       id = vote.attributes.item_id
       $vote_img.appendTo($('#item-id-'+vote.attributes.item_id))
+    }
+  })
+}
+
+var appendVotesToPhotos = function(votes){
+  _.each(votes, function(vote){
+    if(vote.attributes.photo_id){
+      selector = '#' + vote.attributes.id
+      $vote_img = $(selector);
+      id = vote.attributes.photo_id
+      $vote_img.appendTo($('#item-id-'+vote.attributes.photo_id))
     }
   })
 }

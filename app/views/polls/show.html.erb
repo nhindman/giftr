@@ -58,7 +58,7 @@ var checkVoted = function(){
   myvote = voteList.findWhere({user_id: user.id});
   // console.log(user.id);
   if (myvote != undefined) {
-    if (myvote.attributes.item_id != null) {
+    if (myvote.attributes.item_id || myvote.attributes.photo_id != null) {
       toggleVoteOption();
     }
   } else {
@@ -77,6 +77,7 @@ var checkVoted = function(){
           $('#accomplice-photos').append('<img id="' + model.attributes.id + '" class="accomplice" src="' + img_url + '">')
         })
         appendVotesToItems(voteList.models);
+        appendVotesToPhotos(voteList.models);
         checkVoted();
       }
     })

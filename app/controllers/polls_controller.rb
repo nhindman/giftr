@@ -32,9 +32,8 @@ class PollsController < ApplicationController
     session['login_callback_url'] = "/polls/#{@poll.id}"
     # binding.pry
     @items = Item.where(poll_id: @poll.id)
+    @photos = Photo.where(poll_id: @poll.id)
     @voters = @poll.voters
-
-    # render json: @items
   end
 
   private
