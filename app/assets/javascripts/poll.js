@@ -58,13 +58,13 @@ var ItemFormView = Backbone.View.extend({
   scrapeImage: function(e) {
     console.log("scraper clicked!");
     e.preventDefault();
-    this.createImage();
+    this.createPhoto();
     $('#gift-one').remove()
     $('#gift-two').remove()
     $('#gift-three').remove()
   },
 
-  createImage: function() {
+  createPhoto: function() {
     // e.preventDefault();
     console.log("createImage fired!");
     // var reader = new FileReader();
@@ -101,21 +101,6 @@ var ItemFormView = Backbone.View.extend({
     reader.readAsDataURL(file);
   },
 
-  // afterImageIsInDbCallMe: function(img_url){
-  //     console.log("i have run")
-  //     // lazy-show images after loading
-  //     var img = document.createElement('img')
-  //     img.src = img_url
-  //     img.className = "hiddenImage"
-  //     img.onload = function(event){
-  //       img.className = ""
-  //     }
-  //     document.getElementById('item_list').appendChild(img)
-  //     return img
-  //   },
-
-  
-
   el: function() {
     return $('#new_item_form')
   }
@@ -145,15 +130,18 @@ var PhotoView = Backbone.View.extend({
     })
   }, 
   render: function(){
+    console.log("photoview render fired")
     var self = this;
     this.$el.html(this.model.attributes);
     this.$el.attr('id', 'item-id-'+this.model.attributes.id);
+    console.log(this.model.attributes.url)
     var image = this.model.attributes.url;
     self.$el.attr('class', 'item col-lg-3 col-md-3');
     var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
     this.$el.html(spinner)
     var img = $('<img>');
     img.attr('src', image);
+    console.log(image)
     img.className = "hiddenImage";
     img.load(function(event){
       // console.log (website)
