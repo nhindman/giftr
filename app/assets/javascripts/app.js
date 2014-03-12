@@ -82,6 +82,7 @@ var user;
 var vote;
 var gift_idea;
 var website;
+var tip;
 
 var mq = window.matchMedia( "(min-width: 500px)" );
 

@@ -74,10 +74,24 @@ var ItemFormView = Backbone.View.extend({
           website: $('#new_item_url').val(),
           poll_id: poll.id
           // image: reader.result
-        })
-      // });
-    // reader.readAsDataURL(file);
-  },
+          },{success: function(data){
+              makeScrapedImagesHover(data);
+              // $('.flexslider').flexslider({
+              //   animation: "slide",
+              //   slideshow: false,
+              //   animationLoop: false,
+              //   itemWidth: 150,
+              //   itemMargin: 15
+              // });
+          }
+        });
+        var makeScrapedImagesHover = function(data){
+          $('.scrapedImagesHover').remove();
+          var tip = $('<div>');
+          tip.attr('class', 'scrapedImagesHover');
+          $('#app-setup-page-2').append(tip);
+        }
+      }, 
 
   addItemToPoll: function(e){
     console.log("file button clicked")
@@ -104,12 +118,9 @@ var ItemFormView = Backbone.View.extend({
 
   el: function() {
     return $('#new_item_form')
-  }
-  // addFinishButton: function(e){
-  //     e.preventDefault;
-  //     var html_string = $('#finish_adding_button_template').html();
-  //     $('#finish_button_container').append(html_string);
-  //   },    
+  },
+
+
 
 })
 
@@ -136,18 +147,12 @@ var PhotoView = Backbone.View.extend({
     this.$el.html(this.model.attributes);
     var image = this.model.attributes.url
     var website = 'http://'+this.model.attributes.website+'/';
-    // this.$el.wrap("<a href="+website+"></a>");
-    // $("a").attr("target", "_blank");
-    // this.$el.attr('style', 'background-image:url("'+image+'")');
     this.$el.attr('id', 'item-id-'+this.model.attributes.id);
-    // console.log(this.model.attributes.url)
-    // var website = 'http://'+this.model.attributes.website+'/';
     this.$el.attr('class', 'item col-lg-3 col-md-3');
     var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
     this.$el.html(spinner)
     var img = $('<img>');
     img.attr('src', image);
-    // // console.log(image)
     img.className = "hiddenImage";
     img.load(function(event){
         spinner.remove();
