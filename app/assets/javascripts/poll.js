@@ -134,32 +134,27 @@ var PhotoView = Backbone.View.extend({
     console.log("photoview render fired")
     var self = this;
     this.$el.html(this.model.attributes);
-    console.log("this.model.attributes here")
-    console.log(this.model.attributes)
     var image = this.model.attributes.url
     var website = 'http://'+this.model.attributes.website+'/';
-    this.$el.wrap("<a href="+website+"></a>");
-    $("a").attr("target", "_blank");
-    this.$el.attr('style', 'background-image:url("'+image+'")');
-    console.log("this.model.attributes.url here:")
-    console.log(this.model.attributes.url);
+    // this.$el.wrap("<a href="+website+"></a>");
+    // $("a").attr("target", "_blank");
+    // this.$el.attr('style', 'background-image:url("'+image+'")');
     this.$el.attr('id', 'item-id-'+this.model.attributes.id);
     // console.log(this.model.attributes.url)
     // var website = 'http://'+this.model.attributes.website+'/';
     this.$el.attr('class', 'item col-lg-3 col-md-3');
-    // var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
-    // this.$el.html(spinner)
-    // var img = $('<img>');
-    // img.attr('src', image);
+    var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
+    this.$el.html(spinner)
+    var img = $('<img>');
+    img.attr('src', image);
     // // console.log(image)
-    // // img.className = "hiddenImage";
-    // img.load(function(event){
-    //     console.log ("img load fired")
-    //     spinner.remove();
-    //     self.$el.attr('style', 'background-image:url("'+image+'")');
-    //     self.$el.wrap("<a href="+website+"></a>");
-    //     $("a").attr("target", "_blank");
-    //   })
+    img.className = "hiddenImage";
+    img.load(function(event){
+        spinner.remove();
+        self.$el.attr('style', 'background-image:url("'+image+'")');
+        self.$el.wrap("<a href="+website+"></a>");
+        $("a").attr("target", "_blank");
+      })
     this.resetValues();
     return this;
   }, 
