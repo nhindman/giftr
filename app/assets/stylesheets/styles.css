@@ -216,8 +216,8 @@ i {
 	top: 3px;
 }
 
-.scrapedImagesHover {
-	display: none !important;
+#app-setup-page-2 > .scrapedImagesHover {
+	display: none;
   color: #fff; 
   background: #000; 
   padding: 20px;
