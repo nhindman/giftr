@@ -86,10 +86,11 @@ var ItemFormView = Backbone.View.extend({
           }
         });
         var makeScrapedImagesHover = function(data){
-          $('.scrapedImagesHover').remove();
-          var tip = $('<div>');
-          tip.attr('class', 'scrapedImagesHover');
-          $('#app-setup-page-2').append(tip);
+          // $('.scrapedImagesHover').remove();
+          $('.scrapedImagesHover').toggle();
+          // var tip = $('<div>');
+          // tip.attr('class', 'scrapedImagesHover');
+          // $('#app-setup-page-2').append(tip);
         }
       }, 
 
@@ -185,9 +186,7 @@ var PhotoListView = Backbone.View.extend({
     this.listenTo(this.collection, "all", this.render)
   },
 
-  el: function(){
-   return $('#item_list') 
-  },
+  el: '.scrapedImagesHover',
 
   render: function() {
 

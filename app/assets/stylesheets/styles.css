@@ -217,6 +217,7 @@ i {
 }
 
 .scrapedImagesHover {
+	display: none !important;
   color: #fff; 
   background: #000; 
   padding: 20px;
@@ -225,10 +226,26 @@ i {
   overflow: auto;
   margin: 0 auto;
   box-shadow: 0 0 5px #888;
+  opacity: .8;
   z-index: 999999999999999999999;
   position: relative !important;
-  top: -540px !important;
+  top: -380px !important;
 }
+
+/*.scrapedImagesHoverShow {
+  color: #fff; 
+  background: #000; 
+  padding: 20px;
+  width: 80%;
+  height: 630px;
+  overflow: auto;
+  margin: 0 auto;
+  box-shadow: 0 0 5px #888;
+  opacity: .8;
+  z-index: 999999999999999999999;
+  position: relative !important;
+  top: -380px !important;
+}*/
 
 /*---------------------------- Splash Page 3 Styling ------------------------------------------*/
 
