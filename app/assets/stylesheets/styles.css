@@ -222,14 +222,14 @@ i {
   background: #000; 
   padding: 20px;
   width: 80%;
-  height: 630px;
+  height: 390px;
   overflow: auto;
   margin: 0 auto;
   box-shadow: 0 0 5px #888;
   opacity: .8;
   z-index: 999999999999999999999;
-  position: relative !important;
-  top: -380px !important;
+  position: relative;
+	top: -150px;
 }
 
 /*.scrapedImagesHoverShow {

@@ -67,30 +67,28 @@ var ItemFormView = Backbone.View.extend({
   createPhoto: function() {
     // e.preventDefault();
     console.log("createImage fired!");
-    // var reader = new FileReader();
-    //   reader.onload = (function(theFile) {
         photoListView.collection.create({
+          // console.log("create fired")
           url: $('#new_item_url').val(),
           website: $('#new_item_url').val(),
           poll_id: poll.id
           // image: reader.result
           },{success: function(data){
+              console.log("create success fired")
               makeScrapedImagesHover(data);
-              // $('.flexslider').flexslider({
-              //   animation: "slide",
-              //   slideshow: false,
-              //   animationLoop: false,
-              //   itemWidth: 150,
-              //   itemMargin: 15
-              // });
+              console.log(data)
+              $('.flexslider').flexslider({
+                animation: "slide",
+                slideshow: false,
+                animationLoop: false,
+                itemWidth: 150,
+                itemMargin: 15
+              });
           }
         });
         var makeScrapedImagesHover = function(data){
-          // $('.scrapedImagesHover').remove();
+          $('.scrapedImagesHover').empty();
           $('.scrapedImagesHover').toggle();
-          // var tip = $('<div>');
-          // tip.attr('class', 'scrapedImagesHover');
-          // $('#app-setup-page-2').append(tip);
         }
       }, 
 
@@ -143,26 +141,79 @@ var PhotoView = Backbone.View.extend({
     })
   }, 
   render: function(){
-    console.log("photoview render fired")
     var self = this;
-    this.$el.html(this.model.attributes);
-    var image = this.model.attributes.url
-    var website = 'http://'+this.model.attributes.website+'/';
-    this.$el.attr('id', 'item-id-'+this.model.attributes.id);
-    this.$el.attr('class', 'item col-lg-3 col-md-3');
-    var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
-    this.$el.html(spinner)
-    var img = $('<img>');
-    img.attr('src', image);
-    img.className = "hiddenImage";
-    img.load(function(event){
+    console.log("photoview render fired")
+    var scraped_images = this.model.attributes
+    console.log("scraped_images:")
+    console.log(scraped_images)
+
+    for (var i=0; i < scraped_images.length; i++) {
+      console.log(scraped_images)
+      self.$el.html(scraped_images);
+      var image = scraped_images.url;
+      var website = 'http://'+scraped_images.website+'/';
+      self.$el.attr('id', 'item-id-'+scraped_images.id);
+      self.$el.attr('class', 'item col-lg-3 col-md-3');
+      var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
+      self.$el.html(spinner);
+      var img = $('<img>');
+      img.attr('src', image);
+      img.className = "hiddenImage";
+      img.load(function(event){
         spinner.remove();
         self.$el.attr('style', 'background-image:url("'+image+'")');
         self.$el.wrap("<a href="+website+"></a>");
         $("a").attr("target", "_blank");
       })
+    }
     this.resetValues();
+    console.log("render photoview this:")
+    console.log(self.$el.html())
     return this;
+
+    // scraped_images.forEach(function(scraped_image){
+    //   console.log(scraped_image)
+    //   self.$el.html(scraped_image);
+    //   var image = scraped_image.url;
+    //   var website = 'http://'+scraped_image.website+'/';
+    //   self.$el.attr('id', 'item-id-'+scraped_image.id);
+    //   self.$el.attr('class', 'item col-lg-3 col-md-3');
+    //   var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
+    //   self.$el.html(spinner);
+    //   var img = $('<img>');
+    //   img.attr('src', image);
+    //   img.className = "hiddenImage";
+    //   img.load(function(event){
+    //     spinner.remove();
+    //     self.$el.attr('style', 'background-image:url("'+image+'")');
+    //     self.$el.wrap("<a href="+website+"></a>");
+    //     $("a").attr("target", "_blank");
+    //   })
+    // })
+    // console.log("this at end of render function:")
+    // console.log(this)
+    // this.resetValues();
+    // return this;
+
+    // var self = this;
+    // this.$el.html(this.model.attributes);
+    // var image = this.model.attributes.url
+    // var website = 'http://'+this.model.attributes.website+'/';
+    // this.$el.attr('id', 'item-id-'+this.model.attributes.id);
+    // this.$el.attr('class', 'item col-lg-3 col-md-3');
+    // var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
+    // this.$el.html(spinner)
+    // var img = $('<img>');
+    // img.attr('src', image);
+    // img.className = "hiddenImage";
+    // img.load(function(event){
+    //     spinner.remove();
+    //     self.$el.attr('style', 'background-image:url("'+image+'")');
+    //     self.$el.wrap("<a href="+website+"></a>");
+    //     $("a").attr("target", "_blank");
+    //   })
+    // this.resetValues();
+    // return this;
   }, 
   vote: function(){
     var votedphoto = voteList.findWhere({user_id: user.id});
@@ -195,15 +246,22 @@ var PhotoListView = Backbone.View.extend({
       view.remove();
     })
     this.photoViews = []
-    _.each(this.collection.models, function(photo){
+    console.log('collection.models')
+    console.log(this.collection.models.attributes)
+    _.each(this.collection.models.attributes, function(photo){
       var new_view = new PhotoView({
         model: photo
       });
       self.photoViews.push(new_view)
+      somevar = new_view.render().$el.html()
+      console.log('######')
+      console.log(somevar)
       self.$el.append(new_view.render().$el)
     })
 
+    console.log(self.$el.html())
 
+    return this;
   }
 
 })
