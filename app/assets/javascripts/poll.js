@@ -143,29 +143,37 @@ var PhotoView = Backbone.View.extend({
   render: function(){
     var self = this;
     console.log("photoview render fired")
-    var scraped_images = this.model.attributes
-    console.log("scraped_images:")
-    console.log(scraped_images)
-
-    for (var i=0; i < scraped_images.length; i++) {
-      console.log(scraped_images)
-      self.$el.html(scraped_images);
-      var image = scraped_images.url;
-      var website = 'http://'+scraped_images.website+'/';
-      self.$el.attr('id', 'item-id-'+scraped_images.id);
+    var scraped_images = []
+    _.each(this.model.attributes, function(defined_image_object){
+      if (typeof defined_image_object === "object") {
+        scraped_images.push(defined_image_object)
+      }
+      // return scraped_images;
+    })
+  
+    _.each(scraped_images, function(scraped_image) {
+      console.log("each ditto function fired")
+      self.$el.html(scraped_image);
+      var image = scraped_image.url;
+      console.log("hollerrrrrr scraped_image:")
+      console.log(scraped_image)
+      console.log("hollerrrrrr image:")
+      console.log(image)
+      var website = 'http://'+scraped_image.website+'/';
+      self.$el.attr('id', 'item-id-'+scraped_image.id);
       self.$el.attr('class', 'item col-lg-3 col-md-3');
       var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
       self.$el.html(spinner);
       var img = $('<img>');
       img.attr('src', image);
       img.className = "hiddenImage";
-      img.load(function(event){
+      // img.load(function(event){
         spinner.remove();
         self.$el.attr('style', 'background-image:url("'+image+'")');
         self.$el.wrap("<a href="+website+"></a>");
         $("a").attr("target", "_blank");
-      })
-    }
+      // })
+    })
     this.resetValues();
     console.log("render photoview this:")
     console.log(self.$el.html())
@@ -246,13 +254,15 @@ var PhotoListView = Backbone.View.extend({
       view.remove();
     })
     this.photoViews = []
-    console.log('collection.models')
-    console.log(this.collection.models.attributes)
-    _.each(this.collection.models.attributes, function(photo){
+    console.log('this.collection.models.length:')
+    console.log(this.collection.models.length)   
+    _.each(this.collection.models, function(photo){
       var new_view = new PhotoView({
         model: photo
       });
       self.photoViews.push(new_view)
+      console.log("new_view.model.attributes:")
+      console.log(new_view.model.attributes)
       somevar = new_view.render().$el.html()
       console.log('######')
       console.log(somevar)
