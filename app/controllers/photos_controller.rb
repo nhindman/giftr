@@ -12,15 +12,15 @@ def new
   @photo = Photo.new
 end
 
-def create
-  scrape_this_page = params[:photo][:url]
+def scrap
+  scrape_this_page = params[:url]
   page = MetaInspector.new(scrape_this_page)
   scraped_images_array = page.images
   photo_array = []
   scraped_images_array.each do |photo|
     scraped_image = Photo.new(
-      poll_id: params[:photo][:poll_id], 
-      website: params[:photo][:website], 
+      poll_id: params[:poll_id], 
+      website: params[:website], 
       url: photo
       )
     scraped_image.save!
