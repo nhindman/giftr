@@ -28,24 +28,54 @@ var Item = Backbone.Model.extend({
 
 var ItemFormView = Backbone.View.extend({
   initialize: function(){
-
+    console.log("initialize fires") 
+    var fileupload = $('#files');
+    fileupload.on('change', function(e){
+      console.log("file onchange fires")  
+      e.preventDefault();
+      var reader = new FileReader();
+      reader.onload = (function(theFile) {
+        itemsListView.collection.create({
+          name: $('#new_item_name_input').val(),
+          website: $('#new_item_url').val(),
+          poll_id: poll.id,
+          image: reader.result
+        })
+      });
+      reader.readAsDataURL($('#files')[0].files[0]);
+      return false;
+    });
+    $('#new_item_url').bind('input', function() {
+      $('.scraper').css("display", "block")
+    })
     this.render()
-  }, 
+  },
+
   render: function(){
 
-  }, 
+  },
+
   events: {
-    "click .add_item_button": "addItemToPoll",
-    "click .scraper": "scrapeImage",
+    // "click #go_button": "showUploaderAndScraperButtons",
+    // "onchange .files": "addItemToPoll",
+    "click .scraper": "scrapeImage"
   }, 
+  
+  showUploaderAndScraperButtons: function(){
+    console.log("showUploaderAndScraperButtons fired")
+    // $('#uploader').toggle();
+    // $('.selector').toggle();
+    // $('#OR_word').toggle();
+    // $('#go_button').css("visibility", "hidden")
+  },
 
   scrapeImage: function(e) {
     console.log("scraper clicked!");
     e.preventDefault();
     this.createPhoto();
-    $('#gift-one').remove()
-    $('#gift-two').remove()
-    $('#gift-three').remove()
+    // $('#gift-one').remove()
+    // $('#gift-two').remove()
+    // $('#gift-three').remove()
   },
 
   createPhoto: function() {
@@ -75,7 +105,7 @@ var ItemFormView = Backbone.View.extend({
                   });    
               }
             });
-          }
+          } 
         })
         
         var makeScrapedImagesHover = function(data){
@@ -84,36 +114,11 @@ var ItemFormView = Backbone.View.extend({
         }
       }, 
 
-  addItemToPoll: function(e){
-    console.log("file button clicked")
-    e.preventDefault();
-    this.handleFileSelect($('#files')[0].files[0]);
-    $('#gift-one').remove()
-    $('#gift-two').remove()
-    $('#gift-three').remove()
-  },
+      el: function() {
+        return $('#new_item_form')
+      },
 
-  handleFileSelect: function(file) {
-    console.log("file select fired")
-      var reader = new FileReader();
-      reader.onload = (function(theFile) {
-        itemsListView.collection.create({
-          name: $('#new_item_name_input').val(),
-          website: $('#new_item_url').val(),
-          poll_id: poll.id,
-          image: reader.result
-        })
-      });
-    reader.readAsDataURL(file);
-  },
-
-  el: function() {
-    return $('#new_item_form')
-  },
-
-
-
-})
+  })
 
 var Photo = Backbone.Model.extend({
   url: "/photos",
@@ -286,6 +291,9 @@ var ItemView = Backbone.View.extend({
     _.each( $('input'), function(input){
       $(input).val('');
     })
+    $('.add_gift_ideas_instructions-app').animate({duration:10000,opacity:0});
+    $('.what_gift_instructions-app').html('Enter another gift idea');
+    
   },
 
   render: function(){

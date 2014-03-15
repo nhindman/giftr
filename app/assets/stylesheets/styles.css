@@ -197,23 +197,33 @@ i {
 	display: block !important;
 }
 
-#new_item_url {
-	margin-top: 7px !important;
-}
-
 #new_item_form {
 	position: relative;
-	bottom: 40px;
+	bottom: -10px;
 }
 
-#poll_buttons > .uploader {
+#poll_buttons > #uploader {
+	/*display: none;*/
 	position: relative;
-	top: 0px;
+	left: -2px;
+	top: -25px;
 }
 
-#poll_buttons > .selector {
+/*#OR_word {
+	display: none;
 	position: relative;
-	top: 3px;
+	top: -49px;
+}*/
+
+.selector {
+	width: 100px;
+}
+
+.scraper {
+	display: none;
+	position: relative;
+	top: -19px;
+	left: 247px;
 }
 
 #app-setup-page-2 > .scrapedImagesHover {
@@ -229,7 +239,12 @@ i {
   opacity: .8;
   z-index: 999999999999999999999;
   position: relative;
-	top: -150px;
+	top: -582px;
+}
+
+#app-setup-page-2 > #poll_buttons {
+	position: relative;
+	top: 200px;
 }
 
 /*.scrapedImagesHoverShow {
@@ -287,6 +302,10 @@ top: -150px;
 	margin-top: 1em;
 }
 
+.what_gift_instructions-app {
+	margin-top: -0.8em;
+}
+
 .instructions-app ~ img {  /*Selects any images that are siblings of an element with a class "instructions". This selcts tthe images in Splash Page 2, 3, & 4*/
 	margin-top: 4em;
 	margin-bottom: 5em;
@@ -294,9 +313,9 @@ top: -150px;
 }
 
 #app-setup-page-2 div { /* CHANGE THIS NAME SOON */
-	position: relative;
+/*	position: relative;
 	top: -60px;
-	display: inline-block;
+	display: inline-block;*/
 }
 
 #app-setup-page-2 {
@@ -342,6 +361,7 @@ top: -150px;
 }
 
 .add_item_button {
+	display: none;
 	margin: -2.5em auto;
 }
 
@@ -351,7 +371,7 @@ top: -150px;
 	height: 200px;
 	margin: 0em 1em 3em 1em;
 	position: relative !important;
-	top: -10px !important;
+	top: -70px !important;
 /*  background-size: cover;
   background-position: center;
   margin: 4em 1em 5em 1em;
@@ -378,6 +398,32 @@ top: -150px;
 
 #new_item_image_input {
 	display: hidden;
+}
+
+#new_item_name_input {
+	width: 200px;
+}
+
+#new_item_url {
+	width: 200px;
+	margin-top: -93px;
+	position: relative;
+	left: 0px;
+	top: 0px;
+}
+
+#add_gift_URL_line {
+	display: inline;
+}
+
+#go_button {
+	overflow: hidden;
+	margin-left: 6px;
+	margin-top: 1.9em;
+	display: inline;
+	position: relative !important;
+	left: 30px;
+	width: 60px;
 }
 
 .gift_image {
@@ -480,7 +526,8 @@ border-radius: 1em;
 .btn-file {
     position: relative;
     overflow: hidden;
-    margin-top: .5em
+    margin-top: 0em;
+    margin-left: 7px;
 }
 .btn-file input[type=file] {
     position: absolute;

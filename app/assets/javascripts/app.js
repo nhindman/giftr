@@ -84,7 +84,6 @@ var gift_idea;
 var website;
 var tip;
 var new_view;
-
 var mq = window.matchMedia( "(min-width: 500px)" );
 
 $(document).ready(function() {    
