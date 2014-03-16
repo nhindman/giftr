@@ -80,6 +80,7 @@ var recipient_name;
 var poll;
 var user;
 var vote;
+var photo;
 var gift_idea;
 var website;
 var tip;

@@ -12,6 +12,12 @@ def new
   @photo = Photo.new
 end
 
+def update
+  @photo = Photo.find(params[:id])
+  @photo.update_attributes!(selected: params[:selected])
+  render json: @photo
+end
+
 def scrap
   scrape_this_page = params[:url]
   page = MetaInspector.new(scrape_this_page)

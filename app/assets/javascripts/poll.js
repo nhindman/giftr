@@ -125,7 +125,6 @@ var ItemFormView = Backbone.View.extend({
   })
 
 var Photo = Backbone.Model.extend({
-  url: "/photos",
 })
 
 var PhotoList = Backbone.Collection.extend({
@@ -137,9 +136,11 @@ var PhotoView = Backbone.View.extend({
   initialize: function() {
     this.render();
   }, 
+
   events: {
-    // "click [data-action='vote']": 'vote',
+    "click .scraped_photo": 'addSelectedPhoto',
   }, 
+
   resetValues: function() {
     _.each( $('input'), function(input){
       $(input).val('');
@@ -180,8 +181,23 @@ var PhotoView = Backbone.View.extend({
     console.log("render photoview this:")
     console.log(self.$el.html())
     return this;
+  },
 
-  }, 
+  addSelectedPhoto: function(){
+    console.log("ADD selected photos fired")
+    console.log(this.model);
+
+    this.model.save({"selected": true}, {
+      success: function() {
+        appendSelectedPhotos(photoListView.collection);
+        console.log("SUCCESS");
+    },
+    error: function() {
+      console.log("OH, no!");
+    }});
+    $('.scrapedImagesHover').remove();
+  },  
+   
   vote: function(){
     var votedphoto = voteList.findWhere({user_id: user.id});
     votedphoto.attributes.photo_id = this.model.id;
@@ -190,7 +206,7 @@ var PhotoView = Backbone.View.extend({
     });
     appendVotesToPhotos(voteList.models);
     toggleVoteOption()
-  }
+  },
 
 })
 
@@ -244,6 +260,18 @@ var PhotoListView = Backbone.View.extend({
 
 })
 
+
+//this one should be initialized with a collection and used like
+// initialize: function() {
+//   this.collection.on('change', this.render);
+// }
+
+// var selectedView = new PhotoVoteListView({
+//   collection: selectedCollection,
+//   element: "#item_list"
+// });
+
+
 var PhotoVoteListView = Backbone.View.extend({
   initialize: function(){
     this.collection = new PhotoList();
@@ -264,11 +292,13 @@ var PhotoVoteListView = Backbone.View.extend({
     this.photoViews = []
 
     _.each(this.collection.models, function(photo){
+      if (photo.attributes.selected === true) {
       var new_view = new PhotoView({
         model: photo
       });
       self.photoViews.push(new_view)
       self.$el.append(new_view.render().$el.append("<button class=\"btn btn-lg btn-danger\" data-action='vote'>Vote!</button>"))
+      }
     })
 
   }
@@ -508,6 +538,20 @@ var appendVotesToPhotos = function(votes){
     }
   })
 }
+
+var appendSelectedPhotos = function(photos){
+    console.log("APPEND selected photos fired")
+    console.log(photos)
+    var self = this;
+    photos.each(function(photo){
+      console.log("photo.attributes.selected:" + photo.get('selected'));
+      console.log("photo.attributes.id:" + photo.attributes.id)
+      if(photo.attributes.selected === true){
+        console.log("if statement fired")
+        $('#item_list').append("<img src='" + photo.get('url') + "'></img>");
+      }
+    })  
+  }
 
 var toggleVoteOption = function(){
   $('#item_list button').toggleClass('hidden');

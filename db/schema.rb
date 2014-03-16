@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140312153012) do
+ActiveRecord::Schema.define(version: 20140316181912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140312153012) do
     t.string   "scrapedimage"
     t.integer  "poll_id"
     t.string   "website"
+    t.boolean  "selected",     default: false
   end
 
   create_table "polls", force: true do |t|
