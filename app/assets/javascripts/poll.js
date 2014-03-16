@@ -46,7 +46,8 @@ var ItemFormView = Backbone.View.extend({
       return false;
     });
     $('#new_item_url').bind('input', function() {
-      $('.scraper').css("display", "block")
+      $('.scraper').css("display", "block");
+      $('#poll_buttons,#uploader').css("left", "-38px");
     })
     this.render()
   },
@@ -72,6 +73,9 @@ var ItemFormView = Backbone.View.extend({
   scrapeImage: function(e) {
     console.log("scraper clicked!");
     e.preventDefault();
+    // if ($('#new_item_url').val().empty?){
+    //   alert("Must enter valid URL")
+    // }
     this.createPhoto();
     // $('#gift-one').remove()
     // $('#gift-two').remove()
@@ -144,7 +148,11 @@ var PhotoView = Backbone.View.extend({
   render: function(){
     var self = this;
     console.log("photoview render fired")
-    this.$el.html('<img src="' + this.model.get('url') + '">');
+    var photo = $('<img src="' + this.model.get('url') + '">');
+    photo.attr('class', 'scraped_photo');
+    this.$el.html(photo);
+    this.$el.attr('id', 'item-id-'+this.model.attributes.id);
+    this.$el.attr('class', 'col-lg-3 col-md-3');
     // photoListView.collection.each(function(scraped_image) {
     //   console.log("each ditto function fired")
     //   // self.$el.html(scraped_image);
