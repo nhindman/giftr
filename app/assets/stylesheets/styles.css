@@ -540,6 +540,32 @@ border: solid .8em #f1f1f1;
 border-radius: 1em;
 }
 
+.selected_photo {
+	display: inline-block;
+	height: 250px;
+	padding-top: 1.1em;
+	background-size: cover;
+	background-position: center;
+	border: solid .8em #f1f1f1;
+	border-radius: 1em;
+	position: relative;
+}
+
+.close-me {
+	height: 70px !important;
+	width: 70px !important;
+	position: absolute !important;
+	top: -8px !important;
+	right: -7px !important;
+	border: none !important;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+
+.close-me:hover {
+  cursor: pointer;
+  opacity: .7;
+}
 /*#item_list .item {
 	display: inline-block;
 	width: 250px;
