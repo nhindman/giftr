@@ -1830,7 +1830,7 @@ textarea.input-lg {
   margin-bottom: 10px;
   color: #737373;
 }
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {*/
   .form-inline .form-group {
     display: inline-block;
     margin-bottom: 0;
@@ -1854,7 +1854,7 @@ textarea.input-lg {
     float: none;
     margin-left: 0;
   }
-}
+/*}*/
 .form-horizontal .control-label,
 .form-horizontal .radio,
 .form-horizontal .checkbox,

@@ -638,6 +638,44 @@ border-radius: 1em;
 	}
 }
 
+@media all and (max-width: 672px){
+	h1 {
+		font-size: 2em;
+	}
+	.what_gift_instructions-app {
+		margin-top: -3.8em;
+	}
+	.selection-page-section-instructions {
+		margin-bottom: 2.6em;
+	}
+	.btn-file {
+		margin-left: -32px;
+	}
+	.scraper {
+		left: 193px;
+	}
+
+	.poll-creation-item-selection .item {
+	display: block !important;
+	width: 200px;
+	height: 200px;
+	margin: -1.2em 1em 4em 5em !important;
+	position: relative !important;
+	top: 38px !important;
+	left: -10px;
+	border: none;
+	}
+
+	#app-setup-page-2 > #item_list {
+	top: 11px;
+	margin-bottom: 11em;
+	}
+	#item_list{
+		top: 60px !important;
+		margin-top: 0px !important;
+	}
+}
+
 .fb_dialog_advanced {
 	left: 420.5px;
 	top: 1643px;
