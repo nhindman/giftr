@@ -92,8 +92,8 @@ var ItemFormView = Backbone.View.extend({
             url: $('#new_item_url').val()
           },
           success: function(data) {
-            alert("PHOTOS HERE:"+photoListView)
-            photoListView.collection.reset()
+            // alert("PHOTOS HERE:"+photoListView)
+            photoListView = new PhotoListView()
             photoListView.collection.fetch({
               url: '/photos?poll_id=' + poll.id,
               success: function(){

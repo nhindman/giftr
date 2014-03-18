@@ -300,6 +300,11 @@ i {
 	display: block;
 }
 
+.sign_in_button {
+	margin: 0 auto;
+	width: 200px !important;
+}
+
 .mutual-friends-link {
 	display: block;
 	position: relative;
@@ -685,7 +690,7 @@ border-radius: 1em;
 
 @media all and (max-width: 672px){
 	.scraper {
-		left: 233px;
+		left: 198px;
 	}
 }
 

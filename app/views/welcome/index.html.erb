@@ -6,7 +6,7 @@
 			
 			<div id="section0" class="section">
 				<div id="splash-page-1" class="clearfix splash-page-section-wrapper"> <!-- Splash Page First Section -->
-					<h2 class="app-tagline">Use data to find better gifts.</h2>
+					<h2 class="app-tagline">Give, smarter.</h2>
 					<h1>Choose the friend you're buying for</h1>				
 					<%=image_tag("friend_pics/mel.jpg", alt: "Example Image")%>
 					<i id="block" class="fa fa-arrow-down block"></i>
@@ -38,7 +38,7 @@
 				<div id="splash-page-4" class="clearfix splash-page-section-wrapper"> <!-- Splash Page Fourth Section -->
 					<h1 class="instructions">See which gift gets the most votes</h1>
 					<img src="http://placekitten.com/g/250/250" alt="">
-					<button class="btn btn-danger">Sign In with Facebook to Begin</button>
+					<%= link_to raw("Sign In with Facebook"), user_omniauth_authorize_path(:facebook), class: "btn btn-danger btn-lg sign_in_button", id: "block", method: :get %>
 				</div>
 			</div>
 
