@@ -217,7 +217,7 @@ var PhotoListView = Backbone.View.extend({
       url: function() {
         var pollId = poll.id;
         console.log(poll.id);
-       '/photos/?poll_id=' + pollId;
+        return '/photos/?poll_id=' + pollId;
       }
     });
     this.photoViews = []
