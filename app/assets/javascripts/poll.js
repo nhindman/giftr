@@ -1,4 +1,5 @@
 
+var getUrl=function(pollId){return '/photos/?poll_id=' + pollId;}
 var renderOnce = "false";
 var Poll = Backbone.Model.extend({     
   url: "/polls",
@@ -149,12 +150,12 @@ var PhotoView = Backbone.View.extend({
     // $('.scrapedImagesHover').html('');
     var self = this;
     console.log("photoview render fired")
-    var photo = $('<img src="' + this.model.get('url') + '">');
+    var photo = $('<img src="' + getUrl(this.model.get('pollId')) + '">');
     var photo_item = $('<li>')
     console.log("HEY BUDDY LOOK HERE:"+this.model)
     this.$el.html(photo_item)
     this.$el.append(photo)
-    this.$el.attr('class', '.scraped_photo');
+    this.$el.attr('class', 'scraped_photo');
     this.$el.attr('id', 'item-id-'+this.model.attributes.id);
     $('.slides').append(this.$el)
     // this.$el.html(photo)
