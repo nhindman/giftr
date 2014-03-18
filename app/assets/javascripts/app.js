@@ -29,6 +29,7 @@ function resetSelector(){
             method: 'send',
             to: [accomplice],
             link: "http://shielded-sands-2955.herokuapp.com/polls/" + poll_id,
+            redirect_uri: window.location.host+"/polls/"+poll_id
             }, fbCallback)
           })
         }
@@ -59,14 +60,7 @@ function resetSelector(){
             );
             }});
         });
-      // }});
-    
-    },
-    onClose: function(){
-
-      // FB_notification(accomplices, poll.id);
     }
-
   });
 }
 

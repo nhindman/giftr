@@ -638,6 +638,13 @@ border-radius: 1em;
 	}
 }
 
+@media all and (max-width: 673px){
+	#poll_buttons > #uploader {
+		/*width: 250px;*/
+		left: 12px;
+	}
+}
+
 @media all and (max-width: 672px){
 	h1 {
 		font-size: 2em;
@@ -652,7 +659,7 @@ border-radius: 1em;
 		margin-left: -32px;
 	}
 	.scraper {
-		left: 193px;
+		left: 263px;
 	}
 
 	.poll-creation-item-selection .item {
@@ -675,6 +682,25 @@ border-radius: 1em;
 		margin-top: 0px !important;
 	}
 }
+
+@media all and (max-width: 672px){
+	.scraper {
+		left: 233px;
+	}
+}
+
+@media all and (max-width: 992px){
+	.poll-creation-item-selection .item {
+		left: 0px;
+	}
+}
+
+/*@media all and (max-width: 673px){
+	.poll-creation-item-selection .item {
+		left: 0px;
+	}
+}*/
+
 
 .fb_dialog_advanced {
 	left: 420.5px;
