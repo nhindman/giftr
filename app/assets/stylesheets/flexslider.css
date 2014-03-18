@@ -16,7 +16,7 @@
 .flexslider a:active,
 .flex-container a:focus,
 .flexslider a:focus  {outline: none;}
-.slides {height: 290px !important;},
+.slides {height: 290px !important;}
 .flex-control-nav,
 .flex-direction-nav {margin: 0; padding: 0; list-style: none;}
 
