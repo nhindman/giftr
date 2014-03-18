@@ -116,8 +116,6 @@ var ItemFormView = Backbone.View.extend({
         
         var makeScrapedImagesHover = function(data){
           $('.scrapedImagesHover').toggle();
-          // $('.scrapedImagesHover').html('');
-          // $('.scrapedImagesHover').empty();
         }
       }, 
 
@@ -151,17 +149,19 @@ var PhotoView = Backbone.View.extend({
     console.log("photoview render fired")
     
     var photo = $('<img src="' + this.model.get('url') + '">');
-    photo.attr('class', 'scraped_photo');
-    this.$el.html(photo);
-    this.$el.attr('id', 'item-id-'+this.model.attributes.id);
-    this.$el.attr('class', 'col-lg-3 col-md-3');
+    var photo_item = $('<li>')
+    photo_item.append(photo)
+    // photo.attr('class', 'scraped_photo');
+    $('.slides').append(photo_item)
+    // this.$el.html(photo);
+    // this.$el.attr('id', 'item-id-'+this.model.attributes.id);
+    // this.$el.attr('class', 'col-lg-3 col-md-3');
     this.resetValues();
-    console.log("render photoview this:")
-    console.log(self.$el.html())
+    // console.log("render photoview this:")
+    // console.log(self.$el.html())
     // $('.scrapedImagesHover').empxwwty();
     return this;
     return false;
-  
     // $('.scrapedImagesHover').empty();
   },
 
@@ -223,7 +223,7 @@ var PhotoListView = Backbone.View.extend({
     // $('.scrapedImagesHover').empty();
   },
 
-  el: '.scrapedImagesHover',
+  el: '.scrapedImagesHover_list',
 
   render: function() {
     // $('.scrapedImagesHover').empty();
@@ -235,22 +235,24 @@ var PhotoListView = Backbone.View.extend({
     this.photoViews = []
     
     console.log(this.collection.models.length) 
-    // $(self.$el).find("div").remove();
-    _.each(this.collection.models, function(photo){
+    this.$el.empty()
+    this.collection.each(function(photo){
       console.log('Different Photo ##########:')
       console.log(photo)
-      new_view = new PhotoView({
+      // new_view = new PhotoView({
+      //   model: photo
+      // });
+      // self.photoViews.push(new_view);
+      // console.log("new_view.model.attributes:")
+      // console.log(new_view.model.attributes)
+      // somevar = new_view.render().$el.html()
+      // console.log('######')
+      // console.log(somevar)
+      if(!checkForExisting(photo.attributes.url,".scrapedImagesHover_list")){
+      self.$el.append(new PhotoView({
         model: photo
-      });
-      self.photoViews.push(new_view);
-      console.log("new_view.model.attributes:")
-      console.log(new_view.model.attributes)
-      somevar = new_view.render().$el.html()
-      console.log('######')
-      console.log(somevar)
-if(!checkForExisting(photo.attributes.url,".scrapedImagesHover")){
-      self.$el.append(new_view.render().$el);
-    }
+      }).render().$el);
+      }
       // $('.scrapedImagesHover').empty();
     });
   
@@ -259,9 +261,9 @@ if(!checkForExisting(photo.attributes.url,".scrapedImagesHover")){
     // $('.scrapedImagesHover').empty();  
     return this;
     // $('.scrapedImagesHover').empty();
-  }
+  },
 
-})
+});
 
 
 //this one should be initialized with a collection and used like
