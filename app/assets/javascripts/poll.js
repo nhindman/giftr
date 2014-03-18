@@ -150,14 +150,9 @@ var PhotoView = Backbone.View.extend({
     // $('.scrapedImagesHover').html('');
     var self = this;
     console.log("photoview render fired")
-    var photo = $('<img src="' + getUrl(this.model.get('pollId')) + '">');
-    var photo_item = $('<li>')
+    var photo = $('<img src="' + this.model.attributes.url + '">');
     console.log("HEY BUDDY LOOK HERE:"+this.model)
-    this.$el.html(photo_item)
-    this.$el.append(photo)
-    this.$el.attr('class', 'scraped_photo');
-    this.$el.attr('id', 'item-id-'+this.model.attributes.id);
-    $('.slides').append(this.$el)
+    $('<li>').append(photo).attr('class', 'scraped_photo').attr('id', 'item-id-'+this.model.attributes.id).appendTo($('.slides'));
     // this.$el.html(photo)
     // this.$el.attr('class', 'col-lg-3 col-md-3');
     this.resetValues();
