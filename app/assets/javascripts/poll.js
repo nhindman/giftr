@@ -91,11 +91,13 @@ var ItemFormView = Backbone.View.extend({
             website: $('#new_item_url').val(),
             url: $('#new_item_url').val()
           },
-          success: function() {
-            // $('.scrapedImagesHover').empty();
+          success: function(data) {
+            alert("PHOTOS HERE:"+photoListView)
+            photoListView.collection.reset()
             photoListView.collection.fetch({
               url: '/photos?poll_id=' + poll.id,
-              success: function(data){
+              success: function(){
+                  console.log()
                   console.log("create success fired")
                   // $('.scrapedImagesHover').empty();
                   makeScrapedImagesHover(data);
