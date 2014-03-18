@@ -139,6 +139,8 @@ var PhotoView = Backbone.View.extend({
     this.render();
   }, 
 
+  el: $('<li>'),
+
   events: {
     "click .scraped_photo": 'addSelectedPhoto',
   }, 
@@ -147,14 +149,15 @@ var PhotoView = Backbone.View.extend({
     // $('.scrapedImagesHover').html('');
     var self = this;
     console.log("photoview render fired")
-    
     var photo = $('<img src="' + this.model.get('url') + '">');
     var photo_item = $('<li>')
-    photo_item.append(photo)
-    // photo.attr('class', 'scraped_photo');
-    $('.slides').append(photo_item)
-    // this.$el.html(photo);
-    // this.$el.attr('id', 'item-id-'+this.model.attributes.id);
+    console.log("HEY BUDDY LOOK HERE:"+this.model)
+    this.$el.html(photo_item)
+    this.$el.append(photo)
+    this.$el.attr('class', '.scraped_photo');
+    this.$el.attr('id', 'item-id-'+this.model.attributes.id);
+    $('.slides').append(this.$el)
+    // this.$el.html(photo)
     // this.$el.attr('class', 'col-lg-3 col-md-3');
     this.resetValues();
     // console.log("render photoview this:")
@@ -223,7 +226,7 @@ var PhotoListView = Backbone.View.extend({
     // $('.scrapedImagesHover').empty();
   },
 
-  el: '.scrapedImagesHover_list',
+  el: '.slides', 
 
   render: function() {
     // $('.scrapedImagesHover').empty();
@@ -248,7 +251,7 @@ var PhotoListView = Backbone.View.extend({
       // somevar = new_view.render().$el.html()
       // console.log('######')
       // console.log(somevar)
-      if(!checkForExisting(photo.attributes.url,".scrapedImagesHover_list")){
+      if(!checkForExisting(photo.attributes.url,".slides")){
       self.$el.append(new PhotoView({
         model: photo
       }).render().$el);

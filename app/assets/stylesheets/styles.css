@@ -237,6 +237,14 @@ i {
 	left: 412px;
 }
 
+a.flex-prev {
+  background: url('/assets/images/arrow-left.png');
+}
+
+a.flex-next {
+  background: url('/assets/images/arrow-left.png');
+}
+
 #app-setup-page-2 > .scrapedImagesHover {
 	display: none;
   color: #fff; 
@@ -250,7 +258,7 @@ i {
   opacity: .8;
   z-index: 999999999999999999999;
   position: relative;
-  left: -116px;
+  /*left: -116px;*/
 	top: -152px;
 }
 
@@ -723,7 +731,7 @@ border-radius: 1em;
 
 .scraped_photo {
 	cursor: pointer;
-	height: 270px;
+	/*height: 270px;*/
 }
 
 .scraped_photo:hover {
