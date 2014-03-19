@@ -5,6 +5,7 @@ def index
     respond_to do |format|
       format.html
       format.json { render json: @photos}
+      # binding.pry
   end
 end
 

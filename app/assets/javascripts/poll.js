@@ -1,5 +1,5 @@
 
-var getUrl=function(pollId){return '/photos/?poll_id=' + pollId;}
+// var getUrl=function(pollId){return '/photos/?poll_id=' + pollId;}
 var renderOnce = "false";
 var Poll = Backbone.Model.extend({     
   url: "/polls",
@@ -78,10 +78,22 @@ var ItemFormView = Backbone.View.extend({
     //   alert("Must enter valid URL")
     // }
     // $('.scrapedImagesHover').empty();
-    this.createPhoto();
+    $(".slides").html('');
+    // this.createPhotos(); // could put flexslider in createPhotos as a callback like below:
+    this.createPhotos(function(res){
+      if(res) {
+        $().flexslider({
+        animation: "slide",
+        slideshow: false,
+        animationLoop: false,
+        itemWidth: 150,
+        itemMargin: 15
+        });
+      }
+    });
   },
 
-  createPhoto: function() {
+  createPhotos: function(callback) {
     // $('.scrapedImagesHover').empty();
     console.log("createImage fired!");
         $.ajax({
@@ -93,23 +105,30 @@ var ItemFormView = Backbone.View.extend({
             url: $('#new_item_url').val()
           },
           success: function(data) {
-            // alert("PHOTOS HERE:"+photoListView)
+            alert("FIRST SUCCESS PHOTOS HERE:"+photoListView)
             photoListView = new PhotoListView()
             photoListView.collection.fetch({
               url: '/photos?poll_id=' + poll.id,
-              success: function(){
+              success: function(data){
+                alert("SECOND SUCCESS FIRED:"+photoListView)
                   console.log()
                   console.log("create success fired")
                   // $('.scrapedImagesHover').empty();
                   makeScrapedImagesHover(data);
                   console.log(data)
-                  $('.flexslider').flexslider({
-                    animation: "slide",
-                    slideshow: false,
-                    animationLoop: false,
-                    itemWidth: 150,
-                    itemMargin: 15
-                  });    
+                  // $('.flexslider').flexslider({
+                  //   animation: "slide",
+                  //   slideshow: false,
+                  //   animationLoop: false,
+                  //   itemWidth: 150,
+                  //   itemMargin: 15
+                  // });
+
+                  return (typeof callback === "function") ? callback(data) : null 
+              },
+              error : function(err) {
+              //console.log(err) can you this to dig deeper
+              console.log("ERROR STATUS TEXT", err.statusText);
               }
             });
           } 
@@ -150,8 +169,9 @@ var PhotoView = Backbone.View.extend({
     // $('.scrapedImagesHover').html('');
     var self = this;
     console.log("photoview render fired")
-    var photo = $('<img src="' + this.model.attributes.url + '">');
-    console.log("HEY BUDDY LOOK HERE:"+this.model)
+    var photo = $('<img src="' + this.model.get('url') + '">');
+    console.log("HEY BUDDY LOOK HERE FOR THIS.MODEL:",this.model)
+    console.log("HEY BUDDY LOOK HERE FOR THE URL:",this.model.get('url'))
     $('<li>').append(photo).attr('class', 'scraped_photo').attr('id', 'item-id-'+this.model.attributes.id).appendTo($('.slides'));
     // this.$el.html(photo)
     // this.$el.attr('class', 'col-lg-3 col-md-3');
@@ -209,15 +229,14 @@ var PhotoListView = Backbone.View.extend({
   initialize: function(is_buttons){
     // $('.scrapedImagesHover').empty();
     this.is_buttons = is_buttons || false;
+    console.log("SEEHERE",poll.id)
+    console.log("SEEHERE 2",this.collection)
     this.collection = new PhotoList({
-      url: function() {
-        var pollId = poll.id;
-        console.log(poll.id);
-        return '/photos/?poll_id=' + pollId;
-      }
+      url: '/photos?poll_id=' + poll.id
     });
     this.photoViews = []
     this.collection.fetch();
+    console.log("SEEHERE 3",this.collection)
     this.listenTo(this.collection, "all", this.render)
     // $('.scrapedImagesHover').empty();
   },
@@ -234,7 +253,7 @@ var PhotoListView = Backbone.View.extend({
     this.photoViews = []
     
     console.log(this.collection.models.length) 
-    this.$el.empty()
+    // this.$el.empty()
     this.collection.each(function(photo){
       console.log('Different Photo ##########:')
       console.log(photo)

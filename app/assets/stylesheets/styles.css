@@ -738,4 +738,12 @@ border-radius: 1em;
 	border: solid 0.7em red;
 }
 
+/*.flexslider .slides > ul { /*overriding flexslider*/
+/*	list-style: none;
+}*/
+
+/*.flexslider .slides > li { 
+	display: inline-block;
+}*/
+
 
