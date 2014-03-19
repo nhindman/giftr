@@ -1,5 +1,4 @@
 
-// var getUrl=function(pollId){return '/photos/?poll_id=' + pollId;}
 var renderOnce = "false";
 var Poll = Backbone.Model.extend({     
   url: "/polls",
@@ -48,10 +47,10 @@ var ItemFormView = Backbone.View.extend({
       reader.readAsDataURL($('#files')[0].files[0]);
       return false;
     });
-    $('#new_item_url').bind('input', function() {
-      $('.scraper').css("display", "block");
-      $('#poll_buttons,#uploader').css("left", "-38px");
-    });
+    // $('#new_item_url').bind('input', function() {
+    //   $('.scraper').css("display", "block");
+    //   $('#poll_buttons,#uploader').css("left", "-38px");
+    // });
     $('body').on('click', '.close-me', function() {
       console.log("CLOSE ME CLICKED")
       $('.scrapedImagesHover').toggle()
@@ -78,22 +77,10 @@ var ItemFormView = Backbone.View.extend({
     //   alert("Must enter valid URL")
     // }
     // $('.scrapedImagesHover').empty();
-    $(".slides").html('');
-    // this.createPhotos(); // could put flexslider in createPhotos as a callback like below:
-    this.createPhotos(function(res){
-      if(res) {
-        $().flexslider({
-        animation: "slide",
-        slideshow: false,
-        animationLoop: false,
-        itemWidth: 150,
-        itemMargin: 15
-        });
-      }
-    });
+    this.createPhoto();
   },
 
-  createPhotos: function(callback) {
+  createPhoto: function() {
     // $('.scrapedImagesHover').empty();
     console.log("createImage fired!");
         $.ajax({
@@ -105,30 +92,23 @@ var ItemFormView = Backbone.View.extend({
             url: $('#new_item_url').val()
           },
           success: function(data) {
-            alert("FIRST SUCCESS PHOTOS HERE:"+photoListView)
+            // alert("PHOTOS HERE:"+photoListView)
             photoListView = new PhotoListView()
             photoListView.collection.fetch({
               url: '/photos?poll_id=' + poll.id,
-              success: function(data){
-                alert("SECOND SUCCESS FIRED:"+photoListView)
+              success: function(){
                   console.log()
                   console.log("create success fired")
                   // $('.scrapedImagesHover').empty();
                   makeScrapedImagesHover(data);
                   console.log(data)
-                  // $('.flexslider').flexslider({
-                  //   animation: "slide",
-                  //   slideshow: false,
-                  //   animationLoop: false,
-                  //   itemWidth: 150,
-                  //   itemMargin: 15
-                  // });
-
-                  return (typeof callback === "function") ? callback(data) : null 
-              },
-              error : function(err) {
-              //console.log(err) can you this to dig deeper
-              console.log("ERROR STATUS TEXT", err.statusText);
+                  $('.flexslider').flexslider({
+                    animation: "slide",
+                    slideshow: false,
+                    animationLoop: false,
+                    itemWidth: 150,
+                    itemMargin: 15
+                  });    
               }
             });
           } 
@@ -159,8 +139,6 @@ var PhotoView = Backbone.View.extend({
     this.render();
   }, 
 
-  el: $('<li>'),
-
   events: {
     "click .scraped_photo": 'addSelectedPhoto',
   }, 
@@ -169,11 +147,14 @@ var PhotoView = Backbone.View.extend({
     // $('.scrapedImagesHover').html('');
     var self = this;
     console.log("photoview render fired")
+    
     var photo = $('<img src="' + this.model.get('url') + '">');
-    console.log("HEY BUDDY LOOK HERE FOR THIS.MODEL:",this.model)
-    console.log("HEY BUDDY LOOK HERE FOR THE URL:",this.model.get('url'))
-    $('<li>').append(photo).attr('class', 'scraped_photo').attr('id', 'item-id-'+this.model.attributes.id).appendTo($('.slides'));
-    // this.$el.html(photo)
+    var photo_item = $('<li>')
+    photo_item.append(photo)
+    photo_item.attr('class', 'scraped_photo');
+    $('.slides').append(photo_item)
+    // this.$el.html(photo);
+    // this.$el.attr('id', 'item-id-'+this.model.attributes.id);
     // this.$el.attr('class', 'col-lg-3 col-md-3');
     this.resetValues();
     // console.log("render photoview this:")
@@ -229,19 +210,14 @@ var PhotoListView = Backbone.View.extend({
   initialize: function(is_buttons){
     // $('.scrapedImagesHover').empty();
     this.is_buttons = is_buttons || false;
-    console.log("SEEHERE",poll.id)
-    console.log("SEEHERE 2",this.collection)
-    this.collection = new PhotoList({
-      url: '/photos?poll_id=' + poll.id
-    });
+    this.collection = new PhotoList();
     this.photoViews = []
     this.collection.fetch();
-    console.log("SEEHERE 3",this.collection)
     this.listenTo(this.collection, "all", this.render)
     // $('.scrapedImagesHover').empty();
   },
 
-  el: '.slides', 
+  el: '.scrapedImagesHover_list',
 
   render: function() {
     // $('.scrapedImagesHover').empty();
@@ -253,7 +229,7 @@ var PhotoListView = Backbone.View.extend({
     this.photoViews = []
     
     console.log(this.collection.models.length) 
-    // this.$el.empty()
+    this.$el.empty()
     this.collection.each(function(photo){
       console.log('Different Photo ##########:')
       console.log(photo)
@@ -266,7 +242,7 @@ var PhotoListView = Backbone.View.extend({
       // somevar = new_view.render().$el.html()
       // console.log('######')
       // console.log(somevar)
-      if(!checkForExisting(photo.attributes.url,".slides")){
+      if(!checkForExisting(photo.attributes.url,".scrapedImagesHover_list")){
       self.$el.append(new PhotoView({
         model: photo
       }).render().$el);

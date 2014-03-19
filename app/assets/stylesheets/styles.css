@@ -207,7 +207,8 @@ i {
 	/*display: none;*/
 	position: relative;
 	height: 50px;
-	left: -8px;
+	width: 120px;
+	left: 162px;
 	top: -28px;
 }
 
@@ -230,11 +231,11 @@ i {
 }
 
 .scraper {
-	display: none;
+	/*display: none;*/
 	height: 50px;
 	position: relative;
 	top: -158px;
-	left: 412px;
+	left: 332px;
 }
 
 a.flex-prev {
@@ -259,7 +260,7 @@ a.flex-next {
   z-index: 999999999999999999999;
   position: relative;
   /*left: -116px;*/
-	top: -152px;
+	top: -202px;
 }
 
 #app-setup-page-2 > #poll_buttons {
@@ -370,7 +371,7 @@ top: -150px;
 
 .selection-page-section-instructions {
 	/*margin-top: 2em;*/
-	margin-bottom: 1.9em;
+	margin-bottom: 2.2em;
 }
 
 .gift-name {
@@ -408,7 +409,7 @@ top: -150px;
 	height: 200px;
 	margin: 0em 1em 3em 1em;
 	position: relative !important;
-	top: 67px !important;
+	top: -45px !important;
 	left: 360px;
 /*  background-size: cover;
   background-position: center;
@@ -681,7 +682,7 @@ border-radius: 1em;
 	height: 200px;
 	margin: -1.2em 1em 4em 5em !important;
 	position: relative !important;
-	top: 38px !important;
+	top: -13px !important;
 	left: -10px;
 	border: none;
 	}
@@ -705,6 +706,12 @@ border-radius: 1em;
 @media all and (max-width: 992px){
 	.poll-creation-item-selection .item {
 		left: 0px;
+	}
+}
+
+@media all and (min-width: 670px){
+	.poll-creation-item-selection .item {
+		margin: 0em 1em 7em 1em;
 	}
 }
 
@@ -736,6 +743,12 @@ border-radius: 1em;
 
 .scraped_photo:hover {
 	border: solid 0.7em red;
+}
+
+.url_instructions-app {
+	margin-top: 0.9em;
+	position: relative;
+	top: 10px;
 }
 
 /*.flexslider .slides > ul { /*overriding flexslider*/
