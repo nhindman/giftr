@@ -106,6 +106,7 @@ var ItemFormView = Backbone.View.extend({
             // alert("PHOTOS HERE:"+photoListView)
             photoListView = new PhotoListView(data);
             makeScrapedImagesHover();
+            init_flexslider();
             // photoListView.collection.fetch({
             //   url: '/photos?poll_id=' + poll.id,
             //   success: function(){
@@ -232,7 +233,7 @@ var PhotoListView = Backbone.View.extend({
     this.collection = new PhotoList();
     this.photoViews = []
     this.collection.fetch();
-    this.listenTo(this.collection, "all", function(){ this.render(); init_flexslider(); });
+    this.listenTo(this.collection, "all", this.render);
     // $('.scrapedImagesHover').empty();
   },
 
