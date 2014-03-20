@@ -1,4 +1,3 @@
-
 var renderOnce = "false";
 var Poll = Backbone.Model.extend({     
   url: "/polls",
@@ -8,6 +7,16 @@ var Poll = Backbone.Model.extend({
   }        
  
 })
+
+var init_flexslider = function(){
+  $('.flexslider').flexslider({
+    animation: "slide",
+    slideshow: false,
+    animationLoop: false,
+    itemWidth: 150,
+    itemMargin: 15
+  });
+};
 
 var User = Backbone.Model.extend({
   url: "/users",
@@ -92,29 +101,32 @@ var ItemFormView = Backbone.View.extend({
             url: $('#new_item_url').val()
           },
           success: function(data) {
+            console.log("HEREDATA:")
+            console.log(data)
             // alert("PHOTOS HERE:"+photoListView)
-            photoListView = new PhotoListView()
-            photoListView.collection.fetch({
-              url: '/photos?poll_id=' + poll.id,
-              success: function(){
-                  console.log()
-                  console.log("create success fired")
-                  // $('.scrapedImagesHover').empty();
-                  makeScrapedImagesHover(data);
-                  console.log(data)
-                  $('.flexslider').flexslider({
-                    animation: "slide",
-                    slideshow: false,
-                    animationLoop: false,
-                    itemWidth: 150,
-                    itemMargin: 15
-                  });    
-              }
-            });
+            photoListView = new PhotoListView(data);
+            makeScrapedImagesHover();
+            // photoListView.collection.fetch({
+            //   url: '/photos?poll_id=' + poll.id,
+            //   success: function(){
+            //       console.log()
+            //       console.log("create success fired")
+            //       // $('.scrapedImagesHover').empty();
+            //       makeScrapedImagesHover(data);
+            //       console.log(data)
+            //       $('.flexslider').flexslider({
+            //         animation: "slide",
+            //         slideshow: false,
+            //         animationLoop: false,
+            //         itemWidth: 150,
+            //         itemMargin: 15
+            //       });    
+            //   }
+            // });
           } 
         })
         
-        var makeScrapedImagesHover = function(data){
+        var makeScrapedImagesHover = function(){
           $('.scrapedImagesHover').toggle();
         }
       }, 
@@ -143,25 +155,30 @@ var PhotoView = Backbone.View.extend({
     "click .scraped_photo": 'addSelectedPhoto',
   }, 
 
+  // el: function(){
+  //   return $('<li>')
+  // },
+
   render: function(){
     // $('.scrapedImagesHover').html('');
     var self = this;
-    console.log("photoview render fired")
-    
-    var photo = $('<img src="' + this.model.get('url') + '">');
-    var photo_item = $('<li>')
-    photo_item.append(photo)
-    photo_item.attr('class', 'scraped_photo');
-    $('.slides').append(photo_item)
-    // this.$el.html(photo);
-    // this.$el.attr('id', 'item-id-'+this.model.attributes.id);
-    // this.$el.attr('class', 'col-lg-3 col-md-3');
+    console.log("photoview render fired");
+    console.log("THIS.MODEL");
+    console.log(this.model);
+    var photo = $('<img src="' + this.model.url + '">');
+    var photo_item = $("<li>");
+    photo_item.append(photo);
+    photo_item.addClass('scraped_photo');
+    photo_item.attr('id', 'item-id-'+this.model.id);
+    photo_item.addClass('col-lg-3').addClass('col-md-3');
     this.resetValues();
     // console.log("render photoview this:")
     // console.log(self.$el.html())
     // $('.scrapedImagesHover').empxwwty();
-    return this;
-    return false;
+    console.log("SHALOM:",this);
+    return photo_item;
+
+    // return false;
     // $('.scrapedImagesHover').empty();
   },
 
@@ -208,16 +225,18 @@ var PhotoView = Backbone.View.extend({
 var i = 1;
 var PhotoListView = Backbone.View.extend({
   initialize: function(is_buttons){
+    console.log("ISBUTTONS")
+    console.log(is_buttons)
     // $('.scrapedImagesHover').empty();
     this.is_buttons = is_buttons || false;
     this.collection = new PhotoList();
     this.photoViews = []
     this.collection.fetch();
-    this.listenTo(this.collection, "all", this.render)
+    this.listenTo(this.collection, "all", function(){ this.render(); init_flexslider(); });
     // $('.scrapedImagesHover').empty();
   },
 
-  el: '.scrapedImagesHover_list',
+  el: '.slides',
 
   render: function() {
     // $('.scrapedImagesHover').empty();
@@ -228,25 +247,14 @@ var PhotoListView = Backbone.View.extend({
     })
     this.photoViews = []
     
-    console.log(this.collection.models.length) 
-    this.$el.empty()
-    this.collection.each(function(photo){
+    this.$el.empty();
+    _.each(this.is_buttons, function(photo){
       console.log('Different Photo ##########:')
       console.log(photo)
-      // new_view = new PhotoView({
-      //   model: photo
-      // });
-      // self.photoViews.push(new_view);
-      // console.log("new_view.model.attributes:")
-      // console.log(new_view.model.attributes)
-      // somevar = new_view.render().$el.html()
-      // console.log('######')
-      // console.log(somevar)
-      if(!checkForExisting(photo.attributes.url,".scrapedImagesHover_list")){
       self.$el.append(new PhotoView({
         model: photo
-      }).render().$el);
-      }
+      }).render()/*.$el*/);
+      // }
       // $('.scrapedImagesHover').empty();
     });
   
@@ -582,6 +590,3 @@ var toggleVoteOption = function(){
   $('#item_list button').toggleClass('hidden');
   $('#accomplice-photos button').toggleClass('hidden');
 }
-
-
-
