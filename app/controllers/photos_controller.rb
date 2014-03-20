@@ -25,15 +25,22 @@ def scrap
   scraped_images_array = page.images
   photo_array = []
   scraped_images_array.each do |photo|
-    scraped_image = Photo.new(
-      poll_id: params[:poll_id], 
-      website: params[:website], 
-      url: photo
-      )
-    scraped_image.save!
-    photo_array.push(scraped_image)
+    # puts "################ #{photo}"
+    existing_photo = Photo.where(:url => photo).first
+    # If photo does not already exist in db, create new
+    if existing_photo.nil? || existing_photo.url != photo
+      puts "################ #{existing_photo}"
+      puts "################ #{existing_photo.inspect}"
+      scraped_image = Photo.new(
+        poll_id: params[:poll_id], 
+        website: params[:website], 
+        url: photo
+        )
+      scraped_image.save!
+    end
   end
   # binding.pry
+  photo_array = Photo.where(:url => scraped_images_array) 
   render json: photo_array
 end
 
