@@ -110,8 +110,27 @@ i {
 
 .giftee {
 	margin: -1.5em auto 1em auto;
+	height: 60px;
+	width: 170px;
+	font-size: 25px;
 }
 
+.choose_friend_welcome {
+	margin-top: -7px;
+}
+
+#splash-page-1-welcome{
+	background-image: url("bg_images/picnic.jpg");
+}
+
+.choose_friend_polls_index {
+	margin-top: 60px;
+	margin-bottom: 70px;
+}
+
+.fa-arrow-down-welcome-1{
+	position: 
+}
 
 /*================================ Navigation Styling ======================================================================================*/
 
@@ -193,9 +212,19 @@ i {
 	background-image: url("bg_images/baseball5.jpg");
 }
 
-#poll_buttons {
-	display: block !important;
-	margin-top: -30px;
+.welcome_page_2_container { 
+	position: relative;
+	top: -60px;
+}
+
+.welcome_page_2_arrow_down {
+	position: relative;
+	top: 73px;
+}
+
+.welcome_page_3_arrow_down {
+	position: relative;
+	top: 13px;
 }
 
 #new_item_form {
@@ -203,13 +232,18 @@ i {
 	bottom: 38px;
 }
 
-#poll_buttons > #uploader {
+.btn-primary {
+	height:50px;
 	/*display: none;*/
-	position: relative;
+	/*position: relative;
 	height: 50px;
 	width: 120px;
 	left: 162px;
-	top: -28px;
+	top: -28px;*/
+}
+
+#poll_buttons > .scraper {
+	
 }
 
 #app-setup-page-2 > #item_list {
@@ -220,23 +254,38 @@ i {
 	height: 50px;
 }
 
+.url-instructions-app {
+	margin-top: 1.2em;
+}
+
+.or_word {
+	font-style: italic;
+	font-size: 20px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.btn-toolbar {
+	margin-top: 1.6em;
+}
+
 /*#OR_word {
 	display: none;
 	position: relative;
 	top: -49px;
 }*/
 
-.selector {
+/*.selector {
 	width: 100px;
-}
+}*/
 
-.scraper {
+/*.scraper {
 	/*display: none;*/
-	height: 50px;
+	/*height: 50px;
 	position: relative;
 	top: -158px;
-	left: 332px;
-}
+	left: 332px;*/
+/*}*/
 
 a.flex-prev {
   background: url('/assets/images/arrow-left.png');
@@ -256,20 +305,20 @@ a.flex-next {
   overflow: auto;
   margin: 0 auto;
   box-shadow: 0 0 5px #888;
-  opacity: .8;
+  opacity: 1;
   z-index: 999999999999999999999;
   position: relative;
   /*left: -116px;*/
-	top: -202px;
-}
-
-#app-setup-page-2 > #poll_buttons {
-	position: relative;
-	top: 200px;
+	top: -322px
 }
 
 #add_photo_instructions {
 	margin-top: -10px;
+}
+
+.block_2{
+	position: relative !important;
+	top: 0px !important;
 }
 
 /*.scrapedImagesHoverShow {
@@ -315,9 +364,13 @@ a.flex-next {
 }
 
 .mutual-friends-link {
+	margin: -1.7em auto 0 auto;
 	display: block;
 	position: relative;
-	top: -42px;
+	top: -68px;
+	height: 60px;
+	width: 170px;
+	font-size: 25px;
 }
 
 .fb_iframe_widget {
@@ -333,9 +386,9 @@ top: -150px;
 }
 
 .what_gift_instructions-app {
+	margin-top: 80px;
 	position: relative;
-	top: 120px;
-	margin-top: -1.8em;
+	margin-bottom: 0.2em !important;
 }
 
 .instructions-app ~ img {  /*Selects any images that are siblings of an element with a class "instructions". This selcts tthe images in Splash Page 2, 3, & 4*/
@@ -344,34 +397,29 @@ top: -150px;
 	margin: 4em -2em 5em 2em;
 }
 
-/*#app-setup-page-2 {
-	position: relative;
-	top: 100px;
-}*/
-
-
-#app-setup-page-2 div { /* CHANGE THIS NAME SOON */
-	position: relative;
-	top: 80px;
-}
-
 #app-setup-page-2 {
-	top: 50px;
+	position: relative;
+	/*margin-top: 12em;*/
+	/*top: 0px;*/
 	background-image: url("bg_images/baseball5.jpg");
 }
 
 #app-setup-page-3 div { /* CHANGE THIS NAME SOON */
-	position: relative;
 	display: inline-block;
 }
 
 #app-setup-page-3 {
+
 	background-image: url("bg_images/serenade4.jpg");
 }
 
 .selection-page-section-instructions {
-	/*margin-top: 2em;*/
+/*	margin-top: 2em;*/
 	margin-bottom: 2.2em;
+}
+
+#recipient {
+	margin-top: -10px;
 }
 
 .gift-name {
@@ -427,10 +475,10 @@ top: -150px;
 }
 
 
-.mutual-friends-link {
-	margin: .6em auto 0 auto;
+/*.mutual-friends-link {
+	margin: -1.7em auto 0 auto;
 }
-
+*/
 
 /*============================= Item & Gift Styling ===============================================*/
 
@@ -440,12 +488,14 @@ top: -150px;
 }
 
 #new_item_name_input {
-	width: 200px;
+	height: 50px;
+	width: 300px;
 }
 
 #new_item_url {
-	width: 200px;
-	margin-top: -93px;
+	height: 50px;
+	width: 300px;
+	margin-top: -98px;
 	position: relative;
 	left: 0px;
 	top: 0px;
@@ -614,7 +664,7 @@ border-radius: 1em;
     outline: none;
     background: white;
     cursor: inherit;
-    display: block;
+    /*display: block;*/
 }
 
 .img-spinner {
@@ -624,6 +674,21 @@ border-radius: 1em;
 .bigborders{
 	border: solid .8em #f1f1f1;
 	border-radius: 1em;
+}
+
+.welcome-page-4-instructions{
+	margin-top: 70px;
+	margin-bottom: 40px;
+}
+
+.welcome-instructions-3{
+	margin-top: 60px;
+	margin-bottom: 27px;
+}
+
+#block_3{
+	position:relative;
+	top:49px;
 }
 
 
@@ -636,6 +701,38 @@ border-radius: 1em;
 		display: block;
 	}
 }
+
+@media all and (max-width: 672px){
+	.url-instructions-app {
+		margin-top: 1.8em;
+		margin-bottom: 3.2em;
+	}
+}
+
+@media all and (max-width: 651px){
+	.url-instructions-app {
+		font-size: 1.7em;
+		margin-bottom: 3.9em;
+	}
+}
+
+@media all and (max-width: 439px){
+	.choose_friend_polls_index {
+		font-size: 1.7em;
+		margin-bottom: 56px;
+	}
+	#splash-page-1 {
+		position: relative;
+		top: -38px;
+	}
+}
+
+.pick_friends_instructions-app {
+	margin-top: 60px;
+	margin-bottom: 70px;
+}
+
+
 
 @media all and (max-width: 992px){
 	.splash-page-section-wrapper img {
@@ -655,7 +752,7 @@ border-radius: 1em;
 @media all and (max-width: 673px){
 	#poll_buttons > #uploader {
 		/*width: 250px;*/
-		left: 12px;
+		/*left: 12px;*/
 	}
 }
 
@@ -664,16 +761,16 @@ border-radius: 1em;
 		font-size: 2em;
 	}
 	.what_gift_instructions-app {
-		margin-top: -3.8em;
+		/*margin-top: -3.8em;*/
 	}
 	.selection-page-section-instructions {
-		margin-bottom: 2.6em;
+		/*margin-bottom: 2.6em;*/
 	}
 	.btn-file {
-		margin-left: -32px;
+		/*margin-left: -32px;*/
 	}
 	.scraper {
-		left: 263px;
+		/*left: 263px;*/
 	}
 
 	.poll-creation-item-selection .item {
@@ -691,6 +788,7 @@ border-radius: 1em;
 	top: 11px;
 	margin-bottom: 11em;
 	}
+
 	#item_list{
 		top: 60px !important;
 		margin-top: 0px !important;
@@ -703,11 +801,41 @@ border-radius: 1em;
 	}
 }
 
+@media all and (max-width: 1012px){
+	.mutual-friends-link {
+	margin-top: 52px;
+	margin-bottom: 10px;
+}
+}
+/*
+.mutual-friends-link {
+	margin: -1.7em auto 0 auto;
+}*/
+
+
+@media all and (max-width: 442px){
+	.giftee {
+		margin-top: 17px;
+	}
+}
+
 @media all and (max-width: 992px){
 	.poll-creation-item-selection .item {
 		left: 0px;
 	}
+	.giftee {
+		margin-top: 20px;
+	}
 }
+
+/*@media all and (max-width: 995px){
+	#block {
+		display: block !important;
+		position: relative !important;
+		top: 54px !important;
+	}
+}
+*/
 
 @media all and (min-width: 670px){
 	.poll-creation-item-selection .item {
@@ -742,7 +870,7 @@ border-radius: 1em;
 }
 
 .scraped_photo:hover {
-	border: solid 0.7em red;
+	/*border: solid 0.7em red;*/
 }
 
 .url_instructions-app {
@@ -755,8 +883,10 @@ border-radius: 1em;
 /*	list-style: none;
 }*/
 
-/*.flexslider .slides > li { 
-	display: inline-block;
-}*/
+#block{
+	display: block;
+	position: relative;
+	top: -28px;
+}
 
 
