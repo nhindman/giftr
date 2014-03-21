@@ -206,14 +206,12 @@ var PhotoView = Backbone.View.extend({
       
   },  
 
-  resetValues: function() {
-    // $('.scrapedImagesHover').empty();
+  resetValues: function() 
     _.each( $('input'), function(input){
       $(input).val('');
     })
     $('.add_gift_ideas_instructions-app').animate({duration:10000,opacity:0});
     $('.what_gift_instructions-app').html('Enter another gift idea');
-    // $('.scrapedImagesHover').empty();
   },
    
   vote: function(){
@@ -261,8 +259,7 @@ var PhotoListView = Backbone.View.extend({
     })
     this.photoViews = []
     
-    //$('.flexslider').flexslider("destroy")
-    this.$el.empty();  // emptying the div here before newly searched images are
+    this.$el.empty();  // emptying the div here before newly searched images are appended
     _.each(this.is_buttons, function(photo){
       console.log('Different Photo ##########:')
       console.log(photo)
