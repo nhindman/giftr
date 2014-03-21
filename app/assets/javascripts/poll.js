@@ -206,7 +206,7 @@ var PhotoView = Backbone.View.extend({
       
   },  
 
-  resetValues: function() 
+  resetValues: function() {
     _.each( $('input'), function(input){
       $(input).val('');
     })
