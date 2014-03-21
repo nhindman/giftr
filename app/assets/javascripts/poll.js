@@ -49,7 +49,6 @@ var Item = Backbone.Model.extend({
 
 var ItemFormView = Backbone.View.extend({
   initialize: function(){
-    // $('.scrapedImagesHover').empty();
     console.log("initialize fires") 
     var fileupload = $('#files');
     fileupload.on('change', function(e){
@@ -80,7 +79,6 @@ var ItemFormView = Backbone.View.extend({
   },
 
   render: function(){
-    // $('.scrapedImagesHover').empty();
   },
 
   events: {
@@ -96,17 +94,10 @@ var ItemFormView = Backbone.View.extend({
     // if ($('#new_item_url').val().empty?){
     //   alert("Must enter valid URL")
     // }
-    // $('.scrapedImagesHover').empty();
     this.createPhoto();
-    // 
-  //   console.log($(".flexslider li").length);
-    
-
- 
   },
 
   createPhoto: function() {
-    // $('.scrapedImagesHover').empty();
     console.log("createImage fired!");
         $.ajax({
           type: "POST",
@@ -168,42 +159,72 @@ var PhotoList = Backbone.Collection.extend({
 var PhotoView = Backbone.View.extend({
   initialize: function() {
     this.render();
+    var self = this;
+
+    $('.scraped_photo').on('click', function() {
+      console.log("Scrapedphoto clicked!")
+      console.log("LOOKYLOOKY:",photoListView.collection)
+      console.log("LOOKYLOOKY SELF.MODEL:",self.model)
+      console.log("LOOKYLOOKY SELF.MODEL.id:",self.model.id)
+      $.ajax({
+          type: "PUT",
+          url: "/photos/"+self.model.id,
+          data: {
+            selected: true
+          }, 
+          success: function(data) {
+          appendSelectedPhotos(data);
+          console.log("SUCCESS");
+          },
+          // error: function() {
+          // console.log("OH, no!");
+          // }
+      });
+      self.resetValues();
+      $('.scrapedImagesHover').toggle()
+    });  
+    // votedphoto.save({}, {
+    //     url: "/votes/"+votedphoto.id
+    // });
+
   }, 
 
   events: {
-    "click .scraped_photo": 'addSelectedPhoto',
+    // "click .scraped_photo": 'addSelectedPhoto',
+    // "click .click_me": 'addSelectedPhoto',
+    // "click img": 'addSelectedPhoto',
   }, 
 
   render: function(){
-    // $('.scrapedImagesHover').html('');
     var self = this;
     console.log("photoview render fired");
     console.log("THIS.MODEL");
     console.log(this.model);
     var photo = $('<img src="' + this.model.url + '">');
+    photo.addClass('scraped_photo');
+    photo.attr('id', 'item-id-'+this.model.id);
+    photo.addClass('col-lg-3').addClass('col-md-3');
     var photo_item = $("<li>");
-    photo_item.addClass('scraped_photo');
+    photo_item.addClass('click_me');
     photo_item.append(photo);
-    // photo_item.attr('id', 'item-id-'+this.model.id);
-    // photo_item.addClass('col-lg-3').addClass('col-md-3');
     this.resetValues();
     console.log("YOYO:",this);
     return photo_item;
   },
 
   addSelectedPhoto: function(){
-    console.log("addSelectedPhoto???")
-    this.model.save({"selected": true}, {
-      success: function() {
-        appendSelectedPhotos(photoListView.collection);
-        console.log("SUCCESS");
-    },
-    error: function() {
-      console.log("OH, no!");
-    }});
-    $('.scrapedImagesHover').toggle();
-    this.resetValues();
-      
+    // console.log("addSelectedPhoto???")
+    // $('.scrapedImagesHover').toggle();
+    // console.log("LOOKYLOOKY:",photoListView.collection)
+    // this.model.save({"selected": true}, {
+    //   success: function() {
+    //     appendSelectedPhotos(photoListView.collection);
+    //     console.log("SUCCESS");
+    // },
+    // error: function() {
+    //   console.log("OH, no!");
+    // }});
+    // this.resetValues();    
   },  
 
   resetValues: function() {
@@ -543,13 +564,15 @@ var appendVotesToPhotos = function(votes){
   })
 }
 
-var appendSelectedPhotos = function(photos){
+var appendSelectedPhotos = function(photo){
     console.log("APPEND selected photos fired")
-    console.log(photos)
+    console.log(photo)
     var self = this;
-    photos.each(function(photo){
-      if(photo.attributes.selected === true){
+    // photos.each(function(photo){
+      // if(photo.attributes.selected === true){
+        console.log("THIS PHOTO GETTING Classed Up:",photo)
         var selected_photo = $('<div>');
+        console.log("PHOTOATTS:",photo.attributes)
         selected_photo.html(photo.attributes);
         selected_photo.attr('id', 'item-id-'+photo.attributes.id);
         var image = photo.get('url');
@@ -559,28 +582,29 @@ var appendSelectedPhotos = function(photos){
         selected_photo.wrap("<a href="+website+"></a>");
         $("a").attr("target", "_blank");
         if (!checkForExisting(image,"#item_list")) {
+          console.log("THIS PHOTO GETTING APPENDED:",selected_photo)
           $('#item_list').append(selected_photo);
         }
-      }
-    })  
+      // }
+    // })  
   }
 
 var checkForExisting = function(url,obj){
-var itemlist = $(obj).find("div");
-var foundFlag ="false";
-_.each(itemlist, function(val, key) {
-   var bg = $(val).css('background-image');
-   bg = bg.replace('url(','').replace(')','');
-  if(url ===bg){
+  var itemlist = $(obj).find("div");
+  var foundFlag ="false";
+  _.each(itemlist, function(val, key) {
+     var bg = $(val).css('background-image');
+     bg = bg.replace('url(','').replace(')','');
+    if(url ===bg){
 
-    foundFlag ="true"
-  }
-}); 
-if(foundFlag === "true"){
-  return true;    
-  }else{
-  return false;
-  }
+      foundFlag ="true"
+    }
+  }); 
+  if(foundFlag === "true"){
+    return true;    
+    }else{
+    return false;
+    }
 }  
 
 var toggleVoteOption = function(){
