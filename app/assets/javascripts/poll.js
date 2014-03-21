@@ -161,14 +161,13 @@ var PhotoView = Backbone.View.extend({
     this.render();
     var self = this;
 
-    $('.scraped_photo').on('click', function() {
-      console.log("Scrapedphoto clicked!")
-      console.log("LOOKYLOOKY:",photoListView.collection)
-      console.log("LOOKYLOOKY SELF.MODEL:",self.model)
-      console.log("LOOKYLOOKY SELF.MODEL.id:",self.model.id)
+    $('.scraped_photo').off().on('click', function(e) {
+      var id = e.target.id
+      console.log("LOOKYLOOKY SELF.MODEL.id:",self.model.id);
+      console.log("LOOKYLOOKY currentTarget id",id);
       $.ajax({
           type: "PUT",
-          url: "/photos/"+self.model.id,
+          url: "/photos/"+id,
           data: {
             selected: true
           }, 
@@ -176,17 +175,12 @@ var PhotoView = Backbone.View.extend({
           appendSelectedPhotos(data);
           console.log("SUCCESS");
           },
-          // error: function() {
-          // console.log("OH, no!");
-          // }
       });
+      
       self.resetValues();
-      $('.scrapedImagesHover').toggle()
+      $('.scrapedImagesHover').toggle();
+      return false;
     });  
-    // votedphoto.save({}, {
-    //     url: "/votes/"+votedphoto.id
-    // });
-
   }, 
 
   events: {
@@ -202,7 +196,7 @@ var PhotoView = Backbone.View.extend({
     console.log(this.model);
     var photo = $('<img src="' + this.model.url + '">');
     photo.addClass('scraped_photo');
-    photo.attr('id', 'item-id-'+this.model.id);
+    photo.attr('id', ''+this.model.id);
     photo.addClass('col-lg-3').addClass('col-md-3');
     var photo_item = $("<li>");
     photo_item.addClass('click_me');
@@ -572,19 +566,18 @@ var appendSelectedPhotos = function(photo){
       // if(photo.attributes.selected === true){
         console.log("THIS PHOTO GETTING Classed Up:",photo)
         var selected_photo = $('<div>');
-        console.log("PHOTOATTS:",photo.attributes)
-        selected_photo.html(photo.attributes);
-        selected_photo.attr('id', 'item-id-'+photo.attributes.id);
-        var image = photo.get('url');
-        website = photo.get('website');
+        selected_photo.html(photo);
+        selected_photo.attr('id', 'item-id-'+photo.id);
+        var image = photo.url;
+        website = photo.website;
         selected_photo.attr('class', 'item col-lg-3 col-md-3');
         selected_photo.attr('style','background-image:url("'+image+'")');
         selected_photo.wrap("<a href="+website+"></a>");
         $("a").attr("target", "_blank");
-        if (!checkForExisting(image,"#item_list")) {
+        // if (!checkForExisting(image,"#item_list")) {
           console.log("THIS PHOTO GETTING APPENDED:",selected_photo)
           $('#item_list').append(selected_photo);
-        }
+        // }
       // }
     // })  
   }
