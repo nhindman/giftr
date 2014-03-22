@@ -66,10 +66,6 @@ var ItemFormView = Backbone.View.extend({
       reader.readAsDataURL($('#files')[0].files[0]);
       return false;
     });
-    // $('#new_item_url').bind('input', function() {
-    //   $('.scraper').css("display", "block");
-    //   $('#poll_buttons,#uploader').css("left", "-38px");
-    // });
     $('body').on('click', '.close-me', function() {
       console.log("CLOSE ME CLICKED")
       $('.scrapedImagesHover').toggle()
@@ -82,10 +78,7 @@ var ItemFormView = Backbone.View.extend({
   },
 
   events: {
-    // "click #go_button": "showUploaderAndScraperButtons",
-    // "onchange .files": "addItemToPoll",
     "click .scraper": "scrapeImage", 
-    // "click .close-me": "closeImageHover"
   }, 
 
   scrapeImage: function(e) {
@@ -111,6 +104,7 @@ var ItemFormView = Backbone.View.extend({
             console.log("HEREDATA:");
             console.log(data);
             photoListView = new PhotoListView(data);
+            photoListView.render().$el.appendTo('#photos')
             makeScrapedImagesHover();
             setTimeout(function(){
             $('.flexslider').flexslider({
@@ -138,7 +132,7 @@ var ItemFormView = Backbone.View.extend({
         })
         
         var makeScrapedImagesHover = function(){
-          $('.scrapedImagesHover').toggle();
+          $('.scrapedImagesHover').show();
         }
       }, 
 
@@ -158,55 +152,57 @@ var PhotoList = Backbone.Collection.extend({
 
 var PhotoView = Backbone.View.extend({
   initialize: function() {
-    this.render();
+    // this.render();
     var self = this;
 
-    $('.scraped_photo').off().on('click', function(e) {
-      var id = e.target.id
-      console.log("LOOKYLOOKY SELF.MODEL.id:",self.model.id);
-      console.log("LOOKYLOOKY currentTarget id",id);
-      $.ajax({
-          type: "PUT",
-          url: "/photos/"+id,
-          data: {
-            selected: true
-          }, 
-          success: function(data) {
-          appendSelectedPhotos(data);
-          console.log("SUCCESS");
-          },
-      });
+
+    // $('.scraped_photo').off().on('click', function(e) {
       
-      self.resetValues();
-      $('.scrapedImagesHover').toggle();
-      return false;
-    });  
-  }, 
+    // });  
+  },
 
   events: {
-    // "click .scraped_photo": 'addSelectedPhoto',
-    // "click .click_me": 'addSelectedPhoto',
-    // "click img": 'addSelectedPhoto',
-  }, 
+    "click .scraped_photo": 'addSelectedPhoto'
+    //"click .click_me": 'addSelectedPhoto',
+    //"click img": 'addSelectedPhoto',
+  },
+
+  tagName: 'li',
 
   render: function(){
     var self = this;
-    console.log("photoview render fired");
-    console.log("THIS.MODEL");
-    console.log(this.model);
     var photo = $('<img src="' + this.model.url + '">');
     photo.addClass('scraped_photo');
     photo.attr('id', ''+this.model.id);
     photo.addClass('col-lg-3').addClass('col-md-3');
-    var photo_item = $("<li>");
+    var photo_item = this.$el;
     photo_item.addClass('click_me');
     photo_item.append(photo);
     this.resetValues();
-    console.log("YOYO:",this);
-    return photo_item;
+    return this;
   },
 
-  addSelectedPhoto: function(){
+  addSelectedPhoto: function(e) {
+    console.log("!!!", this)
+    $('.scrapedImagesHover').hide();
+      var id = e.target.id
+      //console.log("LOOKYLOOKY SELF.MODEL.id:",self.model.id);
+      //console.log("LOOKYLOOKY currentTarget id",id);
+      $.ajax({
+          type: "PUT",
+          url: "/photos/"+ this.model.id,
+          data: {
+            selected: true,
+            poll_id: poll.id
+          }, 
+          success: function(data) {
+            appendSelectedPhotos(data);
+          console.log("SUCCESS");
+          },
+      });
+      
+      this.resetValues();
+      return false;
     // console.log("addSelectedPhoto???")
     // $('.scrapedImagesHover').toggle();
     // console.log("LOOKYLOOKY:",photoListView.collection)
@@ -251,6 +247,7 @@ var PhotoListView = Backbone.View.extend({
     this.collection = new PhotoList();
     this.photoViews = []
     this.collection.fetch();
+    console.log("THIS.Collection RIGHT HERE:",this.collection)
     this.listenTo(this.collection, "all", this.render);
   },
 
@@ -280,7 +277,7 @@ var PhotoListView = Backbone.View.extend({
       console.log(photo)
       self.$el.append(new PhotoView({
         model: photo
-      }).render());
+      }).render().$el);
     });
   
       console.log(self.$el.html())    
@@ -296,10 +293,11 @@ var PhotoVoteListView = Backbone.View.extend({
     this.collection = new PhotoList();
     this.photoViews = []
     this.collection.fetch({data: {poll_id: poll.id}});
+    console.log("CHECKOUT this.collection", this.collection)
     this.listenTo(this.collection, "all", this.render)
   },
   el: function(){
-    return $('#item_list')
+    return $('#itemvote_list')
   },
   render: function() {
 
@@ -309,14 +307,14 @@ var PhotoVoteListView = Backbone.View.extend({
     })
 
     this.photoViews = []
-
+    console.log("FYEAH", this.collection)
     _.each(this.collection.models, function(photo){
       if (photo.attributes.selected === true) {
       var new_view = new PhotoView({
-        model: photo
+        model: photo.attributes
       });
       self.photoViews.push(new_view)
-      self.$el.append(new_view.render().$el.append("<button class=\"btn btn-lg btn-danger\" data-action='vote'>Vote!</button>"))
+      self.$el.append(new_view.render().$el.append("<button class=\"btn btn-lg btn-danger\" data-act='vote'>Vote!</button>"))
       }
     })
 
@@ -459,7 +457,7 @@ var ItemVoteListView = Backbone.View.extend({
   // }, 
 
   el: function(){
-    return $('#item_list')
+    return $('#itemvote_list')
   }, 
 
   render: function() {
@@ -527,13 +525,12 @@ var itemSetup = function (options){
 
 
 var itemVoteSetup = function (){
+  console.log("!!!! ITEM VOTE SETUP CALL!! OH NO!")
   window.itemVoteListView = new ItemVoteListView();
-  window.photoVoteListView = new PhotoVoteListView(); 
+  window.photoVoteListView = new PhotoVoteListView({}); 
   window.itemformView = new ItemFormView();
   window.item = new Item();
   window.photo = new Photo();
-  window.itemView = new ItemView({model: item});
-  window.photoView = new PhotoView({model: photo})
 }
 
 var appendVotesToItems = function(votes){
@@ -579,7 +576,9 @@ var appendSelectedPhotos = function(photo){
           $('#item_list').append(selected_photo);
         // }
       // }
-    // })  
+    // })
+    itemVoteSetup();
+    // photoVoteListView.collection.add(photo);
   }
 
 var checkForExisting = function(url,obj){
@@ -594,9 +593,9 @@ var checkForExisting = function(url,obj){
     }
   }); 
   if(foundFlag === "true"){
-    return true;    
+      return true; 
     }else{
-    return false;
+      return false;
     }
 }  
 

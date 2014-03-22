@@ -15,7 +15,7 @@ end
 
 def update
   @photo = Photo.find(params[:id])
-  @photo.update_attributes!(selected: params[:selected])
+  @photo.update_attributes!(selected: params[:selected], poll_id: params[:poll_id])
   render json: @photo
 end
 
@@ -29,8 +29,6 @@ def scrap
     existing_photo = Photo.where(:url => photo).first
     # If photo does not already exist in db, create new
     if existing_photo.nil? || existing_photo.url != photo
-      puts "################ #{existing_photo}"
-      puts "################ #{existing_photo.inspect}"
       scraped_image = Photo.new(
         poll_id: params[:poll_id], 
         website: params[:website], 
