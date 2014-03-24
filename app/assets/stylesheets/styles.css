@@ -16,6 +16,7 @@
 
 .advice {
 	padding: 30px;
+	margin-top: -10px;
 	text-align: center;
 	vertical-align: middle;
 /*	color: black;
@@ -244,6 +245,24 @@ i {
 	position: relative;
 	bottom: 38px;
 }
+
+.itemvote_list .item{
+	display: inline-block;
+	margin-left: 20px;
+	margin-right: 19px;
+	width: 250px;
+	height: 250px;
+	border-radius: 0.4em;
+	padding-top: 17.5em;
+	position: relative;
+	top: -1em;
+}
+
+/*#itemvote_list .scraped_photo{
+	border-radius: 0.4em;
+}*/
+
+
 
 .btn {
 	font-size: 23px;
@@ -548,24 +567,31 @@ top: -150px;
 .poll_show_page_photo{
 	position: relative;
 	top: -15px;
-	left: -16px;
-	height: 228px;
-	width: 259px;
+	left: -7px;
+	height: 242px;
+	width: 239px;
 }
 
 .poll_show_photo_button{
 	position: relative;
-	right: -84px;
-	top: -243px;
+	right: -96px;
+	top: -268px;
 	width: 60px;
 	height: 35px;
 	font-size: 12px;
 }
 
+.itemvote_list{
+	display: visible;
+	position: relative;
+	margin: 0 auto;
+	top: 27px;
+}
+
 .poll_show_item_button{
 	position: relative;
-	right: -107px;
-	top: -16px;
+	right: -96px;
+	top: -256px;
 	width: 60px;
 	height: 35px;
 	font-size: 12px;
@@ -574,13 +600,13 @@ top: -150px;
 .click_me{
 	display: inline-block;
 	width: 250px !important;
-	height: 250px;
+	height: 264px;
 	padding-top: 1.1em;
 	background-size: cover;
 	background-position: center;
 	border: solid .8em #f1f1f1;
-	border-radius: 1em;
-	margin: 0em 1em 3em 1em;
+	border-radius: 0.4em;
+	margin: 0em 1em 1em 1em;
 }
 
 #gift-icon {
@@ -677,6 +703,7 @@ top: -150px;
 .gifter_giftee_container{
 	padding-top: 30px;
 	width: 900px;
+	height: 220px;
 	display: inline-flex;
 	margin: 0 auto;
 }

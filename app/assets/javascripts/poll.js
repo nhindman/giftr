@@ -179,9 +179,9 @@ var PhotoView = Backbone.View.extend({
     var photo = $('<img src="' + this.model.url + '">');
     var photo_item = this.$el;
     photo.addClass('scraped_photo');
-    photo.attr('id', 'photo-id-'+this.model.id);
-    photo.addClass('col-lg-3').addClass('col-md-3'); 
-    if ($('.flexslider').is(":visible")){     
+    photo.attr('id', 'photo-id-'+this.model.id); 
+    if ($('.flexslider').is(":visible")){   
+      photo.addClass('col-lg-3').addClass('col-md-3');  
       photo_item.append(photo);
     }else{
       photo_item.addClass('click_me');
@@ -308,7 +308,7 @@ var PhotoVoteListView = Backbone.View.extend({
     this.listenTo(this.collection, "all", this.render)
   },
   el: function(){
-    return $('#itemvote_list')
+    return $('.itemvote_list')
   },
   render: function() {
 
@@ -325,7 +325,7 @@ var PhotoVoteListView = Backbone.View.extend({
         model: photo.attributes
       });
       self.photoViews.push(new_view)
-      self.$el.append(new_view.render().$el.append("<button class=\"poll_show_photo_button btn btn-lg btn-danger\" data-action='vote'>Vote!</button>"))
+      self.$el.append(new_view.render().$el.append("<button class=\"poll_show_photo_button btn btn-lg btn-danger\" data-action='vote'>VOTE</button>"))
       }
     })
 
@@ -363,8 +363,11 @@ var ItemView = Backbone.View.extend({
     this.$el.attr('id', 'item-id-'+this.model.attributes.id);
     var image = this.model.attributes.url;
     var website = 'http://'+this.model.attributes.website+'/';
-    // console.log(website)
     self.$el.attr('class', 'item col-lg-3 col-md-3');
+    if ($('.itemvote_list').is(":visible")){
+      self.$el.removeClass("col-lg-3")
+      self.$el.removeClass("col-md-3")
+    }
     var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
     this.$el.html(spinner)
     var img = $('<img>');
@@ -377,11 +380,6 @@ var ItemView = Backbone.View.extend({
         self.$el.wrap("<a href="+website+"></a>");
         $("a").attr("target", "_blank");
       })
-    // var aTag = document.createElement('a');
-    // aTag.setAttribute('href', '"'+website+'"');
-    // aTag.innerHTML = "Gift Link";
-    // self.$el.append(aTag);
-    // this.resetValues();
     this.resetValues();
     return this;
     },
@@ -463,7 +461,7 @@ var ItemVoteListView = Backbone.View.extend({
   // }, 
 
   el: function(){
-    return $('#itemvote_list')
+    return $('.itemvote_list')
   }, 
 
   render: function() {
@@ -480,7 +478,7 @@ var ItemVoteListView = Backbone.View.extend({
         model: item
       });
       self.itemViews.push(new_view)
-      self.$el.append(new_view.render().$el.append("<button class=\"poll_show_item_button btn btn-lg btn-danger\" data-action='vote'>Vote!</button>"))
+      self.$el.append(new_view.render().$el.append("<button class=\"poll_show_item_button btn btn-lg btn-danger\" data-action='vote'>VOTE</button>"))
     })
 
   }
