@@ -19,8 +19,8 @@
 	margin-top: -10px;
 	text-align: center;
 	vertical-align: middle;
-/*	color: black;
-*/	font-family: 'Gafata', sans-serif;
+	color: black;
+	font-family: 'Gafata', sans-serif;
 }
 
 .middle_header{
@@ -69,7 +69,7 @@
 
 body {
 	padding-top: 3em;
-	background-image: url('bg_images/dark_stripes.png');
+	background-image: url('bg_images/seamless-peacock-blues-tileable-patterns-1.png');
 	background-size: repeat;
 	font-family: 'Gafata', sans-serif;
 }
@@ -87,7 +87,8 @@ body {
 	display: block;
 }
 
-.block { 						
+.block { 	
+	cursor: pointer;					
 	display: block;
 }
 
@@ -211,19 +212,23 @@ i {
 	margin: 4em 2em 5em 2em;
 }
 
+.welcome-instructions-3 ~ img{
+	margin: 4em 2em 5em 2em;
+}
+
 /*---------------------------- Splash Page 1 Styling ------------------------------------------*/
 
 #splash-page-1 { 
 	/*margin-top: 3.6em;*/
 	background-image: url("bg_images/picnic.jpg");
-	background-size: repeat;
+	/*background-size: repeat;*/
 }
 
 /*---------------------------- Splash Page 2 Styling ------------------------------------------*/
 
 #splash-page-2 { 
 	background-image: url("bg_images/baseball5.jpg");
-	background-repeat:no-repeat;
+	/*background-repeat:no-repeat;*/
 }
 
 .welcome_page_2_container { 
@@ -374,6 +379,7 @@ margin-top: 10px;
 }
 
 .block_2{
+	cursor: pointer;
 	position: relative !important;
 	top: 0px !important;
 }
@@ -397,7 +403,7 @@ margin-top: 10px;
 
 #splash-page-3 { 
 	background-image: url("bg_images/serenade4.jpg");
-	background-repeat:no-repeat;
+	/*background-repeat:no-repeat;*/
 	/*background-size: cover;*/
 }
 
@@ -410,7 +416,7 @@ margin-top: 10px;
 
 #splash-page-4 { 
 	background-image: url("bg_images/ballet2.jpg");
-	background-size: repeat;
+	/*background-size: no-repeat;*/
 }
 
 #splash-page-4 button { /*Selects the sign in button on splash page four*/
@@ -467,7 +473,7 @@ top: -150px;
 	/*margin-top: 12em;*/
 	/*top: 0px;*/
 	background-image: url("bg_images/baseball5.jpg");
-	background-repeat:no-repeat;
+	/*background-repeat:no-repeat;*/
 	/*background-size: cover;*/
 }
 
@@ -478,7 +484,7 @@ top: -150px;
 #app-setup-page-3 {
 
 	background-image: url("bg_images/serenade4.jpg");
-	background-repeat:no-repeat;
+	/*background-repeat:no-repeat;*/
 	/*background-size: cover;*/
 }
 
@@ -553,6 +559,12 @@ top: -150px;
 
 /*============================= Item & Gift Styling ===============================================*/
 
+.poll_show_page{
+	/*background-image: url('bg_images/seamless-peacock-blues-tileable-patterns-1.png');
+	position: relative;
+	bottom: 0px;*/
+}
+
 .url_input_and_button{
 	display: block;
 	position: relative;
@@ -586,6 +598,10 @@ top: -150px;
 	position: relative;
 	margin: 0 auto;
 	top: 27px;
+}
+
+.itemvote_list_container{
+
 }
 
 .poll_show_item_button{
@@ -718,7 +734,7 @@ top: -150px;
 #accomplice-photos {
 	width: 409px;
 	min-height: 54px;
-	right: 0;
+	/*right: 0;*/
 	left: 0;
 	background-color: white;
 	padding: .6em;
@@ -844,6 +860,7 @@ border-radius: 1em;
 }
 
 #block_3{
+	cursor: pointer;
 	position:relative;
 	top:49px;
 }

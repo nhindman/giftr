@@ -153,193 +153,23 @@ $(document).ready(function() {
       }
     });
 
-  // This doesn't totally work yet.  Need to compare mutual friends with your own friends
-  // and only return mutuals
-  // $("#mutual-friends-link").fSelector({
 
-  //   // max: 5,
-  //   excludeIds: exclusions,
-  //   // getStoredFriends: mutual_friends_array,
-  //   facebookInvite: false,
-  //   lang: {
-  //     title: "Pick your mutual friends who will vote on the gifts",
-  //     buttonSubmit: "Add Accomplices",
-  //     selectedLimitResult: "Limit is {5} people."
-  //   },
-  //   closeOnSubmit: true
-  // })
 });
-
-
-
-
-// function renderMFS() {
-//  // First get the list of friends for this user with the Graph API
-//  FB.api('/me/friends', function(response) {
-//    var container = document.getElementById('mfs');
-//    var mfsForm = document.createElement('form');
-//    mfsForm.id = 'mfsForm';
-
-//    // Iterate through the array of friends object and create a checkbox for each one.
-//    for(var i = 0; i < Math.min(response.data.length, 10); i++) {
-//      var friendItem = document.createElement('div');
-//      friendItem.id = 'friend_' + response.data[i].id;
-//      friendItem.innerHTML = '<input type="checkbox" name="friends" value="'
-//        + response.data[i].id
-//        + '" />' + response.data[i].name;
-//        mfsForm.appendChild(friendItem);
-//      }
-//      container.appendChild(mfsForm);
-
-//      // Create a button to send the Request(s)
-//      var sendButton = document.createElement('input');
-//      sendButton.type = 'button';
-//      sendButton.value = 'Send Request';
-//      sendButton.onclick = sendRequest;
-//      mfsForm.appendChild(sendButton);
-//    });
-//  }
-
-// var PhotoView = Backbone.View.extend({
-//   initialize: function() {
-//     this.render();
-//   }, 
-//   events: {
-
-//   }, 
-//   resetValues: function() {
-//     _.each( $('input'), function(input){
-//       $(input).val('');
-//     })
-//   }, 
-//   render: function(){
-//     var self = this;
-//     this.$el.html(this.model.attributes);
-//     this.$el.attr('id', 'item-id-'+this.model.attributes.id);
-//     var image = this.model.attributes.url;
-//     self.$el.attr('class', 'item col-lg-3 col-md-3');
-//     var spinner = $("<i class='fa fa-cog fa-spin img-spinner'></i>");
-//     this.$el.html(spinner)
-//     var img = $('<img>');
-//     img.attr('src', image);
-//     img.className = "hiddenImage";
-//     img.load(function(event){
-//       // console.log (website)
-//         spinner.remove();
-//         self.$el.attr('style', 'background-image:url("'+image+'")');
-//         // // self.$el.wrap("<a href="+website+"></a>");
-//         // $("a").attr("target", "_blank");
-//       })
-//     this.resetValues();
-//     return this;
-//   }
-
-// })
-
-
-// var PhotoListView = Backbone.View.extend({
-//   initialize: function(is_buttons){
-//     // this.is_buttons = is_buttons || false;
-//     this.collection = new PhotoList();
-//     this.photoViews = []
-//     this.collection.fetch({data: {item_id: item.id}});
-//     this.listenTo(this.collection, "all", this.render)
-//   },
-
-//   el: function(){
-//    return $('#item_list') 
-//   },
-
-//   render: function() {
-
-//     var self = this;
-//     _.each(this.photoViews, function(view){
-//       view.remove();
-//     })
-//     this.photoViews = []
-//     _.each(this.collection.models, function(photo){
-//       var new_view = new PhotoView({
-//         model: photo
-//       });
-//       self.Views.push(new_view)
-//       self.$el.append(new_view.render().$el)
-//     })
-
-
-//   }
-
-// })
-
-
-
-
-
-
-
-// var PotentialRecipient = Backbone.Model.extend({
-
-// })
-
-// //view for form where user inputs name of gift recipient
-// var FormView = Backbone.View.extend({
-//   initialize: function(){
-
-//   },
-
-//   render: function() {
-
-//   },
-
-//   events: {
-//     "click .search_button" : "createView"
-//   },
-
-//   createView: function(e){
-//     e.preventDefault();
-
-
-//   }
-
-// })
-
-// var PotentialRecipientList = Backbone.Collection.extend({
-//   model: PotentialRecipient, 
-//   url: "/potential_recipients"
-// })
-
-// var PotentialRecipientView = Backbone.View.extend({
-//   initialize: function(){
-//     this.render();
-//   }, 
-
-//   events: {
-//     "click .show_potential_recipients_button": "showPotentialRecipients"
-//   }
-//   //html with images
-//   template: function(attrs){
-//     html_string = $('#potential_recipient_template').html();
-//     var template_function = _.template(html_string)
-//     return template_function(attrs)
-//   }, 
-
-//   render: function(){
-//     this.$el.html(this.template(this.model.attributes));
-//     return this
-//   }, 
-
-//   showPotentialRecipients: function(){
-//     recipientListView.collection.add(this.model.attributes)
-//     var html_string
-//   }
-
-// })
-
-
 
 //======================= Trying to build sticky scrolling ====================================
 
 $(window).load(function(e) {
   $('.site-wrapper a').on('click', scrollToInformation);
+
+  $('.block').on('click', function(){
+          window.location = '/#secondPage'
+  });
+  $('.block_2').on('click', function(){
+          window.location = '/#3rdPage'
+  });
+  $('.block_3').on('click', function(){
+          window.location = '/#lastPage'
+  });
 });
 
 function scrollToInformation(event) {
