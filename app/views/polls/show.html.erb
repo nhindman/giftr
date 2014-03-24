@@ -1,39 +1,31 @@
-<div class="container">
-  <div id="section0" class="section">
-  <div class="showvotes">
-
-    <div class="row push-below-header"> <!-- Section containing Gifter & Giftee, Gift Icon, & Arrow -->
-      <div class="col-lg-3 col-lg-offset-1 center">
+<div class="site-wrapper container">
+<div class="clearfix">
+    <div class="row gifter_giftee_container"> <!-- Section containing Gifter & Giftee, Gift Icon, & Arrow -->
+      <div class="span5 gifter">
         <img class="bigborders" src="http://graph.facebook.com/<%= @poll.creator.uid %>/picture?type=large" alt="Creator">
       </div>
-      <div class="col-lg-4 center">
+      <div class="middle_header"> <!-- Call To Action Section -->
+       <h2 class="advice">Help <%= @poll.creator.name.split(" ").shift().to_s %> choose a gift for <%= @poll.recipient_name.split(" ").shift().to_s %> </h2>
+      <div class="gift_icon">
         <%=image_tag("poll_page/gift.png", alt: "Gift Image", :id => "gift-icon", :class => "inline-block")%>
-        </br id="break"> <!-- Lazy, but works -->
-        <!-- <i class="fa fa-long-arrow-right"></i> -->
-        <img id="arrow" src="http://www.clker.com/cliparts/3/v/V/e/U/a/black-arrow-th.png" />
       </div>
-      <div class="col-lg-3 center">
+      </div>
+      <div class="span5 gift_recipient">
         <img class="bigborders" src="http://graph.facebook.com/<%= @poll.recipient_fb_id %>/picture?type=large" alt="Recipient">
       </div>
     </div>
-
-    <div class="row"> <!-- Call To Action Section -->
-       <h2 class="advice">Help <%= @poll.creator.name.split(" ").shift().to_s %> choose a gift for <%= @poll.recipient_name.split(" ").shift().to_s %> </h2>
-    </div>
-    
   </div>
-</div>
+
   <!-- <div id="section1" class="section"> -->
   <div id="itemvote_list" class="row">
       
   <!-- </div>  --> 
   </div>    
 
-</div><!-- END container div and voting_page div-->
-
 <div class="row">
 
-<div class="col-md-5 voting-page" id="accomplice-photos"><span id="voters_text">Voters</span></div>
+<div class="voting-page" id="accomplice-photos"><span id="voters_text">Voters</span></div>
+</div>
 </div>
 <%= render text: File.read("app/views/templates.txt").html_safe %>
 

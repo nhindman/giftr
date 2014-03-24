@@ -75,6 +75,9 @@ var ItemFormView = Backbone.View.extend({
   },
 
   render: function(){
+    // $('.scraper').on('click', function(e){
+    //   scrapeImage();
+    // });
   },
 
   events: {
@@ -127,7 +130,8 @@ var ItemFormView = Backbone.View.extend({
                       // }
 
                   });
-             },1000);
+             },500);
+            $('.flexslider').removeData("flexslider");
           } 
         })
         
@@ -137,7 +141,7 @@ var ItemFormView = Backbone.View.extend({
       }, 
 
       el: function() {
-        return $('#new_item_form')
+        return $('.url_input_and_button')
       },
 
   })
@@ -162,7 +166,8 @@ var PhotoView = Backbone.View.extend({
   },
 
   events: {
-    "click .scraped_photo": 'addSelectedPhoto'
+    "click .scraped_photo": 'addSelectedPhoto', 
+    "click [data-action='vote']": 'vote'
     //"click .click_me": 'addSelectedPhoto',
     //"click img": 'addSelectedPhoto',
   },
@@ -172,14 +177,20 @@ var PhotoView = Backbone.View.extend({
   render: function(){
     var self = this;
     var photo = $('<img src="' + this.model.url + '">');
-    photo.addClass('scraped_photo');
-    photo.attr('id', ''+this.model.id);
-    photo.addClass('col-lg-3').addClass('col-md-3');
     var photo_item = this.$el;
-    photo_item.addClass('click_me');
-    photo_item.append(photo);
+    photo.addClass('scraped_photo');
+    photo.attr('id', 'photo-id-'+this.model.id);
+    photo.addClass('col-lg-3').addClass('col-md-3'); 
+    if ($('.flexslider').is(":visible")){     
+      photo_item.append(photo);
+    }else{
+      photo_item.addClass('click_me');
+      photo.addClass('poll_show_page_photo');
+      photo_item.append(photo);
+    }
     this.resetValues();
     return this;
+    
   },
 
   addSelectedPhoto: function(e) {
@@ -221,8 +232,8 @@ var PhotoView = Backbone.View.extend({
     _.each( $('input'), function(input){
       $(input).val('');
     })
-    $('.add_gift_ideas_instructions-app').animate({duration:10000,opacity:0});
-    $('.what_gift_instructions-app').html('Enter another gift idea');
+    // $('.add_gift_ideas_instructions-app').animate({duration:10000,opacity:0});
+    // $('.what_gift_instructions-app').html('Enter another gift idea');
   },
    
   vote: function(){
@@ -314,7 +325,7 @@ var PhotoVoteListView = Backbone.View.extend({
         model: photo.attributes
       });
       self.photoViews.push(new_view)
-      self.$el.append(new_view.render().$el.append("<button class=\"btn btn-lg btn-danger\" data-act='vote'>Vote!</button>"))
+      self.$el.append(new_view.render().$el.append("<button class=\"poll_show_photo_button btn btn-lg btn-danger\" data-action='vote'>Vote!</button>"))
       }
     })
 
@@ -335,19 +346,14 @@ var ItemView = Backbone.View.extend({
     "click .edit": "enterEdit",
     "click [data-action='vote']": 'vote', 
   },
-  // template: function(attrs){
-  //   html_string = $('#items_template').html();
-  //   // console.log(html_string)
-  //   var template_func = _.template(html_string)
-  //   return template_func(attrs)
-  // },
 
   resetValues: function() {
+    console.log("resetValues called")
     _.each( $('input'), function(input){
       $(input).val('');
     })
-    $('.add_gift_ideas_instructions-app').animate({duration:10000,opacity:0});
-    $('.what_gift_instructions-app').html('Enter another gift idea');
+    // $('.add_gift_ideas_instructions-app').animate({duration:10000,opacity:0});
+    // $('.what_gift_instructions-app').html('Enter another gift idea');
     
   },
 
@@ -474,7 +480,7 @@ var ItemVoteListView = Backbone.View.extend({
         model: item
       });
       self.itemViews.push(new_view)
-      self.$el.append(new_view.render().$el.append("<button class=\"btn btn-lg btn-danger\" data-action='vote'>Vote!</button>"))
+      self.$el.append(new_view.render().$el.append("<button class=\"poll_show_item_button btn btn-lg btn-danger\" data-action='vote'>Vote!</button>"))
     })
 
   }
@@ -531,6 +537,8 @@ var itemVoteSetup = function (){
   window.itemformView = new ItemFormView();
   window.item = new Item();
   window.photo = new Photo();
+  window.itemView = new ItemView({model: item});
+  window.photoView = new PhotoView({model: photo})
 }
 
 var appendVotesToItems = function(votes){
@@ -550,7 +558,7 @@ var appendVotesToPhotos = function(votes){
       selector = '#' + vote.attributes.id
       $vote_img = $(selector);
       id = vote.attributes.photo_id
-      $vote_img.appendTo($('#item-id-'+vote.attributes.photo_id))
+      $vote_img.appendTo($('#photo-id-'+vote.attributes.photo_id))
     }
   })
 }
@@ -577,7 +585,7 @@ var appendSelectedPhotos = function(photo){
         // }
       // }
     // })
-    itemVoteSetup();
+    // itemVoteSetup();
     // photoVoteListView.collection.add(photo);
   }
 

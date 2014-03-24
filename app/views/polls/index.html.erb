@@ -16,24 +16,26 @@
       <div id="section1" class="section">
         <div id="app-setup-page-2" class="clearfix splash-page-section-wrapper"> <!-- Splash Page Second Section -->
           <!-- <h1 class="add_gift_ideas_instructions-app selection-page-section-instructions">Add gift ideas</h1> -->
-          <form class="form-inline" role="form" id="new_item_form">
-          <h1 class="what_gift_instructions-app selection-page-section-instructions">What gift are you considering?</h1>
-            <div class="form-group">
-              <input type="text" class="form-control" id="new_item_name_input" name="new_item_name_input" placeholder="Enter Gift Name" onfocus="this.placeholder=''" onfocusout="this.placeholder='Enter Gift Name'">
-              <h1 class="url-instructions-app selection-page-section-instructions">Does it have a URL? (If not, leave blank) </h1>
-              <input type="text" class="form-control" id="new_item_url" name="new_item_url_input" placeholder="Enter Gift URL" onfocus="this.placeholder=''" onfocusout="this.placeholder='Enter Gift URL'">
-            </div>
-            <h1 id="add_photo_instructions">Add a photo </h1>
-              <div class="btn-toolbar">
-                
-                  <button class="uploader btn btn-primary btn-file">Upload Photo<input type="file" class="filestyle" data-classButton="btn btn-primary" id="files" name="files[]" multiple /></button>
-                  <span class="or_word">OR</span>
+          
+          <h1 class="what_gift_instructions-app selection-page-section-instructions">What are your gift ideas?</h1>
+          <div class="find_images_container">
+          <h1 class="get_images_header">Find images online or Upload a photo:</h1>
+          <div class="down_arrows_row">
+            <i class="fa fa-long-arrow-down left_down_arrow"></i> 
+            <i class="fa fa-long-arrow-down right_down_arrow"></i>
+          </div>
+            <div class="url_input_and_button">
+                  <input type="text" class="form-control" id="new_item_url" name="new_item_url_input" placeholder="Enter Gift URL" onfocus="this.placeholder=''" onfocusout="this.placeholder='Enter Gift URL'">
+                  <div id="scraper_button_div">
                   <button class="scraper btn btn-primary" id="scraped_files" name="scraped_files[]" multiple>Select Photo From URL</button>
                   <output id="list"></output>
-              </div>
-          </form>
-              
-          <div id="item_list" class="poll-creation-item-selection"></div>
+                  </div>
+            </div>
+                  <button class="uploader btn btn-primary btn-file">Upload<input type="file" class="filestyle" data-classButton="btn btn-primary" id="files" name="files[]" multiple /></button>
+
+                  
+          </div>    
+          <div class="clearfix" id="item_list"></div>
           <div class="scrapedImagesHover" style="display:none;">
             <%=image_tag("cancel-new.png", :class => "close-me")%>
             <div class="flexslider">  
