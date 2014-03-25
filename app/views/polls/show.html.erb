@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
   <link rel="image_src" href="http://graph.facebook.com/<%= @poll.recipient_fb_id %>/picture?type=large"/>
-  <title><%= @poll.recipient_name %>'s <%= @poll.occasion %> Gift: Need Your Help Choosing One</title>
-  <meta name="description" content="I have some <%= @poll.occasion %> gift ideas for <%= @poll.recipient_name %> and I need you to vote on which is your favorite!"/>
+  <title>I Need Your Help Choosing A <%= @poll.occasion.sub(/^(\w)/) {|s| s.capitalize} %> Gift For <%= @poll.recipient_name %></title>
+  <meta name="description" content="I have some <%= @poll.occasion.sub(/^(\w)/) {|s| s.capitalize} %> gift ideas for <%= @poll.recipient_name %> and I need you to vote for your favorite!"/>
 </head>
 
 <div class="poll_show_page">
