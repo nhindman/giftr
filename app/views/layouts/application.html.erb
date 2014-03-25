@@ -10,6 +10,25 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
   <!-- Script to make fullPage sticky scrolling work. using media query that disable sticky scrolling if page is less than 500px -->
+  <script type="text/javascript">
+    $(document).ready(function() {
+    if (mq.matches) {
+       $.fn.fullpage({   
+          resize : false, // Stops the splash page from resizing it's text when the page width is changed.
+        anchors: ['firstPage', 'secondPage', '3rdPage', 'lastPage'] //Tells fullPage that we're scrolling through four page sections.
+        });
+  // window width is at least 500px
+  console.log("at least 500px")
+    } else {
+    console.log ("else works")
+    $.fn.fullpage({
+    autoScrolling: false,            
+    resize : false, // Stops the splash page from resizing it's text when the page width is changed.
+          
+    anchors: ['firstPage', 'secondPage', '3rdPage', 'lastPage'] //Tells fullPage that we're scrolling through four page sections.
+        })};
+    }); 
+  </script>
 
 </head>
 <body>

@@ -755,7 +755,7 @@ top: -150px;
 .gifter_giftee_container{
 	padding-top: 30px;
 	width: 970px;
-	height: 220px;
+	/*height: 220px;*/
 	display: inline-flex;
 	margin: 0 auto;
 }

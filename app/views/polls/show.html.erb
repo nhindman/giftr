@@ -106,6 +106,16 @@ var checkVoted = function(){
 // }, 400);
 </script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.fn.fullpage({ 
+          autoScrolling: false,            
+          resize : false, // Stops the splash page from resizing it's text when the page width is changed.
+          
+        anchors: ['firstPage', 'secondPage', '3rdPage', 'lastPage'] //Tells fullPage that we're scrolling through four page sections.
+        });
+    }); 
+</script>
 
 
 
