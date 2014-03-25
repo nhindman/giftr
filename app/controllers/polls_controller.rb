@@ -1,7 +1,7 @@
 class PollsController < ApplicationController
 
   def index
-  @polls = Poll.all.order("id")
+  @polls = Poll.where(id: params[:id])
   @render = false
     if session[:token]
       @render = true
@@ -10,6 +10,17 @@ class PollsController < ApplicationController
       format.html
       format.json { render json: @polls}
     end
+  end
+
+  def new
+    @poll = Poll.new
+  end
+
+  def update
+  @poll = Poll.find(params[:id])
+  # binding.pry
+  @poll.update_attributes!(occasion: params[:occasion])
+  render json: @poll
   end
 
   def create
@@ -39,7 +50,7 @@ class PollsController < ApplicationController
   private
 
   def poll_params
-    params.require(:poll).permit(:creator_id, :recipient_name, :recipient_photo, :recipient_fb_id, :description, :end_date, :created_at, :updated_at)
+    params.require(:poll).permit(:creator_id, :recipient_name, :recipient_photo, :recipient_fb_id, :description, :end_date, :created_at, :updated_at, :occasion)
   end
 
 end

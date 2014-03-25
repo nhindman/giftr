@@ -1,12 +1,19 @@
+<!DOCTYPE html>
+<head>
+  <link rel="image_src" href="http://http://i.imgur.com/sZCExDt.png"/>
+  <title><%= @poll.creator.name.split(" ").shift().to_s %> Needs Help Choosing A Gift For <%= @poll.recipient_name.split(" ").shift().to_s %></title>
+  <meta name="description" content="<%= @poll.creator.name.split(" ").shift().to_s %> has some gift ideas and has chosen you, as one of <%= @poll.recipient_name.split(" ").shift().to_s %>'s closest friends, to vote for your favorite!"/>
+</head>
+
 <div class="poll_show_page">
-<div class="site-wrapper container">
+<div class="site-wrapper container seethrough_background">
 <div class="clearfix">
     <div class="row gifter_giftee_container"> <!-- Section containing Gifter & Giftee, Gift Icon, & Arrow -->
       <div class="span5 gifter">
         <img class="bigborders" src="http://graph.facebook.com/<%= @poll.creator.uid %>/picture?type=large" alt="Creator">
       </div>
       <div class="middle_header"> <!-- Call To Action Section -->
-       <h2 class="advice">Help <%= @poll.creator.name.split(" ").shift().to_s %> choose a gift for <%= @poll.recipient_name.split(" ").shift().to_s %> </h2>
+       <h1 class="advice">Help <%= @poll.creator.name.split(" ").shift().to_s %> choose a <%= @poll.occasion.split(" ").shift().to_s %> gift for <%= @poll.recipient_name.split(" ").shift().to_s %>. </h1>
       <div class="gift_icon">
         <%=image_tag("poll_page/gift.png", alt: "Gift Image", :id => "gift-icon", :class => "inline-block")%>
       </div>
@@ -17,6 +24,7 @@
     </div>
 
   <div class="row-fluid itemvote_list_container">
+    <h1 class="vote_for_fav">Vote for your favorite:</h1>
     <div class="span12 itemvote_list">
     </div>  
   </div>    
@@ -78,7 +86,6 @@ var checkVoted = function(){
       {data: {poll_id: poll.id}}, 
       {success: function(){myvote = voteList.findWhere({user_id: user.id})}
       })
-    $('#accomplice-photos').append('<button id="toggleVoteButton" class="btn btn-lg btn-danger hidden">Change Your Vote</button>');
     $('#toggleVoteButton').click(function(){
       toggleVoteOption();
     });

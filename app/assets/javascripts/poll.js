@@ -8,27 +8,6 @@ var Poll = Backbone.Model.extend({
  
 })
 
-// $(document).ready(function() {
-//   $('.flexslider').flexslider({
-//     animation: "slide",
-//     animationLoop: false,
-//     itemWidth: 300,
-//     itemMargin: 5,
-//     minItems: 1,
-//     maxItems: 4
-//   });
-// });
-
-// var init_flexslider = function(){
-//   $('.flexslider').flexslider({
-//     animation: "slide",
-//     slideshow: false,
-//     animationLoop: false,
-//     itemWidth: 150,
-//     itemMargin: 15
-//   });
-// };
-
 var User = Backbone.Model.extend({
   url: "/users",
 })
@@ -168,8 +147,6 @@ var PhotoView = Backbone.View.extend({
   events: {
     "click .scraped_photo": 'addSelectedPhoto', 
     "click [data-action='vote']": 'vote'
-    //"click .click_me": 'addSelectedPhoto',
-    //"click img": 'addSelectedPhoto',
   },
 
   tagName: 'li',
@@ -179,7 +156,7 @@ var PhotoView = Backbone.View.extend({
     var photo = $('<img src="' + this.model.url + '">');
     var photo_item = this.$el;
     photo.addClass('scraped_photo');
-    photo.attr('id', 'photo-id-'+this.model.id); 
+    photo_item.attr('id', 'photo-id-'+this.model.id); 
     if ($('.flexslider').is(":visible")){   
       photo.addClass('col-lg-3').addClass('col-md-3');  
       photo_item.append(photo);
@@ -238,12 +215,15 @@ var PhotoView = Backbone.View.extend({
    
   vote: function(){
     var votedphoto = voteList.findWhere({user_id: user.id});
+    console.log("VOTEDPHOTO HERE:", votedphoto)
     votedphoto.attributes.photo_id = this.model.id;
     votedphoto.save({}, {
         url: "/votes/"+votedphoto.id
     });
+    console.log("voteList.models HERE:",voteList.models);
     appendVotesToPhotos(voteList.models);
-    toggleVoteOption()
+    $('.poll_show_photo_button').html('VOTED');
+    toggleVoteOption();
   },
 
 
@@ -385,19 +365,16 @@ var ItemView = Backbone.View.extend({
     },
   
   vote: function(){
-    // console.log(votes.responseJSON);
-    // this.$('button').remove();
-    // this.$el.append('<p>You voted for me!</p>');
     var voteditem = voteList.findWhere({user_id: user.id});
-    // console.log(this.model.id);
-    console.log(voteditem);
+    console.log("VOTEDITEM HERE:", voteditem)
     voteditem.attributes.item_id = this.model.id;
     voteditem.save({}, {
         url: "/votes/"+voteditem.id
     });
-    console.log(voteList.models)
+    console.log("voteList.models HERE:",voteList.models);
     appendVotesToItems(voteList.models);
-    toggleVoteOption()
+    $('.poll_show_button').html('VOTED');
+    toggleVoteOption();
   }
 
 })
@@ -542,8 +519,10 @@ var itemVoteSetup = function (){
 var appendVotesToItems = function(votes){
   _.each(votes, function(vote){
     if(vote.attributes.item_id){
+      console.log("if of appendVotesToItems fired")
       selector = '#' + vote.attributes.id
       $vote_img = $(selector);
+      $vote_img.addClass('.voted_accomplice')
       id = vote.attributes.item_id
       $vote_img.appendTo($('#item-id-'+vote.attributes.item_id))
     }
@@ -553,8 +532,10 @@ var appendVotesToItems = function(votes){
 var appendVotesToPhotos = function(votes){
   _.each(votes, function(vote){
     if(vote.attributes.photo_id){
+      console.log("if of appendVotesToPhotos fired")
       selector = '#' + vote.attributes.id
       $vote_img = $(selector);
+      $vote_img.addClass('.voted_accomplice')
       id = vote.attributes.photo_id
       $vote_img.appendTo($('#photo-id-'+vote.attributes.photo_id))
     }
@@ -606,6 +587,6 @@ var checkForExisting = function(url,obj){
 }  
 
 var toggleVoteOption = function(){
-  $('#item_list button').toggleClass('hidden');
+  $('#itemvote_list button').toggleClass('hidden');
   $('#accomplice-photos button').toggleClass('hidden');
 }

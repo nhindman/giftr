@@ -9,6 +9,9 @@
                 <h1 class="choose_friend_polls_index">Choose the friend you're buying for</h1>        
                 <%=image_tag("simley_2.jpg", alt: "Example Image", id: "recipient")%>
                 <button class="btn btn-lg btn-danger giftee" id="block">Select Friend</button>
+                <div class="occasion_container">
+                  <button class='btn btn-danger btn-lg go_to_2ndpage'>GO</button>
+                </div>  
       <!--           <i id="block" class="fa fa-arrow-down block selection-page-arrow"></i>
        -->        </div>
             </div>
@@ -38,6 +41,7 @@
           <div class="clearfix" id="item_list"></div>
           <div class="scrapedImagesHover" style="display:none;">
             <%=image_tag("cancel-new.png", :class => "close-me")%>
+            <h1 class="choose_scraped_image">Click To Select An Image:</h1> 
             <div class="flexslider">  
               <ul class="slides"></ul>
             </div>

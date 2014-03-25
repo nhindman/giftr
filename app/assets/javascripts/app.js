@@ -83,6 +83,20 @@ var mq = window.matchMedia( "(min-width: 500px)" );
 
 $(document).ready(function() {    
 
+  $('.go_to_2ndpage').on('click', function(){
+      $.ajax({
+        type: "PUT", 
+        url: "/polls/"+poll.id,
+        data: {
+          occasion: $('#occasion_input').val()
+        }, 
+        success: function(data) {
+          window.location = '/polls#secondPage'
+        }
+      });
+
+  });  
+
   var user_id; 
   var friend_id;
   var mutual_url;
@@ -146,9 +160,10 @@ $(document).ready(function() {
       },
       onClose: function(){
         $('#recipient').attr('src', "http://graph.facebook.com/" + friend_id + "/picture?type=large").attr('width', "180px")
-        setTimeout(function(){
-          window.location = '/polls#secondPage'
-        }, 1000);
+        $('.giftee').toggleClass('hidden')
+        $('.occasion_container').append("<h1 class='whats_the_occasion_text'>What's the occasion?</h1>")
+        $('.occasion_container').append("<input type='text' class='form-control' id='occasion_input' name='new_occasion_input' placeholder='Enter The Occasion' onfocus='this.placeholder=''' onfocusout='this.placeholder='Enter Gift URL''>")
+        $('.go_to_2ndpage').show();
         
       }
     });
