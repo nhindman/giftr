@@ -232,8 +232,8 @@ var PhotoView = Backbone.View.extend({
 var i = 1;
 var PhotoListView = Backbone.View.extend({
   initialize: function(is_buttons){
-    console.log("ISBUTTONS")
-    console.log(is_buttons)
+    // console.log("ISBUTTONS")
+    // console.log(is_buttons)
     this.is_buttons = is_buttons || false;
     this.collection = new PhotoList();
     this.photoViews = []

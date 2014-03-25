@@ -141,8 +141,12 @@ $(document).ready(function() {
                           description: "This Worked!", 
                           end_date: "not yet"
                         });
-          poll.save(null, {success: itemSetup})
+          poll.save(null, {success:itemSetup}) 
           poll.set({url: '/polls/' + this.id});
+          //occasion button is only added if a recipient has been selected and if not select a friend button remains
+          if (typeof poll.attributes.recipient_fb_id != "undefined"){
+            onClose(response);
+          }
         });
 
         // This sets up an array containing ids of mutual friends with your
@@ -158,18 +162,9 @@ $(document).ready(function() {
             resetSelector();
         });
       },
-      onClose: function(){
-        $('#recipient').attr('src', "http://graph.facebook.com/" + friend_id + "/picture?type=large").attr('width', "180px")
-        $('.giftee').toggleClass('hidden')
-        $('.occasion_container').append("<h1 class='whats_the_occasion_text'>What's the occasion?</h1>")
-        $('.occasion_container').append("<input type='text' class='form-control' id='occasion_input' name='new_occasion_input' placeholder='Enter The Occasion' onfocus='this.placeholder=''' onfocusout='this.placeholder='Enter Gift URL''>")
-        $('.go_to_2ndpage').show();
-        
-      }
     });
 
-
-});
+  });
 
 //======================= Trying to build sticky scrolling ====================================
 
@@ -186,6 +181,21 @@ $(window).load(function(e) {
           window.location = '/#lastPage'
   });
 });
+
+//adds occasion button and input field
+function onClose(response){
+  console.log("MYPOLL2",poll)
+  friend_id = poll.attributes.recipient_fb_id;
+  console.log("FRIEND_ID YOOOO",poll.attributes.recipient_fb_id);
+  console.log("POLL ID YOOOO",poll.id);
+  // if (typeof poll.id != "undefined"){
+    $('#recipient').attr('src', "http://graph.facebook.com/" + friend_id + "/picture?type=large").attr('width', "180px")
+    $('.giftee').toggleClass('hidden')
+    $('.occasion_container').append("<h1 class='whats_the_occasion_text'>What's the occasion?</h1>")
+    $('.occasion_container').append("<input type='text' class='form-control' id='occasion_input' name='new_occasion_input' placeholder='Enter The Occasion' onfocus='this.placeholder=''' onfocusout='this.placeholder='Enter Gift URL''>")
+    $('.go_to_2ndpage').show();
+  // }
+};
 
 function scrollToInformation(event) {
   event.preventDefault();
