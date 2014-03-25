@@ -11,13 +11,17 @@
 
   <!-- Script to make fullPage sticky scrolling work. using media query that disable sticky scrolling if page is less than 500px -->
   <script type="text/javascript">
-    $(document).ready(function() {
+  $(document).ready(function() {
+  var current_url = "<%= request.original_url %>";
+  var thisArray = current_url.split('/').slice(-1);
+  var arrayItem = parseInt(thisArray[0]);
+  if (isNaN(arrayItem)) { 
     if (mq.matches) {
        $.fn.fullpage({   
           resize : false, // Stops the splash page from resizing it's text when the page width is changed.
         anchors: ['firstPage', 'secondPage', '3rdPage', 'lastPage'] //Tells fullPage that we're scrolling through four page sections.
         });
-  // window width is at least 500px
+  // window width is at least 500px 
   console.log("at least 500px")
     } else {
     console.log ("else works")
@@ -26,8 +30,9 @@
     resize : false, // Stops the splash page from resizing it's text when the page width is changed.
           
     anchors: ['firstPage', 'secondPage', '3rdPage', 'lastPage'] //Tells fullPage that we're scrolling through four page sections.
-        })};
-    }); 
+        })};    
+    }
+  });
   </script>
 
 </head>
