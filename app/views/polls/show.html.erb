@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
-  <link rel="image_src" href="http://http://i.imgur.com/sZCExDt.png"/>
-  <title><%= @poll.creator.name.split(" ").shift().to_s %> Needs Help Choosing A Gift For <%= @poll.recipient_name.split(" ").shift().to_s %></title>
-  <meta name="description" content="<%= @poll.creator.name.split(" ").shift().to_s %> has some gift ideas and has chosen you, as one of <%= @poll.recipient_name.split(" ").shift().to_s %>'s closest friends, to vote for your favorite!"/>
+  <link rel="image_src" href="http://graph.facebook.com/<%= @poll.recipient_fb_id %>/picture?type=large"/>
+  <title>Help Choosing A <%= @poll.occasion %> Gift For <%= @poll.recipient_name %></title>
+  <meta name="description" content="<%= @poll.creator.name.split(" ").shift().to_s %> has some gift <%= @poll.occasion %> ideas for <%= @poll.recipient_name %> and needs you to vote on your favorite!"/>
 </head>
 
 <div class="poll_show_page">
@@ -13,7 +13,7 @@
         <img class="bigborders" src="http://graph.facebook.com/<%= @poll.creator.uid %>/picture?type=large" alt="Creator">
       </div>
       <div class="middle_header"> <!-- Call To Action Section -->
-       <h1 class="advice">Help <%= @poll.creator.name.split(" ").shift().to_s %> choose a <%= @poll.occasion.split(" ").shift().to_s %> gift for <%= @poll.recipient_name.split(" ").shift().to_s %>. </h1>
+       <h1 class="advice">Help <%= @poll.creator.name.split(" ").shift().to_s %> choose a <%= @poll.occasion %> gift for <%= @poll.recipient_name.split(" ").shift().to_s %>. </h1>
       <div class="gift_icon">
         <%=image_tag("poll_page/gift.png", alt: "Gift Image", :id => "gift-icon", :class => "inline-block")%>
       </div>
