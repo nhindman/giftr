@@ -36,7 +36,7 @@
 
 .middle_header{
 	margin: 0 auto;
-	width: 590px;
+	width: 690px;
 	position: relative;
 	top: -28px;
 	left: 0px;
@@ -345,11 +345,19 @@ i {
 /*}*/
 
 a.flex-prev {
-  background: url('/assets/images/arrow-left.png');
+  background-image: url("bg_images/arrow-left.png");
 }
 
 a.flex-next {
-  background: url('/assets/images/arrow-left.png');
+  background-image: url("bg_images/arrow-right.png");
+}
+
+.flex-direction-nav .flex-prev {
+	color: red !important;
+}
+
+.flex-direction-nav .flex-next {
+	color: red !important;
 }
 
 .down_arrows_row{
@@ -591,7 +599,8 @@ top: -150px;
 }
 
 .gifter{
-
+	position: relative;
+	left: -20px;
 }
 
 .poll_show_page_photo{
