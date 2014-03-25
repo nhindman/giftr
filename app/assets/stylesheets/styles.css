@@ -1246,9 +1246,9 @@ border-radius: 1em;
 		position: relative;
 		right: 290px;
 	}
-	/*.itemvote_list_container {
-		margin-top: 330px;
-	}*/
+	.itemvote_list_container {
+		margin-top: -34px;
+	}
 	.middle_header{
 		width: 380px;
 		position: relative;
@@ -1259,6 +1259,9 @@ border-radius: 1em;
 		position: relative;
 		top: -50px;
 		right: 20px;
+	}
+	.vote_for_fav{
+		margin-bottom: 30px;
 	}
 }
 
