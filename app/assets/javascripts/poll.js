@@ -398,7 +398,7 @@ var ItemListView = Backbone.View.extend({
   // }, 
 
   el: function(){
-    return $('#item_list')
+    return $('.item_list')
   }, 
 
   render: function() {
@@ -560,7 +560,7 @@ var appendSelectedPhotos = function(photo){
         $("a").attr("target", "_blank");
         // if (!checkForExisting(image,"#item_list")) {
           console.log("THIS PHOTO GETTING APPENDED:",selected_photo)
-          $('#item_list').append(selected_photo);
+          $('.item_list').append(selected_photo);
         // }
       // }
     // })

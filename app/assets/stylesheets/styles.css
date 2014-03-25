@@ -296,7 +296,7 @@ i {
 	height: 50px;
 }
 
-#item_list {
+.item_list {
 	margin-top: 237px;
 	position: relative;
 	right: -280px;
@@ -553,7 +553,7 @@ top: -150px;
 	margin: -2.5em auto;
 }
 
-#item_list .item {
+.item_list .item {
   display: inline-block;
   margin-left: 20px;
  	width: 200px;
@@ -930,12 +930,16 @@ border-radius: 1em;
 	top:49px;
 }
 
+.uploader{
+
+}
+
 
 /*======================= File Upload Button ================================*/
 
 
 @media all and (max-width: 992px){
-	#item_list .item {
+	.item_list .item {
 		margin: 0 auto 3.2em auto;		
 		display: block;
 	}
@@ -1021,7 +1025,7 @@ border-radius: 1em;
 		left: 263px;
 	}
 
-	#item_list .item {
+	.item_list .item {
 	display: block !important;
 	width: 200px;
 	height: 200px;
@@ -1032,12 +1036,12 @@ border-radius: 1em;
 	border: none;
 	}
 
-	#app-setup-page-2 > #item_list {
+	#app-setup-page-2 > .item_list {
 	top: 11px;
 	margin-bottom: 11em;
 	}
 
-	#item_list{
+	.item_list{
 		top: 60px !important;
 		margin-top: 0px !important;
 	}
@@ -1067,8 +1071,214 @@ border-radius: 1em;
 	}
 }
 
+@media all and (max-width: 430px){
+	.choose_friend_polls_index {
+		margin-right: 19px;
+		margin-top: 120px;
+	}
+}
+
+@media all and (max-width: 993px){
+	.occasion_container {
+		margin-top: 80px;
+	}
+	.whats_the_occasion_text {
+		position: relative;
+		top: -126px;
+	}
+}
+
+@media all and (max-width: 673px){
+	#occasion_input {
+		top: -27px;
+	}
+	.whats_the_occasion_text {
+		font-size: 28px;
+		position: relative;
+		top: -66px;
+		right: -49px;
+	}
+	.url_input_and_button {
+	display: block;
+	position: relative;
+	top: 130px;
+	left: 182px;
+	}
+	#new_item_url {
+	height: 50px;
+	width: 260px;
+	float: left;
+	position: relative;
+	left: 10px;
+	top: 0px;
+	}
+	#scraper_button_div {
+	position: relative;
+	top: 54px;
+	left: -240px;
+	float: left;
+	height: 50px;
+	}
+	.uploader {
+	position: relative;
+	top: 270px;
+	margin-right: 310px;
+	}
+}
+
+@media all and (max-width: 450px){
+	.go_to_2ndpage {
+		left: -60px;
+	}
+	#occasion_input {
+		width: 250px;
+		margin-left: 20px;
+	}
+	.whats_the_occasion_text{
+		right: -29px;
+	}
+	#recipient{
+		position: relative;
+		right: 20px;
+	}
+	.giftee{
+		right: 20px;
+	}
+}
+
+@media all and (max-width: 450px){
+	.what_gift_instructions-app {
+		position: relative;
+		right: 160px;
+		top: 20px;
+	}
+	.url_input_and_button {
+		left: 22px;
+	}
+}
+
+@media all and (max-width: 350px){
+	.choose_friend_polls_index {
+	font-size: 30px;
+	margin-right: 119px;
+	margin-top: 60px;
+	}
+	#recipient {
+	position: relative;
+	right: 60px;
+	}
+	.giftee {
+	right: 60px;
+	}
+	.whats_the_occasion_text {
+	right: 31px;
+	}
+	#occasion_input {
+	width: 200px;
+	margin-left: 20px;
+	}
+	.go_to_2ndpage {
+	left: -150px;
+	width: 60px;
+	}
+	#app-setup-page-2 > .scrapedImagesHover {
+	position: relative;
+	top: -102px;
+	margin-right: 319px;
+	width: 60%;
+	height: 320px;
+	}
+	.choose_scraped_image {
+		margin-left: 43px;
+		font-size: 20px;
+	}
+	.close-me{
+		right: 325px !important;
+	}
+	.flexslider{
+		margin-left: 20px !important;
+		right: 60px !important;
+	}
+
+	.itemvote_list .item{
+		width: 200px;
+	}
+}
+
+@media all and (max-width: 673px){
+	.fa {
+		display: none !important;
+	}
+	.get_images_header{
+		display: none;
+	}
+	.uploader{
+		margin-right: 475px;
+	}
+	#app-setup-page-2 > .scrapedImagesHover {
+		position: relative;
+		top: -102px;
+		margin-right: 259px;
+	}
+}
+
+@media all and (max-width: 673px){
+	#gift-icon{
+		display: none;
+	}
+}
+
+
+@media all and (max-width: 990px){
+	.item_list{	
+		margin-top: 237px;
+		margin-left: 240px;
+		position: relative;
+		top: -230px;
+		right: 230px;
+		display: inline-flex;
+	}
+	.item_list .item {
+		margin-left: 10px;
+	}
+	.gifter_giftee_container{
+		display:block;
+		position: relative;
+		right: 290px;
+	}
+	.itemvote_list_container {
+		margin-top: 330px;
+	}
+	.middle_header{
+		width: 380px;
+		position: relative;
+		top: -28px;
+		left: -13px;
+	}
+	.gift_recipient{
+		position: relative;
+		top: -50px;
+		right: 20px;
+	}
+}
+
+@media all and (max-width: 350px){
+	.gifter{
+		left: -55px;
+	}
+	.middle_header{
+		left:-47px;
+	}
+	.gift_recipient{
+		right: 55px;
+	}
+	.itemvote_list_container {
+	margin-top: 317px;
+	}
+}
+
 @media all and (max-width: 992px){
-	#item_list .item {
+	.item_list .item {
 		left: 0px;
 	}
 	.giftee {

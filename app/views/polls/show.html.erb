@@ -7,18 +7,18 @@
 
 <div class="poll_show_page">
 <div class="site-wrapper container seethrough_background">
-<div class="clearfix">
-    <div class="row gifter_giftee_container"> <!-- Section containing Gifter & Giftee, Gift Icon, & Arrow -->
-      <div class="span5 gifter">
+<div class="row-fluid clearfix">
+    <div class="span12 gifter_giftee_container"> <!-- Section containing Gifter & Giftee, Gift Icon, & Arrow -->
+      <div class="gifter">
         <img class="bigborders" src="http://graph.facebook.com/<%= @poll.creator.uid %>/picture?type=large" alt="Creator">
       </div>
       <div class="middle_header"> <!-- Call To Action Section -->
-       <h1 class="advice">Help <%= @poll.creator.name.split(" ").shift().to_s %> choose a <%= @poll.occasion %> gift for <%= @poll.recipient_name.split(" ").shift().to_s %>. </h1>
+       <h1 class="advice">Help <%= @poll.creator.name.split(" ").shift().to_s %> choose a <%= @poll.occasion.sub(/^(\w)/) {|s| s.capitalize} %> gift for <%= @poll.recipient_name.split(" ").shift().to_s %>. </h1>
       <div class="gift_icon">
         <%=image_tag("poll_page/gift.png", alt: "Gift Image", :id => "gift-icon", :class => "inline-block")%>
       </div>
       </div>
-      <div class="span5 gift_recipient">
+      <div class="gift_recipient">
         <img class="bigborders" src="http://graph.facebook.com/<%= @poll.recipient_fb_id %>/picture?type=large" alt="Recipient">
       </div>
     </div>
@@ -50,7 +50,7 @@ var voteList;
 var myvote;
 var checkVoted = function(){
   if (user == undefined) {
-    $('#item_list button').addClass('hidden');
+    $('.item_list button').addClass('hidden');
     $('#login-warning').remove();
     $('.navbar').append('<p id="login-warning" class="pull-right">Log into Facebook to register your vote</p>')
     $('#login-warning').effect("shake", {times:10}, 6000);
@@ -62,7 +62,7 @@ var checkVoted = function(){
       toggleVoteOption();
     }
   } else {
-    $('#item_list button').addClass('hidden');
+    $('.item_list button').addClass('hidden');
   }
 }
 
