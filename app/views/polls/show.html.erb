@@ -6,29 +6,26 @@
 </head>
 
 <div class="poll_show_page">
-<div class="site-wrapper container seethrough_background">
+<div class="site-wrapper container">
 <div class="row-fluid clearfix">
     <div class="span12 gifter_giftee_container"> <!-- Section containing Gifter & Giftee, Gift Icon, & Arrow -->
       <div class="gifter">
         <img class="bigborders" src="http://graph.facebook.com/<%= @poll.creator.uid %>/picture?type=large" alt="Creator">
       </div>
-      <div class="middle_header"> <!-- Call To Action Section -->
-       <h1 class="advice">Help <%= @poll.creator.name.split(" ").shift().to_s %> choose a <%= @poll.occasion.sub(/^(\w)/) {|s| s.capitalize} %> gift for <%= @poll.recipient_name.split(" ").shift().to_s %>. </h1>
-      <div class="gift_icon">
-        <%=image_tag("poll_page/gift.png", alt: "Gift Image", :id => "gift-icon", :class => "inline-block")%>
-      </div>
-      </div>
       <div class="gift_recipient">
         <img class="bigborders" src="http://graph.facebook.com/<%= @poll.recipient_fb_id %>/picture?type=large" alt="Recipient">
       </div>
-    </div>
-
+      </div>
+  </div>
+      <div class="middle_header">
+       <h1 class="advice">Help <%= @poll.creator.name.split(" ").shift().to_s %> choose a <%= @poll.occasion.sub(/^(\w)/) {|s| s.capitalize} %> gift for <%= @poll.recipient_name.split(" ").shift().to_s %>. </h1>
+      </div>
   <div class="row-fluid itemvote_list_container">
     <h1 class="vote_for_fav">Vote for your favorite:</h1>
     <div class="span12 itemvote_list">
     </div>  
   </div>    
- </div>
+ 
   <div class="row">
     <div class="voting-page" id="accomplice-photos"><span id="voters_text">Voters</span>
     </div>

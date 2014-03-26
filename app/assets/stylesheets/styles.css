@@ -21,6 +21,7 @@
 }
 
 .advice {
+	text-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
 	padding: 40px;
 	margin-top: 5px;
 	text-align: center;
@@ -30,13 +31,14 @@
 }
 
 .vote_for_fav{
+	text-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
 	color: white;
 	font-family: 'Gafata', sans-serif;
 }
 
 .middle_header{
 	margin: 0 auto;
-	width: 690px;
+	/*width: 690px;*/
 	position: relative;
 	top: -28px;
 	left: 0px;
@@ -52,8 +54,8 @@
 }
 
 .bigborders{
-	border: solid .3em #f1f1f1;
-	border-radius: .7em;
+	/*border: solid .3em #f1f1f1;
+	border-radius: .7em;*/
 }
 
 .itemholder{
@@ -138,6 +140,7 @@ i {
 }
 
 .choose_friend_welcome {
+	text-shadow: 2.5px 2.5px rgba(0,0,0,0.3);
 	margin-top: -27px;
 	margin-bottom: 29px;
 }
@@ -149,6 +152,7 @@ i {
 }
 
 .choose_friend_polls_index {
+	text-shadow: 2.75px 2.75px rgba(0,0,0,0.2);
 	margin-top: 60px;
 	margin-bottom: 70px;
 }
@@ -181,9 +185,11 @@ i {
 	margin-bottom: .9em;
 	font-family: 'Gafata', sans-serif;
 	font-weight: 900;
+	text-shadow: 2.5px 2.5px rgba(0,0,0,0.3);
 }
 
 .instructions {
+	text-shadow: 2.5px 2.5px rgba(0,0,0,0.3);
 	margin-top: 3em;
 }
 
@@ -206,6 +212,7 @@ i {
 }
 
 .splash-page-section-wrapper img {
+	box-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
 	height: 200px;
 	width: 200px;
 	margin-top: 2em;
@@ -294,6 +301,7 @@ i {
 
 .scraper {
 	height: 50px;
+	box-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
 }
 
 .item_list {
@@ -361,7 +369,8 @@ a.flex-next {
 }
 
 .down_arrows_row{
-margin-top: 10px;
+	text-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
+	margin-top: 10px;
 }
 
 .left_down_arrow{
@@ -478,11 +487,13 @@ top: -150px;
 }
 
 .get_images_header{
+	text-shadow: 2.75px 2.75px rgba(0,0,0,0.2);
 	margin-top: 1em;
 	margin-bottom: 2em;
 }
 
 .what_gift_instructions-app {
+	text-shadow: 2.75px 2.75px rgba(0,0,0,0.2);
 	margin-top: 17px;
 	position: relative;
 	margin-bottom: 0.5em !important;
@@ -534,6 +545,7 @@ top: -150px;
 }
 
 #voters_text {
+	box-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
 	padding: 4px;
 	bottom: 17px;
 	color: rgb(253,238,193);
@@ -599,8 +611,8 @@ top: -150px;
 }
 
 .gifter{
-	position: relative;
-	left: -20px;
+	/*position: relative;
+	left: -20px;*/
 }
 
 .poll_show_page_photo{
@@ -614,6 +626,7 @@ top: -150px;
 
 
 .poll_show_photo_button{
+	box-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
 	position: relative;
 	right: -96px;
 	top: -268px;
@@ -630,7 +643,7 @@ top: -150px;
 }
 
 .itemvote_list_container{
-
+	margin-top: -30px;
 }
 
 .voted_accomplice{
@@ -691,6 +704,7 @@ top: -150px;
 	position: relative;
 	left: 0px;
 	top: 0px;
+	box-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
 }
 
 #add_gift_URL_line {
@@ -752,10 +766,10 @@ top: -150px;
 	top: 20px;
 }
 
-.gifter_giftee_container{
+.gifter_giftee_container {
 	padding-top: 30px;
-	width: 970px;
-	/*height: 220px;*/
+	/* width: 470px; */
+	/* height: 220px; */
 	display: inline-flex;
 	margin: 0 auto;
 }
@@ -815,6 +829,7 @@ top: -150px;
 }
 
 .whats_the_occasion_text{
+	text-shadow: 2.5px 2.5px rgba(0,0,0,0.3);
 	position: relative;
 	top: -136px;
 	display: inline-block;
@@ -911,15 +926,17 @@ border-radius: 1em;
 	height: 188px;
 	border: solid .4em rgba(23,44,71,0.3);
 	border-radius: .1em;
-	box-shadow: 1px 1px 1px 1px rgb(12,13,23);
+	/*box-shadow: 1px 1px 1px 1px rgb(12,13,23);*/
 }
 
 .welcome-page-4-instructions{
+	text-shadow: 2.5px 2.5px rgba(0,0,0,0.3);
 	margin-top: 70px;
 	margin-bottom: 40px;
 }
 
 .welcome-instructions-3{
+	text-shadow: 2.5px 2.5px rgba(0,0,0,0.5);
 	margin-top: 60px;
 	margin-bottom: 27px;
 }
@@ -931,7 +948,7 @@ border-radius: 1em;
 }
 
 .uploader{
-
+	box-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
 }
 
 
@@ -971,6 +988,7 @@ border-radius: 1em;
 }
 
 .pick_friends_instructions-app {
+	text-shadow: 2.5px 2.5px rgba(0,0,0,0.4);
 	margin-top: 60px;
 	margin-bottom: 70px;
 }

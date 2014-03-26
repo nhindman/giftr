@@ -192,7 +192,7 @@ function onClose(response){
     $('#recipient').attr('src', "http://graph.facebook.com/" + friend_id + "/picture?type=large").attr('width', "180px")
     $('.giftee').toggleClass('hidden')
     $('.occasion_container').append("<h1 class='whats_the_occasion_text'>What's the occasion?</h1>")
-    $('.occasion_container').append("<input type='text' class='form-control' id='occasion_input' name='new_occasion_input' placeholder='Enter The Occasion' onfocus='this.placeholder=''' onfocusout='this.placeholder='Enter Gift URL''>")
+    $('.occasion_container').append("<input type='text' class='form-control' id='occasion_input' name='new_occasion_input' placeholder='Enter The Occasion (e.g., Birthday, Bar Mitzvah)' onfocus='this.placeholder=''' onfocusout='this.placeholder='Enter Gift URL''>")
     $('.go_to_2ndpage').show();
   // }
 };
