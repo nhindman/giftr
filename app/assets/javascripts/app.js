@@ -22,13 +22,13 @@ function resetSelector(){
 
       var FB_notification = function(accomplice, poll_id){
         FB.api('https://graph.facebook.com/', 'post', {
-            id: "http://shielded-sands-2955.herokuapp.com/polls/" + poll_id,
+            id: "http://getgiftr.herokuapp.com/polls/" + poll_id,
             scrape: true
           }, function(response){
             FB.ui({
             method: 'send',
             to: [accomplice],
-            link: "http://shielded-sands-2955.herokuapp.com/polls/" + poll_id,
+            link: "http://getgiftr.herokuapp.com/polls/" + poll_id,
             redirect_uri: window.location.host+"/polls/"+poll_id
             }, fbCallback)
           })
