@@ -539,7 +539,7 @@ var appendVotesToPhotos = function(votes){
       console.log("if of appendVotesToPhotos fired")
       selector = '#' + vote.attributes.id
       $vote_img = $(selector);
-      $vote_img.addClass('.voted_accomplice')
+      $vote_img.addClass('voted_accomplice')
       id = vote.attributes.photo_id
       $vote_img.appendTo($('#photo-id-'+vote.attributes.photo_id))
     }
