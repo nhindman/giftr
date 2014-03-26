@@ -388,15 +388,6 @@ var ItemListView = Backbone.View.extend({
     this.listenTo(this.collection, "all", this.render)
   },
 
-  // GOING TO FIX THIS, DONT ERASE
-  // create_finish_button: function () {
-  //   //if two gifts exist then append button
-  //   if (itemsListView.collection.length > 1) {
-  //     var finished_adding_gifts_button = $('<button>Finished Adding Gifts</button>')
-  //     $('#item_list').append(finished_adding_gifts_button)
-  //   }
-  // }, 
-
   el: function(){
     return $('.item_list')
   }, 
@@ -414,7 +405,7 @@ var ItemListView = Backbone.View.extend({
       });
       self.itemViews.push(new_view)
       // console.log("THEEL", el)
-      if (self.$el.closest('.item').length) { //if an image already exists in item_list append to item_list_2
+      if (self.$el.find('img').length) { //if an image already exists in item_list append to item_list_2
         alert("img exists inside item_list")
         $('item_list_2').append(new_view.render().$el)
       } else { //if not append image to item_list
