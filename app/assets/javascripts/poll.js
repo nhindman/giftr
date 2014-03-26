@@ -305,7 +305,7 @@ var PhotoVoteListView = Backbone.View.extend({
         model: photo.attributes
       });
       self.photoViews.push(new_view)
-      self.$el.append(new_view.render().$el.append("<button class=\"poll_show_photo_button btn btn-lg btn-danger\" data-action='vote'>VOTE</button>"))
+      self.$el.append(new_view.render().$el.append("<button class=\"poll_show_photo_button btn btn-lg\" data-action='vote'>VOTE</button>"))
       }
     })
 
@@ -413,7 +413,15 @@ var ItemListView = Backbone.View.extend({
         model: item
       });
       self.itemViews.push(new_view)
-      self.$el.append(new_view.render().$el)
+      // console.log("THEEL", el)
+      if (self.$el.closest('.item').length) { //if an image already exists in item_list append to item_list_2
+        alert("img exists inside item_list")
+        $('item_list_2').append(new_view.render().$el)
+      } else { //if not append image to item_list
+        alert("img doesn't exist inside item_list so appending one now")
+        self.$el.append(new_view.render().$el)
+      }
+      
     })
 
 
@@ -455,7 +463,7 @@ var ItemVoteListView = Backbone.View.extend({
         model: item
       });
       self.itemViews.push(new_view)
-      self.$el.append(new_view.render().$el.append("<button class=\"poll_show_item_button btn btn-lg btn-danger\" data-action='vote'>VOTE</button>"))
+      self.$el.append(new_view.render().$el.append("<button class=\"poll_show_item_button btn btn-lg\" data-action='vote'>VOTE</button>"))
     })
 
   }

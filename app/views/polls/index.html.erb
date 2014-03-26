@@ -6,8 +6,8 @@
       
       <div id="section0" class="section">
               <div id="splash-page-1" class="clearfix splash-page-section-wrapper"> <!-- Splash Page First Section -->
-                <h1 class="choose_friend_polls_index">Choose the friend you're buying for</h1>        
-                <%=image_tag("simley_2.jpg", alt: "Example Image", id: "recipient")%>
+                <h1 class="choose_friend_polls_index">Choose The Friend You're Buying For</h1>        
+                <%=image_tag("", alt: "", id: "recipient")%>
                 <button class="btn btn-lg btn-danger giftee" id="block">Select Friend</button>
                 <div class="occasion_container">
                   <button class='btn btn-danger btn-lg go_to_2ndpage'>GO</button>
@@ -20,7 +20,7 @@
         <div id="app-setup-page-2" class="clearfix splash-page-section-wrapper"> <!-- Splash Page Second Section -->
           <!-- <h1 class="add_gift_ideas_instructions-app selection-page-section-instructions">Add gift ideas</h1> -->
           
-          <h1 class="what_gift_instructions-app selection-page-section-instructions">What are your gift ideas?</h1>
+          <h1 class="what_gift_instructions-app selection-page-section-instructions">What Are Your Gift Ideas?</h1>
           <div class="find_images_container">
           <h1 class="get_images_header">Find images online or Upload a photo:</h1>
           <div class="down_arrows_row">
@@ -41,6 +41,9 @@
           <div class="row-fluid">   
             <div class="span12 item_list"></div>
           </div>
+          <div class="row-fluid">
+            <div class="span12 item_list_2"></div>
+          </div>  
           <div class="scrapedImagesHover" style="display:none;">
             <%=image_tag("cancel-new.png", :class => "close-me")%>
             <h1 class="choose_scraped_image">Click An Image To Add It:</h1> 
@@ -56,13 +59,8 @@
 
       <div id="section3" class="section">
         <div id="splash-page-3" class="clearfix splash-page-section-wrapper"> <!-- Splash Page Third Section -->
-          <h1 class="pick_friends_instructions-app selection-page-section-instructions">Pick the friends who know them best</h1>
+          <h1 class="pick_friends_instructions-app selection-page-section-instructions">Create A Private Facebook Poll</h1>
           <div id="index-accomplices">
-            <%=image_tag("friend_pics/kate.png", alt: "Example Image", id: "index-img-1")%>
-            <%=image_tag("friend_pics/rashad.jpg", alt: "Example Image", id: "index-img-2")%>
-            <%=image_tag("friend_pics/natalie.jpg", alt: "Example Image", id: "index-img-3")%>
-            <%=image_tag("friend_pics/jtr.jpg", alt: "Example Image", id: "index-img-3")%>
-            <%=image_tag("friend_pics/norman.jpg", alt: "Example Image", id: "index-img-3")%>
           </div>
           <button class="btn btn-danger btn-lg mutual-friends-link" id="">Select Friends</button>
           

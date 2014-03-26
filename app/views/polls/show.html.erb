@@ -20,6 +20,7 @@
       <div class="middle_header">
        <h1 class="advice">Help <%= @poll.creator.name.split(" ").shift().to_s %> choose a <%= @poll.occasion.sub(/^(\w)/) {|s| s.capitalize} %> gift for <%= @poll.recipient_name.split(" ").shift().to_s %>. </h1>
       </div>
+      <hr>
   <div class="row-fluid itemvote_list_container">
     <h1 class="vote_for_fav">Vote for your favorite:</h1>
     <div class="span12 itemvote_list">

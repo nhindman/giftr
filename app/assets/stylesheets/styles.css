@@ -26,13 +26,13 @@
 	margin-top: 5px;
 	text-align: center;
 	vertical-align: middle;
-	color: white;
+	color: black;
 	font-family: 'Gafata', sans-serif;
 }
 
 .vote_for_fav{
 	text-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
-	color: white;
+	color: black;
 	font-family: 'Gafata', sans-serif;
 }
 
@@ -82,8 +82,8 @@
 
 body {
 	padding-top: 3em;
-	background-image: url('bg_images/seamless-peacock-blues-tileable-patterns-1.png');
-	background-size: repeat;
+	background-image: url('bg_images/sky.jpg');
+	background-size: cover;
 	font-family: 'Gafata', sans-serif;
 }
 
@@ -139,6 +139,10 @@ i {
 	font-size: 25px;
 }
 
+.fa {
+	color: rgba(0,0,0,0.8) !important;
+}
+
 .choose_friend_welcome {
 	text-shadow: 2.5px 2.5px rgba(0,0,0,0.3);
 	margin-top: -27px;
@@ -147,8 +151,9 @@ i {
 
 #splash-page-1-welcome{
 	z-index: 0;
-	background-image: url("bg_images/picnic.jpg");
-	background-size: repeat;
+	background-image: url("bg_images/table_gifts.jpg");
+	background-position: center;
+	background-size: cover;
 }
 
 .choose_friend_polls_index {
@@ -239,15 +244,17 @@ i {
 
 #splash-page-1 { 
 	/*margin-top: 3.6em;*/
-	background-image: url("bg_images/picnic.jpg");
-	/*background-size: repeat;*/
+	background-image: url("bg_images/table_gifts.jpg");
+	background-position: center;
+	background-size: cover;
 }
 
 /*---------------------------- Splash Page 2 Styling ------------------------------------------*/
 
 #splash-page-2 { 
-	background-image: url("bg_images/baseball5.jpg");
-	/*background-repeat:no-repeat;*/
+	background-image: url("bg_images/camera_background.jpg");
+	background-position: center;
+	background-size: cover;
 }
 
 .welcome_page_2_container { 
@@ -369,7 +376,7 @@ a.flex-next {
 }
 
 .down_arrows_row{
-	text-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
+	/*text-shadow: 2.5px 2.5px rgba(0,0,0,0.2);*/
 	margin-top: 10px;
 }
 
@@ -437,9 +444,9 @@ a.flex-next {
 /*---------------------------- Splash Page 3 Styling ------------------------------------------*/
 
 #splash-page-3 { 
-	background-image: url("bg_images/serenade4.jpg");
-	/*background-repeat:no-repeat;*/
-	/*background-size: cover;*/
+	background-image: url("bg_images/table_stuff.jpg");
+	background-position: center;
+	background-size: cover;
 }
 
 #index-accomplices {
@@ -447,11 +454,14 @@ a.flex-next {
 	top: -50px;
 }
 
+
+
 /*---------------------------- Splash Page 4 Styling ------------------------------------------*/
 
 #splash-page-4 { 
-	background-image: url("bg_images/ballet2.jpg");
-	/*background-size: no-repeat;*/
+	background-image: url("bg_images/heels.jpg");
+	background-position: center;
+	background-size: cover;
 }
 
 #splash-page-4 button { /*Selects the sign in button on splash page four*/
@@ -460,18 +470,20 @@ a.flex-next {
 }
 
 .sign_in_button {
+	position: relative !important;
 	margin: 0 auto;
 	width: 230px !important;
+	top: 100px !important;
 }
 
 .mutual-friends-link {
-	margin: -1.7em auto 0 auto;
+	margin: 0 auto;
+	right: 30px;
 	display: block;
 	position: relative;
-	top: -68px;
+	top: 12px;
 	height: 60px;
 	width: 170px;
-	font-size: 25px;
 }
 
 .fb_iframe_widget {
@@ -509,7 +521,9 @@ top: -150px;
 	position: relative;
 	/*margin-top: 12em;*/
 	/*top: 0px;*/
-	background-image: url("bg_images/baseball5.jpg");
+	background-image: url("bg_images/camera_background.jpg");
+	background-position: center;
+	background-size: cover;
 	/*background-repeat:no-repeat;*/
 	/*background-size: cover;*/
 }
@@ -520,9 +534,10 @@ top: -150px;
 
 #app-setup-page-3 {
 
-	background-image: url("bg_images/serenade4.jpg");
-	/*background-repeat:no-repeat;*/
-	/*background-size: cover;*/
+	background-image: url("bg_images/sky.jpg");
+	background-position: center;
+	background-size: cover;
+
 }
 
 .selection-page-section-instructions {
@@ -531,7 +546,8 @@ top: -150px;
 }
 
 #recipient {
-	margin-top: 30px;
+	margin-top: -20px;
+	background-color: rgba(0,0,0,0.6);
 }
 
 .gift-name {
@@ -548,8 +564,8 @@ top: -150px;
 	box-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
 	padding: 4px;
 	bottom: 17px;
-	color: rgb(253,238,193);
-	background-color: rgb(178,50,47);
+	color: white;
+	background-color: rgb(85,27,39);
 	/* right: 0px; */
 	position: absolute;
 	writing-mode: tb-rl;
@@ -626,6 +642,8 @@ top: -150px;
 
 
 .poll_show_photo_button{
+	color:white;
+	background-color: rgba(85,27,39,0.9);
 	box-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
 	position: relative;
 	right: -96px;
@@ -652,6 +670,8 @@ top: -150px;
 }
 
 .poll_show_item_button{
+	color:white;
+	background-color: rgba(85,27,39,0.9);
 	position: relative;
 	right: -96px;
 	top: -256px;
@@ -786,7 +806,7 @@ top: -150px;
 	min-height: 54px;
 	/*right: 0;*/
 	left: 0;
-	background-color: rgba(255,255,255,0.7);
+	background-color: rgba(0,0,0,0.7);
 	padding: .6em;
 	position: fixed;
 	bottom: 0;
@@ -899,6 +919,12 @@ border-radius: 1em;
     margin-left: 7px;
 }
 
+.btn-danger{
+	background-color: rgb(164,38,43);
+	font-size: 23px;
+	border: solid rgba(0,0,0,0.7);
+}
+
 .btn-file input[type=file] {
 		font-size: 20px !important; 
 		height: 50px;
@@ -921,8 +947,25 @@ border-radius: 1em;
 	margin-top: .3em;
 }
 
+hr {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-style: solid none;
+  border-width: 4px 0;
+  width: 1770px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(0,0,0,0.5);
+  position: relative;
+  top: -40px;
+  color: black;
+  left: -150px;
+}
+
 .bigborders{
-	width: 202px;
+	width: 188px;
 	height: 188px;
 	border: solid .4em rgba(23,44,71,0.3);
 	border-radius: .1em;
@@ -949,6 +992,11 @@ border-radius: 1em;
 
 .uploader{
 	box-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
+}
+
+.item_list_2 {
+	position: relative;
+	right: 20px;
 }
 
 
@@ -1027,7 +1075,7 @@ border-radius: 1em;
 
 @media all and (max-width: 672px){
 	h1 {
-		font-size: 2em;
+		font-size: 1.7em;
 	}
 	.what_gift_instructions-app {
 		/*margin-top: -3.8em;*/
@@ -1111,7 +1159,7 @@ border-radius: 1em;
 		top: -27px;
 	}
 	.whats_the_occasion_text {
-		font-size: 28px;
+		font-size: 1.7em;
 		position: relative;
 		top: -66px;
 		right: -49px;
@@ -1221,6 +1269,22 @@ border-radius: 1em;
 	.itemvote_list .item{
 		width: 200px;
 	}
+	.bigborders{
+		width: 148px;
+		height: 138px;
+	}
+	.advice {
+		width: 340px;
+	}
+	.middle_header{
+		left: -17px;
+	}
+	hr{
+		width: 260px;
+	}
+	#accomplice-photos{
+		width: 329px;
+	}
 }
 
 @media all and (max-width: 673px){
@@ -1248,7 +1312,7 @@ border-radius: 1em;
 
 
 @media all and (max-width: 990px){
-	.item_list{	
+/*	.item_list{	
 		margin-top: 237px;
 		margin-left: 240px;
 		position: relative;
@@ -1284,21 +1348,21 @@ border-radius: 1em;
 	}
 	#accomplice-photos {
 	width: 320px;
-	}
+	}*/
 }
 
 @media all and (max-width: 350px){
 	.gifter{
 		left: -55px;
 	}
-	.middle_header{
+	/*.middle_header{
 		left:-47px;
-	}
+	}*/
 	.gift_recipient{
 		right: 55px;
 	}
 	.itemvote_list_container {
-	margin-top: 317px;
+	margin-top: -13px;
 	}
 }
 
@@ -1368,6 +1432,7 @@ border-radius: 1em;
 }*/
 
 #block{
+	/*box-shadow: 2.5px 2.5px rgba(0,0,0,0.2);*/
 	display: block;
 	position: relative;
 	top: -28px;
