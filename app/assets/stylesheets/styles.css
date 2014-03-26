@@ -1267,7 +1267,9 @@ hr {
 		margin-left: 20px !important;
 		right: 60px !important;
 	}
-
+	hr {
+		left: 0px !important;
+	}
 	/*.itemvote_list .item{
 		width: 250px;
 	}*/
