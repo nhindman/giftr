@@ -357,8 +357,6 @@ var ItemView = Backbone.View.extend({
       // console.log (website)
         spinner.remove();
         self.$el.attr('style', 'background-image:url("'+image+'")');
-        self.$el.wrap("<a href="+website+"></a>");
-        $("a").attr("target", "_blank");
       })
     this.resetValues();
     return this;
