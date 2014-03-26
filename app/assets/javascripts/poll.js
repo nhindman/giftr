@@ -479,7 +479,7 @@ var VoteList = Backbone.Collection.extend({
 //     this.render();
 //   },
 
-//   // template: _.template($('#accomplice-view-template').html()),
+//   template: _.template($('#accomplice-view-template').html()),
 
 //   render: function(){
 //     this.$el.html(this.template(this.model.attributes));
@@ -526,7 +526,7 @@ var appendVotesToItems = function(votes){
       console.log("if of appendVotesToItems fired")
       selector = '#' + vote.attributes.id
       $vote_img = $(selector);
-      $vote_img.addClass('.voted_accomplice')
+      $vote_img.addClass('voted_accomplice')
       id = vote.attributes.item_id
       $vote_img.appendTo($('#item-id-'+vote.attributes.item_id))
     }
