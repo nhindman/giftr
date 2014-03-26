@@ -1261,6 +1261,7 @@ border-radius: 1em;
 		right: 20px;
 	}
 	.vote_for_fav{
+		margin-top: -50px;
 		margin-bottom: 30px;
 	}
 	#accomplice-photos {
