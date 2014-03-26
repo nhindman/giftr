@@ -404,14 +404,19 @@ var ItemListView = Backbone.View.extend({
         model: item
       });
       self.itemViews.push(new_view)
+      console.log("NEWVIEW HERE", new_view)
+      console.log("ITEMLIST LENGTH:", ($('.item_list').find('.item').length))
+      console.log("SELFEL LENGTH:", self.$el.find('.item').length)
+      console.log("OBJECT?",self.$el.find('.item'))
       // console.log("THEEL", el)
-      if (self.$el.find('img').length) { //if an image already exists in item_list append to item_list_2
-        alert("img exists inside item_list")
-        $('item_list_2').append(new_view.render().$el)
-      } else { //if not append image to item_list
-        alert("img doesn't exist inside item_list so appending one now")
-        self.$el.append(new_view.render().$el)
-      }
+      // var item_list_2 = $('.item_list_2')
+      // if (self.$el.find('.item').length > 0) { //if an image already exists in item_list append to item_list_2
+      //   console.log("img exists inside item_list")
+      //   item_list_2.append(new_view.render().item_list_2);
+      // } else { //if not append image to item_list
+      //   console.log("img doesn't exist inside item_list so appending one now")
+      self.$el.append(new_view.render().$el)
+      // }
       
     })
 
