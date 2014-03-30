@@ -28,6 +28,7 @@ var Item = Backbone.Model.extend({
 
 var ItemFormView = Backbone.View.extend({
   initialize: function(){
+
     console.log("initialize fires") 
     var fileupload = $('#files');
     fileupload.on('change', function(e){
@@ -45,9 +46,65 @@ var ItemFormView = Backbone.View.extend({
       reader.readAsDataURL($('#files')[0].files[0]);
       return false;
     });
+
+    var fileupload_2 = $('#files_2');
+    fileupload_2.on('change', function(e){
+      console.log("file onchange2 fires")  
+      e.preventDefault();
+      var reader = new FileReader();
+      reader.onload = (function(theFile) {
+        itemsListView.collection.create({
+          name: $('#new_item_name_input_2').val(),
+          website: $('#new_item_url').val(),
+          poll_id: poll.id,
+          image: reader.result
+        })
+      });
+      reader.readAsDataURL($('#files_2')[0].files[0]);
+      return false;
+    });
+
+    var fileupload_3 = $('#files_3');
+    fileupload_3.on('change', function(e){
+      console.log("file onchange2 fires")  
+      e.preventDefault();
+      var reader = new FileReader();
+      reader.onload = (function(theFile) {
+        itemsListView.collection.create({
+          name: $('#new_item_name_input_2').val(),
+          website: $('#new_item_url').val(),
+          poll_id: poll.id,
+          image: reader.result
+        })
+      });
+      reader.readAsDataURL($('#files_3')[0].files[0]);
+      return false;
+    });
+
     $('body').on('click', '.close-me', function() {
-      console.log("CLOSE ME CLICKED")
-      $('.scrapedImagesHover').toggle()
+      console.log("CLOSE ME CLICKED");
+      $('.scrapedImagesHover').toggle();
+    });
+
+    $('.add_photo_url_1_text').on('click', function(){
+      $('.add_photo_url_1_text').toggleClass('hidden');
+      $('.or_text').toggleClass('hidden');
+      $('#new_item_url').show();
+      $('.scraper').show();
+    });
+
+    $('.add_photo_url_2_text').on('click', function(){
+      $('.add_photo_url_2_text').toggleClass('hidden');
+      $('.or_text_2').toggleClass('hidden');
+      $('#new_item_url_2').show();
+      $('.scraper_2').show();
+    });
+
+    $('.add_photo_url_3_text').on('click', function(){
+      $('.add_photo_url_3_text').toggleClass('hidden');
+      $('.or_text_3').toggleClass('hidden');
+      $('#new_item_url_3').show();
+      $('.scraper').show();
     });
 
     this.render()
@@ -61,6 +118,8 @@ var ItemFormView = Backbone.View.extend({
 
   events: {
     "click .scraper": "scrapeImage", 
+    "click .scraper_2": "scrapeImage",
+    "click .scraper_3": "scrapeImage"
   }, 
 
   scrapeImage: function(e) {
@@ -73,15 +132,34 @@ var ItemFormView = Backbone.View.extend({
   },
 
   createPhoto: function() {
+  var data;
+  if ($('#new_item_url').val().length > 0){
+    console.log ("url 1 has something in it")
+    data = {
+      poll_id: poll.id,
+      website: $('#new_item_url').val(),
+      url: $('#new_item_url').val()
+    }
+  } else if ($('#new_item_url_2').val().length > 0) {
+    console.log ("url 2 has something in it")
+    data = {
+      poll_id: poll.id,
+      website: $('#new_item_url_2').val(),
+      url: $('#new_item_url_2').val()
+    }
+  } else if ($('#new_item_url_3').val().length > 0) {
+    console.log ("url 2 has something in it")
+    data = {
+      poll_id: poll.id,
+      website: $('#new_item_url_3').val(),
+      url: $('#new_item_url_3').val()
+    }
+  }   
     console.log("createImage fired!");
         $.ajax({
           type: "POST",
           url: "/photos/scrap",
-          data: {
-            poll_id: poll.id,
-            website: $('#new_item_url').val(),
-            url: $('#new_item_url').val()
-          },
+          data: data,
           success: function(data) {
             console.log("HEREDATA:");
             console.log(data);
@@ -97,17 +175,6 @@ var ItemFormView = Backbone.View.extend({
                       itemMargin: 15,
                       directionNav: true,
                       slideToStart: 0
-                      // start: function(slider) {
-                      //     $('a.slide_thumb').click(function() {
-                      //         $('.flexslider').show();
-                      //         var slideTo = $(this).attr("rel")//Grab rel value from link;
-                      //         var slideToInt = parseInt(slideTo)//Make sure that this value is an integer;
-                      //         if (slider.currentSlide != slideToInt) {
-                      //             slider.flexAnimate(slideToInt)//move the slider to the correct slide (Unless the slider is also already showing the slide we want);
-                      //         }
-                      //     });
-                      // }
-
                   });
              },500);
             $('.flexslider').removeData("flexslider");
@@ -123,7 +190,7 @@ var ItemFormView = Backbone.View.extend({
         return $('.url_input_and_button')
       },
 
-  })
+})
 
 var Photo = Backbone.Model.extend({
 })
@@ -190,19 +257,7 @@ var PhotoView = Backbone.View.extend({
       });
       
       this.resetValues();
-      return false;
-    // console.log("addSelectedPhoto???")
-    // $('.scrapedImagesHover').toggle();
-    // console.log("LOOKYLOOKY:",photoListView.collection)
-    // this.model.save({"selected": true}, {
-    //   success: function() {
-    //     appendSelectedPhotos(photoListView.collection);
-    //     console.log("SUCCESS");
-    // },
-    // error: function() {
-    //   console.log("OH, no!");
-    // }});
-    // this.resetValues();    
+      return false; 
   },  
 
   resetValues: function() {
@@ -387,7 +442,7 @@ var ItemListView = Backbone.View.extend({
   },
 
   el: function(){
-    return $('.item_list')
+    return $('.add_gift_1')
   }, 
 
   render: function() {
@@ -397,29 +452,34 @@ var ItemListView = Backbone.View.extend({
       view.remove();
     })
     this.itemViews = []
+    console.log("HERES COLLECTION.models:", this.collection.models)
     _.each(this.collection.models, function(item){
       var new_view = new ItemView({
         model: item
       });
       self.itemViews.push(new_view)
       console.log("NEWVIEW HERE", new_view)
-      console.log("ITEMLIST LENGTH:", ($('.item_list').find('.item').length))
+      console.log("ITEMLIST LENGTH:", ($('.add_gift_1').find('.item').length))
       console.log("SELFEL LENGTH:", self.$el.find('.item').length)
       console.log("OBJECT?",self.$el.find('.item'))
       // console.log("THEEL", el)
-      // var item_list_2 = $('.item_list_2')
-      // if (self.$el.find('.item').length > 0) { //if an image already exists in item_list append to item_list_2
-      //   console.log("img exists inside item_list")
-      //   item_list_2.append(new_view.render().item_list_2);
-      // } else { //if not append image to item_list
-      //   console.log("img doesn't exist inside item_list so appending one now")
-      self.$el.append(new_view.render().$el)
-      // }
-      
-    })
-
-
-  }
+      var add_gift_2 = $('.add_gift_2')
+      var add_gift_3 = $('.add_gift_3')
+      if (self.$el.find('.item').length > 0) { //if an image already exists in add_gift_1
+        console.log("item exists inside add_gift_1")
+        if (add_gift_2.find('.item').length > 0) { //check if image already exists in add_gift_2
+          console.log("item exists inside add_gift_2 so append to 3")
+          add_gift_3.append(new_view.render().$el); //if it does then append to add_gift_3
+        } else { //if image doesn't already exist in add_gift_2
+          console.log("item doesn't exist inside add_gift_2 so appending to 2")
+          add_gift_2.append(new_view.render().$el); // then append to add_gift_2
+        }
+      } else { //image doesn't already exist in add_gift_1
+        console.log("item doesn't exist inside add_gift_1 so append to add_gift_1")
+        self.$el.append(new_view.render().$el) // then append to add_gift_1
+      }
+      })  
+    }
 })
 
 var ItemVoteListView = Backbone.View.extend({
@@ -562,13 +622,32 @@ var appendSelectedPhotos = function(photo){
         $("a").attr("target", "_blank");
         // if (!checkForExisting(image,"#item_list")) {
           console.log("THIS PHOTO GETTING APPENDED:",selected_photo)
-          $('.item_list').append(selected_photo);
+          var add_gift_1 = $('.add_gift_1')
+          var add_gift_2 = $('.add_gift_2')
+          var add_gift_3 = $('.add_gift_3')
+          if (add_gift_1.find('.item').length > 0) { //if an image already exists in add_gift_1
+            console.log("item exists inside add_gift_1")
+            if (add_gift_2.find('.item').length > 0) { //check if image already exists in add_gift_2
+              console.log("item exists inside add_gift_2 so append to 3")
+              add_gift_3.append(selected_photo); //if it does then append to add_gift_3
+            } else { //if image doesn't already exist in add_gift_2
+              console.log("item doesn't exist inside add_gift_2 so appending to 2")
+
+              add_gift_2.append(selected_photo); // then append to add_gift_2
+            }
+          } else { //image doesn't already exist in add_gift_1
+            console.log("item doesn't exist inside add_gift_1 so append to add_gift_1")
+            add_gift_1.append(selected_photo) // then append to add_gift_1
+          }
         // }
       // }
     // })
     // itemVoteSetup();
     // photoVoteListView.collection.add(photo);
   }
+var change_top = function(obj) {
+  obj.css('top', '-177px')
+}  
 
 var checkForExisting = function(url,obj){
   var itemlist = $(obj).find("div");
