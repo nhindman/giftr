@@ -82,7 +82,7 @@
 
 body {
 	padding-top: 3em;
-	background-color: rgb(210,210,210);
+	background-color: rgb(210,210,228);
 	background-size: cover;
 	font-family: 'Gafata', sans-serif;
 }
@@ -1645,6 +1645,7 @@ h4{
 	background-position: center;
 	background-size: contain;
 	width: auto;
+	/*z-index: 10000000;*/
 }
 
 .scraped_photo:hover {

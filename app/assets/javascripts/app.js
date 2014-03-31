@@ -83,6 +83,11 @@ var mq = window.matchMedia( "(min-width: 500px)" );
 
 $(document).ready(function() {    
  // alert($("[data-website]").length);
+ $('body').on('click','.noscroll', function(event) {
+    var theHref = $(this).attr('href');
+    window.open(theHref);
+  });
+
   $('.go_to_2ndpage').on('click', function(){
       $.ajax({
         type: "PUT", 

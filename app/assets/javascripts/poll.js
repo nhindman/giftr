@@ -218,30 +218,20 @@ var PhotoView = Backbone.View.extend({
     var self = this;
     var photo = $('<img src="' + this.model.url + '">');
     var photo_item = this.$el;
+    var linkImage = $('<a />').attr({'href':this.model.website});
     photo.addClass('scraped_photo');
     photo_item.attr('id', 'photo-id-'+this.model.id); 
     if ($('.flexslider').is(":visible")){   
-      photo.addClass('col-lg-3').addClass('col-md-3');  
+      photo.addClass('col-lg-3').addClass('col-md-3');
       photo_item.append(photo);
     }else{
       photo_item.addClass('click_me');
       photo.addClass('poll_show_page_photo');
-      photo_item.append(photo);
-      photo_item.attr('data-website', self.model.website);
+      linkImage.addClass('noscroll');
+      linkImage.append(photo);
+      photo_item.append(linkImage);
     }
-    
-// $("[data-website]").on("click",function(){
-//  alert("Hi There!");
-
-// });
-
-    // $(document).on('click', function(e) {
-    //   var targetElement = e.target;
-    //   if(targetElement){
-    //     var site = $(targetElement).data("website");
-    //     window.open(site);
-    //   }
-    // });
+  
     this.resetValues();
     return this;
     
@@ -269,7 +259,7 @@ var PhotoView = Backbone.View.extend({
       });
       
       this.resetValues();
-      return false; 
+      // return false; 
   },  
 
   resetValues: function() {
@@ -424,6 +414,7 @@ var ItemView = Backbone.View.extend({
       // console.log (website)
         spinner.remove();
         self.$el.attr('style', 'background-image:url("'+image+'")');
+        self.$el.addClass('nowindow')
       })
     this.resetValues();
     return this;
@@ -654,27 +645,15 @@ var appendSelectedPhotos = function(photo){
           }
 
 
-          // $(document).on('click',function(e) {
-          //   var targetElement = e.target;
-          //   if(targetElement){
-          //       var site = $(targetElement).data("website");
-          //       window.open(site);
-          //   }
-          // });
-        
-          // $(document).on('click', '.click_me', function(e) {
-          //   var targetElement = e.target;
-          //   if(targetElement){
-          //       var site = $(targetElement).data("website");
-          //       window.open(site);
-          //   }
-          // });
-          
-
-
-  //         $("[data-website"]).bind("click",function(){
-  // //do soemthing
- 
+          $(document).on('click', '.item', function(e) {
+            var targetElement = e.target;
+            if(targetElement.className.indexOf('noscroll') == -1 && targetElement.className.indexOf('nowindow') == -1) {
+              if(targetElement){
+                  var site = $(targetElement).data("website");
+                  window.open(site);
+              }
+            }
+          });
 };
 
 var change_top = function(obj) {
