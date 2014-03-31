@@ -77,13 +77,12 @@ var user;
 var vote;
 var photo;
 var gift_idea;
-var website;
 var tip;
 var new_view;
 var mq = window.matchMedia( "(min-width: 500px)" );
 
 $(document).ready(function() {    
-
+ // alert($("[data-website]").length);
   $('.go_to_2ndpage').on('click', function(){
       $.ajax({
         type: "PUT", 

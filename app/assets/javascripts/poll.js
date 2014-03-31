@@ -204,16 +204,12 @@ var PhotoView = Backbone.View.extend({
   initialize: function() {
     // this.render();
     var self = this;
-
-
-    // $('.scraped_photo').off().on('click', function(e) {
-      
-    // });  
   },
 
   events: {
     "click .scraped_photo": 'addSelectedPhoto', 
-    "click [data-action='vote']": 'vote'
+    "click [data-action='vote']": 'vote',
+    "click .click_me" :"testing"
   },
 
   tagName: 'li',
@@ -231,12 +227,28 @@ var PhotoView = Backbone.View.extend({
       photo_item.addClass('click_me');
       photo.addClass('poll_show_page_photo');
       photo_item.append(photo);
+      photo_item.attr('data-website', self.model.website);
     }
+    
+// $("[data-website]").on("click",function(){
+//  alert("Hi There!");
+
+// });
+
+    // $(document).on('click', function(e) {
+    //   var targetElement = e.target;
+    //   if(targetElement){
+    //     var site = $(targetElement).data("website");
+    //     window.open(site);
+    //   }
+    // });
     this.resetValues();
     return this;
     
   },
-
+  testing : function(){
+  alert("asdf");
+  },
   addSelectedPhoto: function(e) {
     console.log("!!!", this)
     $('.scrapedImagesHover').hide();
@@ -619,8 +631,9 @@ var appendSelectedPhotos = function(photo){
         website = photo.website;
         selected_photo.attr('class', 'item col-lg-3 col-md-3');
         selected_photo.attr('style','background-image:url("'+image+'")');
-        selected_photo.wrap("<a href="+website+"></a>");
-        $("a").attr("target", "_blank");
+        selected_photo.attr('data-website', photo.website);
+        // selected_photo.wrap("<a href="+website+"></a>");
+        // $("a").attr("target", "_blank");
         // if (!checkForExisting(image,"#item_list")) {
           console.log("THIS PHOTO GETTING APPENDED:",selected_photo)
           var add_gift_1 = $('.add_gift_1')
@@ -633,19 +646,37 @@ var appendSelectedPhotos = function(photo){
               add_gift_3.append(selected_photo); //if it does then append to add_gift_3
             } else { //if image doesn't already exist in add_gift_2
               console.log("item doesn't exist inside add_gift_2 so appending to 2")
-
               add_gift_2.append(selected_photo); // then append to add_gift_2
             }
           } else { //image doesn't already exist in add_gift_1
             console.log("item doesn't exist inside add_gift_1 so append to add_gift_1")
             add_gift_1.append(selected_photo) // then append to add_gift_1
           }
-        // }
-      // }
-    // })
-    // itemVoteSetup();
-    // photoVoteListView.collection.add(photo);
-  }
+
+
+          // $(document).on('click',function(e) {
+          //   var targetElement = e.target;
+          //   if(targetElement){
+          //       var site = $(targetElement).data("website");
+          //       window.open(site);
+          //   }
+          // });
+        
+          // $(document).on('click', '.click_me', function(e) {
+          //   var targetElement = e.target;
+          //   if(targetElement){
+          //       var site = $(targetElement).data("website");
+          //       window.open(site);
+          //   }
+          // });
+          
+
+
+  //         $("[data-website"]).bind("click",function(){
+  // //do soemthing
+ 
+};
+
 var change_top = function(obj) {
   obj.css('top', '-177px')
 }  
