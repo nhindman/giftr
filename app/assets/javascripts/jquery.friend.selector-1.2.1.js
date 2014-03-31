@@ -292,6 +292,10 @@
       _showSelected($(this));
     });
 
+    $(document).on('click', '.fs-friends', function(){
+      _showSelected($(this));
+    });
+
     $(document).keyup(function(e) {
       if (e.which === 27 && fsOptions.enableEscapeButton === true) {
         _close();
@@ -308,6 +312,10 @@
 
   _select = function(th) {
     var btn = th;
+
+    // $('.checkbox').click(function(){
+    //   _showSelected($(this));
+    // })
 
     if ( btn.hasClass('checked') ) {
 
@@ -338,6 +346,10 @@
     }
 
     _showFriendCount();
+
+    // $('.checkbox').click(function(){
+    //   _showSelected($(this));
+    // })
 
     // _showFriends();
   },

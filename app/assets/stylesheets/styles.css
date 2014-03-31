@@ -332,13 +332,13 @@ i {
 	display: inline-block;
 	margin-left: 20px;
 	margin-right: 19px;
-	width: 250px;
-	height: 250px;
 	border-radius: 0.4em;
 	padding-top: 18.2em;
 	position: relative;
-	top: -1em;
-	box-shadow: 1.7px 1.7px 1.7px 1.7px rgb(12,13,23);
+	top: -4.5em;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+	height: 250px;
+	width: 250px;
 }
 
 /*#itemvote_list .scraped_photo{
@@ -428,18 +428,24 @@ i {
 
 a.flex-prev {
   background-image: url("bg_images/arrow-left.png");
+  background-size: contain;
+  background-position: 0 0;
+  background-color: black;
 }
 
 a.flex-next {
   background-image: url("bg_images/arrow-right.png");
+  background-size: contain;
+  background-position: 0 0;
+  background-color: black;
 }
 
 .flex-direction-nav .flex-prev {
-	color: red !important;
+	color: black !important;
 }
 
 .flex-direction-nav .flex-next {
-	color: red !important;
+	color: black !important;
 }
 
 .down_arrows_row{
@@ -468,19 +474,19 @@ a.flex-next {
 
 .scrapedImagesHover {
 	display: none;
-  color: #fff; 
-  background: rgba(0,0,0,0.91); 
-  padding: 20px;
-  width: 80%;
-  height: 390px;
-  overflow: auto;
-  margin: 0 auto;
-  box-shadow: 0 0 5px #888;
-  opacity: 1;
-  z-index: 999999999999999999999;
-  position: relative;
-  /*left: -116px;*/
-	top: -382px;
+	color: #fff;
+	background: rgba(0,0,0,0.91);
+	padding: 20px;
+	width: 82%;
+	height: 390px;
+	overflow: auto;
+	margin: 0 auto;
+	box-shadow: 0 0 5px #888;
+	opacity: 1;
+	z-index: 999999999999999999999;
+	position: relative;
+	/* left: -116px; */
+	top: -562px;
 }
 
 #add_photo_instructions {
@@ -668,7 +674,9 @@ top: -150px;
 }
 
 .selection-page-section-2-arrow {
-	margin-top: .4em;
+	cursor: pointer;
+	position: relative !important;
+	top: -160px !important;
 }
 
 
@@ -691,9 +699,10 @@ top: -150px;
 .add_gift_box {
 	margin-left: 20px;
 	margin-right: 20px;
+	border-radius: 3px;
 	height: 350px;
 	width: 290px;
-	background-color: rgba(255, 255, 255, 0.7)
+	background-color: rgba(255, 255, 255, 0.6)
 }
 
 .url_input_and_button{
@@ -710,24 +719,25 @@ top: -150px;
 
 .poll_show_page_photo{
 	position: relative;
-	top: -15px;
-	left: -7px;
-	height: 242px;
-	width: 239px;
+	top: -18px;
+	left: 1px;
+	height: 250px;
+	width: 250px;
 }
 
 
 
 .poll_show_photo_button{
-	color:white;
+	color: white;
 	background-color: rgba(85,27,39,0.9);
 	box-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
-	position: relative;
-	right: -96px;
-	top: -268px;
+	position: absolute;
+	right: 0;
+	top: 0;
 	width: 60px;
 	height: 35px;
 	font-size: 12px;
+	border-radius: 0px;
 }
 
 .itemvote_list{
@@ -747,28 +757,29 @@ top: -150px;
 }
 
 .poll_show_item_button{
-	color:white;
+	color: white;
 	background-color: rgba(85,27,39,0.9);
-	position: relative;
-	right: -96px;
-	top: -256px;
+	position: absolute;
+	right: 0;
+	top: 0;
 	width: 60px;
 	height: 35px;
 	font-size: 12px;
+	border-radius: 0px !important;
 }
 
 .click_me{
 	display: inline-block;
 	width: 250px !important;
-	height: 255px;
-	padding-top: 1.1em;
+	height: 250px;
+	padding-top: 1.3em;
 	background-size: cover;
 	background-position: center;
-	border: solid .8em #f1f1f1;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 	border-radius: 0.4em;
 	margin: 0em 1em 1em 1em;
-	box-shadow: 1.7px 1.7px 1.7px 1.7px rgb(12,13,23);
-
+	background: #FFF;
+	position: relative;
 }
 
 #gift-icon {
@@ -982,12 +993,15 @@ top: -150px;
 	display: inline-block;
 	width: 290px;
 	height: 350px;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
 	z-index: 100;
 	position: relative;
+	border-radius: 3px;
 	background-color: white;
 	top: -151px;
-	background-size: cover;
-	background-position: center;
 	margin-bottom: -168px;
 }
 
@@ -1625,7 +1639,11 @@ h4{
 .scraped_photo {
 	background-color: white;
 	cursor: pointer;
-	/*height: 270px;*/
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	width: auto;
 }
 
 .scraped_photo:hover {

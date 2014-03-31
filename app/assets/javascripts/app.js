@@ -9,8 +9,8 @@ function resetSelector(){
     excludeIds: exclusions,
     facebookInvite: false,
     lang: {
-      title: "Pick your mutual friends who will vote on the gifts (Last step)",
-      buttonSubmit: "Add Accomplices",
+      title: "Pick mutual friends to vote on the gift ideas",
+      buttonSubmit: "Finished Adding Accomplices",
       selectedLimitResult: "Limit is {5} people."
     },
     closeOnSubmit: true,
@@ -126,7 +126,7 @@ $(document).ready(function() {
       max: 1,
       facebookInvite: false,
       lang: {
-        title: "Pick the friend whom you are buying a gift for (Step 1/3)", 
+        title: "Pick the friend you're buying a gift for", 
         buttonSubmit: "Add Gift Recipient", 
         selectedLimitResult: "You can only select one gift recipient at a time."
       },
@@ -180,6 +180,9 @@ $(window).load(function(e) {
   });
   $('.block_3').on('click', function(){
           window.location = '/#lastPage'
+  });
+  $('.selection-page-section-2-arrow').on('click', function(){
+          window.location = '/polls#3rdPage'
   });
 });
 

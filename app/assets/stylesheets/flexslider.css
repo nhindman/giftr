@@ -88,7 +88,7 @@ right: 30px !important;}
 .flexslider:hover .flex-next { opacity: 1; right: 10px; }
 .flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover { opacity: 1; }
 .flex-direction-nav .flex-disabled { opacity: 0!important; filter:alpha(opacity=0); cursor: default; }
-.flex-direction-nav a:before  { font-family: "flexslider-icon"; font-size: 40px; display: inline-block; content: '\f001'; }
+.flex-direction-nav a:before  { font-size: 40px; display: inline-block; content: '\f001'; }
 .flex-direction-nav a.flex-next:before  { content: '\f002'; }
 
 /* Pause/Play */

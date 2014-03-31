@@ -473,6 +473,7 @@ var ItemListView = Backbone.View.extend({
         } else { //if image doesn't already exist in add_gift_2
           console.log("item doesn't exist inside add_gift_2 so appending to 2")
           add_gift_2.append(new_view.render().$el); // then append to add_gift_2
+          // $('body').append("<i id=\"block\" class=\"fa fa-arrow-down block_3\"></i>")
         }
       } else { //image doesn't already exist in add_gift_1
         console.log("item doesn't exist inside add_gift_1 so append to add_gift_1")
