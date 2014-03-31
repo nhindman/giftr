@@ -82,7 +82,7 @@
 
 body {
 	padding-top: 3em;
-	background-color: rgb(228,228,228);
+	background-color: rgb(210,210,210);
 	background-size: cover;
 	font-family: 'Gafata', sans-serif;
 }
@@ -606,7 +606,7 @@ top: -150px;
 }
 
 #app-setup-page-3 {
-	background-color: rgb(228,228,228);
+	background-color: rgb(210,210,210);
 	background-position: center;
 	background-size: cover;
 
