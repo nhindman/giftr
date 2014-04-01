@@ -224,12 +224,16 @@ var PhotoView = Backbone.View.extend({
     if ($('.flexslider').is(":visible")){   
       photo.addClass('col-lg-3').addClass('col-md-3');
       photo_item.append(photo);
+      // if(parseInt(photo_item.find('img')[0].outerWidth,10) < 200) {
+      //   photo_item.remove();
+      // }
     }else{
       photo_item.addClass('click_me');
       photo.addClass('poll_show_page_photo');
       linkImage.addClass('noscroll');
       linkImage.append(photo);
       photo_item.append(linkImage);
+      photo_item.append('<div class="accomplice_wrapper"></div>');
     }
   
     this.resetValues();
@@ -362,7 +366,7 @@ var PhotoVoteListView = Backbone.View.extend({
         model: photo.attributes
       });
       self.photoViews.push(new_view)
-      self.$el.append(new_view.render().$el.append("<button class=\"poll_show_photo_button btn btn-lg\" data-action='vote'>VOTE</button>"))
+      self.$el.append(new_view.render().$el.append('<button class="poll_show_photo_button btn btn-lg" data-action="vote">VOTE</button>'))
       }
     })
 
@@ -521,7 +525,7 @@ var ItemVoteListView = Backbone.View.extend({
         model: item
       });
       self.itemViews.push(new_view)
-      self.$el.append(new_view.render().$el.append("<button class=\"poll_show_item_button btn btn-lg\" data-action='vote'>VOTE</button>"))
+      self.$el.append(new_view.render().$el.append("<button class=\"poll_show_item_button btn btn-lg\" data-action='vote'>VOTE</button><div class=\"accomplice_wrapper\"></div>"))
     })
 
   }
@@ -590,7 +594,7 @@ var appendVotesToItems = function(votes){
       $vote_img = $(selector);
       $vote_img.addClass('voted_accomplice')
       id = vote.attributes.item_id
-      $vote_img.appendTo($('#item-id-'+vote.attributes.item_id))
+      $vote_img.appendTo($('#item-id-'+vote.attributes.item_id).find('.accomplice_wrapper'))
     }
   })
 }
@@ -603,7 +607,7 @@ var appendVotesToPhotos = function(votes){
       $vote_img = $(selector);
       $vote_img.addClass('voted_accomplice')
       id = vote.attributes.photo_id
-      $vote_img.appendTo($('#photo-id-'+vote.attributes.photo_id))
+      $vote_img.appendTo($('#photo-id-'+vote.attributes.photo_id).find('.accomplice_wrapper'))
     }
   })
 }
