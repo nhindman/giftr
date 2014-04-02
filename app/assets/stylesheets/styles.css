@@ -1500,7 +1500,7 @@ h4{
 	}
 }
 
-@media all and (max-width: 350px){
+@media all and (max-width: 480px){
 	.choose_friend_polls_index {
 	font-size: 30px;
 	margin-top: 60px;
@@ -1553,10 +1553,10 @@ h4{
 		left: -17px;
 	}
 	hr{
-		width: 322px;
+		width: 412px;
 	}
 	#accomplice-photos{
-		width: 320px;
+		width: 364px;
 	}
 	.vote_for_fav {
 		margin-top: 8px;
@@ -1567,7 +1567,7 @@ h4{
 	}
 	.gifter_giftee_container {
 		position: relative;
-		right: 103px;
+		right: 87px;
 	}
 	.site-header {
 		height: 278px;
@@ -1575,9 +1575,12 @@ h4{
 		top: 9px;
 	}
 	.header-img {
-		visibility: hidden;
+		visibility: hidden !important;
 		height: 252px;
 		top: -5px !important;
+	}
+	.advice {
+		width: 360px;
 	}
 }
 

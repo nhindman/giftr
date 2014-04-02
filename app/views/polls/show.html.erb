@@ -3,6 +3,7 @@
   <link rel="image_src" href="http://graph.facebook.com/<%= @poll.recipient_fb_id %>/picture?type=large"/>
   <title>I Need Your Help Choosing A <%= @poll.occasion.sub(/^(\w)/) {|s| s.capitalize} %> Gift For <%= @poll.recipient_name %></title>
   <meta name="description" content="I have some <%= @poll.occasion.sub(/^(\w)/) {|s| s.capitalize} %> gift ideas for <%= @poll.recipient_name %> and I need you to vote for your favorite!"/>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 
 <div class="site-outer">
