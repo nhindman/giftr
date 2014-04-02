@@ -39,7 +39,7 @@
 }
 
 .middle_header{
-  border-bottom: 2px solid #000;
+/*  border-bottom: 2px solid #000;*/
 }
 
 /*#item_list {
@@ -1558,8 +1558,8 @@ h4{
 		top: 0.5em !important;
 	}
 	.gifter_giftee_container {
-		/*position: relative;
-		right: 87px;*/
+		margin-top: 30px;
+		margin-bottom: -10px;
 	}
 	.site-header {
 		height: 278px;
