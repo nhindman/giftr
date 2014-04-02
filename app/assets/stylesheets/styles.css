@@ -718,6 +718,7 @@ top: -150px;
 }
 
 .gifter, .gift_recipient {
+	float: left;
 	width: 50%;
 }
 
@@ -1681,9 +1682,9 @@ h4{
 	}*/
 }
 
-.gifter img, .gift_recipient img {
+/*.gifter img, .gift_recipient img {
 	max-width: 100%;
-}
+}*/
 
 @media all and (max-width: 500px){
 
@@ -1694,7 +1695,7 @@ h4{
 		right: 55px;
 	}
 	.itemvote_list_container {
-	margin-top: -13px;
+	/*margin-top: -13px;*/
 	}
 }
 

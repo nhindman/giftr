@@ -20,12 +20,12 @@
       <div class="gift_recipient">
         <img class="bigborders" src="http://graph.facebook.com/<%= @poll.recipient_fb_id %>/picture?type=large" alt="Recipient">
       </div>
+      <div class="clearfix"></div>
       </div>
   
       <div class="middle_header">
        <h1 class="advice">Help <%= @poll.creator.name.split(" ").shift().to_s %> choose a <%= @poll.occasion.sub(/^(\w)/) {|s| s.capitalize} %> gift for <%= @poll.recipient_name.split(" ").shift().to_s %>. </h1>
       </div>
-      <hr>
     </div>
     </div>
    </div> 
