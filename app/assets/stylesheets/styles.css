@@ -131,7 +131,7 @@ i {
 }
 
 .giftee {
-	margin: 3em auto 1em auto;
+	margin: 0 auto;
 	height: 60px;
 	width: 170px;
 	font-size: 25px;
@@ -211,8 +211,8 @@ i {
 
 .choose_friend_polls_index {
 	text-shadow: 2.75px 2.75px rgba(0,0,0,0.2);
-	margin-top: 60px;
-	margin-bottom: 70px;
+	margin-top: 40px;
+	margin-bottom: 90px;
 }
 
 .fa-arrow-down-welcome-1{
@@ -308,7 +308,7 @@ i {
 #splash-page-2 { 
 	background-image: url("bg_images/camera_background.jpg");
 	background-position: center;
-	background-size: 100%;
+	background-size: cover;
 }
 
 .welcome_page_2_container { 
@@ -623,8 +623,8 @@ top: -150px;
 }
 
 #recipient {
-	margin-top: -20px !important;
-	margin-bottom: 20px !important;
+	margin-top: -50px !important;
+	margin-bottom: 80px !important;
 	background-color: rgba(0,0,0,0.6);
 }
 
@@ -1408,7 +1408,7 @@ h4{
 
 @media all and (max-width: 442px){
 	.giftee {
-		margin-top: 17px;
+		/*margin-top: 17px;*/
 	}
 }
 
@@ -1482,7 +1482,7 @@ h4{
 		right: 0px;*/
 	}
 	.giftee{
-		right: 0px;
+		/*right: 0px;*/
 	}
 }
 
@@ -1501,6 +1501,12 @@ h4{
 	.choose_friend_polls_index {
 	font-size: 30px;
 	margin-top: 60px;
+	}
+	.app-tagline {
+		font-size: 3em;
+	}
+	.welcome_page_2_container {
+		top: 0px;
 	}
 	/*.giftee {
 	right: 0px;
