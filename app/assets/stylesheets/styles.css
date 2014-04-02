@@ -131,7 +131,7 @@ i {
 }
 
 .giftee {
-	margin: -1.5em auto 1em auto;
+	margin: 3em auto 1em auto;
 	height: 60px;
 	width: 170px;
 	font-size: 25px;
@@ -274,8 +274,8 @@ i {
 	box-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
 	height: 200px;
 	width: 200px;
-	margin-top: 2em;
-	margin-bottom: 6em;
+	margin-top: 1em !important;
+	margin-bottom: 2.5em !important;
 	border: solid 0.7em #fafafa;
 	border-radius: 0.7em;
 
@@ -623,7 +623,8 @@ top: -150px;
 }
 
 #recipient {
-	margin-top: -20px;
+	margin-top: -20px !important;
+	margin-bottom: 20px !important;
 	background-color: rgba(0,0,0,0.6);
 }
 
@@ -739,6 +740,8 @@ top: -150px;
   height:346px;
   overflow:hidden;
   position:relative;
+  box-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
+  margin-bottom: 35px;
 }
 
 .header-img {
@@ -942,6 +945,8 @@ top: -150px;
 
 .gifter_giftee_container {
 	position: relative;
+	margin-top: 25px;
+	margin-bottom: -20px;
 }
 
 .find_images_container{
