@@ -24,12 +24,11 @@
 }
 
 .advice {
-	text-shadow: 2.5px 2.5px rgba(0,0,0,0.2);
-	padding: 40px;
-	margin-top: 5px;
-	text-align: center;
-	vertical-align: middle;
-	color: black;
+	text-shadow: 2.5px 2.5px rgba(0,0,0,0.2); 
+	padding: 40px 0; margin-top: 5px; 
+	text-align: center; 
+	vertical-align: middle; 
+	color: black; 
 	font-family: 'Gafata', sans-serif;
 }
 
@@ -40,11 +39,7 @@
 }
 
 .middle_header{
-	margin: 0 auto;
-	/*width: 690px;*/
-	position: relative;
-	top: -28px;
-	left: 0px;
+  border-bottom: 2px solid #000;
 }
 
 /*#item_list {
@@ -723,8 +718,7 @@ top: -150px;
 }
 
 .gifter{
-	/*position: relative;
-	left: -20px;*/
+	width: 50%;
 }
 
 .poll_show_page_photo{
@@ -764,7 +758,8 @@ top: -150px;
 }
 
  .site-content {
- width:500px;
+ width: 90%;
+ max-width: 500px;
  margin:0 auto;
 }
 
@@ -945,11 +940,7 @@ top: -150px;
 }
 
 .gifter_giftee_container {
-	padding-top: 30px;
-	/* width: 470px; */
-	/* height: 220px; */
-	display: inline-flex;
-	margin: 0 auto;
+	position: relative;
 }
 
 .find_images_container{
@@ -1547,10 +1538,10 @@ h4{
 		height: 138px;
 	}
 	.advice {
-		width: 340px;
+	/*	width: 340px;*/
 	}
 	.middle_header{
-		left: -17px;
+		/*left: -17px;*/
 	}
 	hr{
 		width: 412px;
@@ -1566,8 +1557,8 @@ h4{
 		top: 0.5em !important;
 	}
 	.gifter_giftee_container {
-		position: relative;
-		right: 87px;
+		/*position: relative;
+		right: 87px;*/
 	}
 	.site-header {
 		height: 278px;
@@ -1580,7 +1571,7 @@ h4{
 		top: -5px !important;
 	}
 	.advice {
-		width: 360px;
+		/*width: 360px;*/
 	}
 }
 
@@ -1690,10 +1681,12 @@ h4{
 	}*/
 }
 
-@media all and (max-width: 350px){
-	.gifter{
-		left: -55px;
-	}
+.gifter img {
+	max-width: 100%;
+}
+
+@media all and (max-width: 500px){
+
 	/*.middle_header{
 		left:-47px;
 	}*/
