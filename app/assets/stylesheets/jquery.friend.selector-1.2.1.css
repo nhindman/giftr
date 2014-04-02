@@ -657,7 +657,7 @@ li.checked .fs-anchor {
 
 @media all and (max-width: 445px){ /*Resizes the facebook window when browser is about the size of an iPhone screen*/
   #fs-dialog-box-content{
-    height: 34em;
+    height: 36em;
     width: 25em;
   }
 
