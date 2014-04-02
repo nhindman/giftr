@@ -717,7 +717,7 @@ top: -150px;
 	top: 20px;
 }
 
-.gifter{
+.gifter, .gift_recipient {
 	width: 50%;
 }
 
@@ -1681,7 +1681,7 @@ h4{
 	}*/
 }
 
-.gifter img {
+.gifter img, .gift_recipient img {
 	max-width: 100%;
 }
 
