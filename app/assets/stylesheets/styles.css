@@ -103,7 +103,7 @@ body {
 	display: block;
 }
 
-.block { 	
+.block {
 	cursor: pointer;					
 	display: block;
 }
@@ -155,6 +155,8 @@ i {
 }
 
 .or_text{
+	font-family: 'Gafata', sans-serif;
+	font-weight: bolder;
 	font-size: 24px;
 	margin-bottom: 20px;
 }
@@ -189,6 +191,8 @@ i {
 }
 
 .or_text_3{
+	font-family: 'Gafata', sans-serif;
+	font-weight: bolder;
 	font-size: 24px;
 	margin-bottom: 20px;
 }
@@ -217,6 +221,7 @@ i {
 }
 
 .fa-arrow-down-welcome-1{
+	top:10px;
 	/*position: */
 }
 
@@ -275,7 +280,7 @@ i {
 	height: 200px;
 	width: 200px;
 	margin-top: 2em;
-	margin-bottom: 7em;
+	margin-bottom: 6em;
 	border: solid 0.7em #fafafa;
 	border-radius: 0.7em;
 
@@ -308,7 +313,7 @@ i {
 #splash-page-2 { 
 	background-image: url("bg_images/camera_background.jpg");
 	background-position: center;
-	background-size: cover;
+	background-size: 100%;
 }
 
 .welcome_page_2_container { 
@@ -472,7 +477,8 @@ a.flex-next {
 
 .choose_scraped_image{
 	float: left;
-	margin-left: 66px;
+	margin-left: 26px;
+	letter-spacing: 2px;
 }
 
 .scrapedImagesHover {
@@ -581,6 +587,7 @@ top: -150px;
 }
 
 .what_gift_instructions-app {
+	letter-spacing: 3px;
 	text-shadow: 2.75px 2.75px rgba(0,0,0,0.2);
 	margin-top: 17px;
 	position: relative;
@@ -594,12 +601,12 @@ top: -150px;
 }
 
 #app-setup-page-2 {
-	position: relative;
+	/*position: relative;*/
 	/*margin-top: 12em;*/
 	/*top: 0px;*/
-	background-image: url("bg_images/camera_background.jpg");
+	/*background-image: url("bg_images/camera_background.jpg");
 	background-position: center;
-	background-size: cover;
+	background-size: cover;*/
 	/*background-repeat:no-repeat;*/
 	/*background-size: cover;*/
 }
@@ -691,7 +698,7 @@ top: -150px;
 /*============================= Item & Gift Styling ===============================================*/
 
 .poll_show_page{
-	background-position: center;
+	/*background-position: center;*/
 	/*background-image: url("bg_images/water.jpg");*/
 
 	/*background-image: url('bg_images/seamless-peacock-blues-tileable-patterns-1.png');
@@ -712,7 +719,7 @@ top: -150px;
 	margin: 0 auto;
 	display: inline-flex;
 	position: relative;
-	top: 50px;
+	top: 20px;
 }
 
 .gifter{
@@ -728,6 +735,38 @@ top: -150px;
 	width: 250px;
 }
 
+.site-outer {
+	width:100%;
+	position:relative;
+}
+
+.site-header {
+  height:346px;
+  overflow:hidden;
+  position:relative;
+}
+
+.header-img {
+  position: absolute;
+  top: -355px;
+  width: 100%;
+}
+
+.site-container {
+  width:100%;
+  position:absolute;
+  top:0;
+  margin:0 auto;
+}
+
+.site-inner {
+	position:static;    
+}
+
+ .site-content {
+ width:500px;
+ margin:0 auto;
+}
 
 
 .poll_show_photo_button{
@@ -751,7 +790,7 @@ top: -150px;
 }
 
 .itemvote_list_container{
-	margin-top: -30px;
+	text-align: center;
 }
 
 .voted_accomplice{
@@ -1039,6 +1078,9 @@ top: -150px;
 }
 
 .add_gift_text {
+	font-family: 'Gafata', sans-serif;
+	font-weight: bolder;
+	letter-spacing: 5px;
 	margin-bottom: -84px;
 	color: black;
 }
@@ -1127,13 +1169,13 @@ hr {
   -moz-border-top-colors: none;
   border-style: solid none;
   border-width: 4px 0;
-  width: 1480px;
+  width: 1405px;
   margin: 0 auto;
   border-top: 1px solid rgba(0,0,0,0.5);
   position: relative;
-  top: -40px;
+  top: -60px;
   color: black;
-  left: -150px;
+  left: -500px;
 }
 
 .bigborders{
@@ -1191,6 +1233,7 @@ hr {
 h4{
 	color: black;
 	margin-bottom: 16px;
+	letter-spacing: 3px;
 }
 
 .or_container{
@@ -1206,10 +1249,10 @@ h4{
 }
 
 .or_divider {
-	width: 113px;
+	width: 100px;
 	position: relative;
 	top: 18px;
-	left: -1px;
+	left: 2px;
 	margin-top: 0px;
 	margin-left: 10px;
 	margin-right: 10px;
@@ -1220,10 +1263,10 @@ h4{
 }
 
 .or_divider_2{
-	width: 113px;
+	width: 100px;
 	position: relative;
 	top: 18px;
-	left: -1px;
+	left: 2px;
 	margin-top: 0px;
 	margin-left: 10px;
 	margin-right: 10px;
@@ -1263,6 +1306,10 @@ h4{
 		margin-bottom: 56px;
 	}
 	#splash-page-1 {
+		position: relative;
+		top: -38px;
+	}
+	#splash-page-2 {
 		position: relative;
 		top: -38px;
 	}
@@ -1370,7 +1417,6 @@ h4{
 
 @media all and (max-width: 430px){
 	.choose_friend_polls_index {
-		margin-right: 19px;
 		margin-top: 120px;
 	}
 }
@@ -1435,11 +1481,11 @@ h4{
 		right: -29px;
 	}
 	#recipient{
-		position: relative;
-		right: 20px;
+		/*position: relative;
+		right: 0px;*/
 	}
 	.giftee{
-		right: 20px;
+		right: 0px;
 	}
 }
 
@@ -1457,16 +1503,11 @@ h4{
 @media all and (max-width: 350px){
 	.choose_friend_polls_index {
 	font-size: 30px;
-	margin-right: 119px;
 	margin-top: 60px;
 	}
-	#recipient {
-	position: relative;
-	right: 60px;
-	}
-	.giftee {
-	right: 60px;
-	}
+	/*.giftee {
+	right: 0px;
+	}*/
 	.whats_the_occasion_text {
 	right: 31px;
 	}
@@ -1499,7 +1540,7 @@ h4{
 		right: 60px !important;*/
 	}
 	hr {
-		left: -20px !important;
+		left: -106px !important;
 	}
 	.bigborders{
 		width: 148px;
@@ -1512,10 +1553,10 @@ h4{
 		left: -17px;
 	}
 	hr{
-		width: 360px;
+		width: 322px;
 	}
 	#accomplice-photos{
-		width: 329px;
+		width: 320px;
 	}
 	.vote_for_fav {
 		margin-top: 8px;
@@ -1523,6 +1564,19 @@ h4{
 	.itemvote_list .item {
 		margin-bottom: 10px;
 		top: 0.5em !important;
+	}
+	.gifter_giftee_container {
+		position: relative;
+		right: 103px;
+	}
+	.site-header {
+		height: 278px;
+		position: relative;
+		top: 9px;
+	}
+	.header-img {
+		height: 252px;
+		top: -5px !important;
 	}
 }
 
@@ -1541,7 +1595,7 @@ h4{
 		display: none;
 	}
 	.uploader{
-		margin-right: 475px;
+		/*margin-right: 475px;*/
 	}
 	#app-setup-page-2 > .scrapedImagesHover {
 		position: relative;
@@ -1550,12 +1604,47 @@ h4{
 	}
 }
 
-@media all and (max-width: 673px){
-	#gift-icon{
-		display: none;
+@media all and (max-width: 320px){
+	.find_images_container {
+		width: 320px;
+	}
+	.section.table {
+		margin-top: -37px !important;
+	}
+	#splash-page-2 {
+		background-size: cover;
+	}
+	.mutual-friends-link {
+		right: -2px;
+		top: -40px;
+	}
+	.choose_friend_polls_index {
+		width: 320px;
+	}
+	#splash-page-1 {
+		width: 320px;
+	}
+	#splash-page-3 {
+		background-position: -272px;
+	}
+	.url_input_and_button {
+		display: block;
+		margin-top: -40px;
+	}
+	.or_divider {
+		left: 2px !important;
+	}
+	.or_divider_2 {
+		left: 2px !important;
+	}
+	.or_divider_3 {
+		left: 2px !important;
+	}
+	.add_gift_text {
+		position: relative;
+		top: 30px;
 	}
 }
-
 
 @media all and (max-width: 990px){
 /*	.item_list{	
@@ -1620,6 +1709,37 @@ h4{
 		margin-top: 20px;
 	}
 }
+
+@media all and (max-width: 1160px){
+	.header-img {
+		top: -225px;
+	}
+}
+
+@media all and (max-width: 950px){
+	.header-img {
+		top: -135px;
+	}
+}
+
+@media all and (max-width: 950px){
+	.header-img {
+		top: -85px;
+	}
+}
+
+@media all and (max-width: 840px){
+	.site-header {
+		height: 346px;
+	}
+}
+
+@media all and (max-width: 738px){
+	.site-header {
+		height: 278px;
+	}
+}
+
 
 /*@media all and (max-width: 995px){
 	#block {

@@ -102,6 +102,8 @@ $(document).ready(function() {
 
   });  
 
+  antiGrav('.block');
+
   var user_id; 
   var friend_id;
   var mutual_url;

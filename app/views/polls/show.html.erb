@@ -5,11 +5,14 @@
   <meta name="description" content="I have some <%= @poll.occasion.sub(/^(\w)/) {|s| s.capitalize} %> gift ideas for <%= @poll.recipient_name %> and I need you to vote for your favorite!"/>
 </head>
 
-<div class="poll_show_page">
-<!-- <div class="poll_show_top_background"></div> -->
-<div class="site-wrapper container">
-<div class="row-fluid clearfix">
-    <div class="span12 gifter_giftee_container"> <!-- Section containing Gifter & Giftee, Gift Icon, & Arrow -->
+<div class="site-outer">
+  <div class="site-header">
+    <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52cd96f512830_1.JPG" class="header-img"/>
+  </div>
+  <div class="site-container site-wrapper container">
+    <div class="site-inner clearfix">
+      <div class="site-content">
+      <div class="gifter_giftee_container"> <!-- Section containing Gifter & Giftee, Gift Icon, & Arrow -->
       <div class="gifter">
         <img class="bigborders" src="http://graph.facebook.com/<%= @poll.creator.uid %>/picture?type=large" alt="Creator">
       </div>
@@ -22,8 +25,10 @@
        <h1 class="advice">Help <%= @poll.creator.name.split(" ").shift().to_s %> choose a <%= @poll.occasion.sub(/^(\w)/) {|s| s.capitalize} %> gift for <%= @poll.recipient_name.split(" ").shift().to_s %>. </h1>
       </div>
       <hr>
+    </div>
+    </div>
+   </div> 
   </div>
-     
   <div class="row-fluid itemvote_list_container">
     <h1 class="vote_for_fav">Vote for your favorite:</h1>
     <div class="span12 itemvote_list">
@@ -34,8 +39,6 @@
     <div class="voting-page" id="accomplice-photos"><span id="voters_text">Voters</span>
     </div>
   </div>
-</div>
-</div>
 <%= render text: File.read("app/views/templates.txt").html_safe %>
 
 

@@ -682,6 +682,19 @@ var checkForExisting = function(url,obj){
     }
 }  
 
+var antiGrav = function (ele) { 
+  var distance = 12;
+  $(ele).animate({
+    'top': "+=" + distance + "px"
+  },800,"swing",function(){
+    $(ele).animate({        
+            'top': "-=" + distance + "px"
+    },800,"swing",function(){
+      antiGrav(ele);
+        });
+  });
+}
+
 var toggleVoteOption = function(){
   $('#itemvote_list button').toggleClass('hidden');
   $('#accomplice-photos button').toggleClass('hidden');
