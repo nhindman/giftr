@@ -250,6 +250,7 @@ i {
 .instructions {
 	text-shadow: 2.5px 2.5px rgba(0,0,0,0.3);
 	margin-top: 3em;
+	margin-bottom: 1.3em;
 }
 
 .splash-page-section-wrapper { /* Allows splash page background to take up full width of the page */
