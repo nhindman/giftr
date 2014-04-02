@@ -1599,7 +1599,7 @@ h4{
 	.navbar-brand {
 	letter-spacing: 3px;
 }
-
+}
 @media all and (max-width: 673px){
 	.fa {
 		display: none !important;
