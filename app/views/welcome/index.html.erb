@@ -5,12 +5,11 @@
 		<div class="cover-container"> 
 			
 			<div id="section0" class="section">
-				
 				<div id="splash-page-1-welcome" class="clearfix splash-page-section-wrapper"> <!-- Splash Page First Section -->
-					
 					<h2 class="app-tagline">Give, smarter.</h2>
+					<%=image_tag("bg_images/circles_1.png", alt: "circles_1", :class => "circles_1")%>
 					<h1 class="choose_friend_welcome">Choose The Friend You're Buying For</h1>				
-					<%=image_tag("friend_pics/mel.jpg", alt: "Example Image")%>
+					<%=image_tag("friend_pics/mel.jpg", alt: "Example Image", :class => "girl_img")%>
 					<i id="block" class="fa fa-arrow-down block"></i>
 
 				</div>
@@ -21,6 +20,7 @@
 				<div id="splash-page-2" class="clearfix splash-page-section-wrapper"> <!-- Splash Page Second Section -->
 					<div class="welcome_page_2_container">
 						<h1 class="instructions">Add Gift Ideas</h1>
+						<%=image_tag("bg_images/circles_2.png", alt: "circles_1", :class => "circles_2")%>
 						<%=image_tag("gift_pics/stash2.jpg", alt: "Example Image")%>
 						<%=image_tag("gift_pics/wp.jpg", alt: "Example Image")%>
 						<%=image_tag("gift_pics/ewok.jpg", alt: "Example Image")%>
@@ -34,6 +34,7 @@
 			<div id="section3" class="section">
 				<div id="splash-page-3" class="clearfix splash-page-section-wrapper"> <!-- Splash Page Third Section -->
 					<h1 class="welcome-instructions-3">Create A Private Facebook Poll</h1>
+					<%=image_tag("bg_images/circles_3.png", alt: "circles_1", :class => "circles_3")%>
 					<%=image_tag("friend_pics/kate.png", alt: "Example Image")%>
 					<%=image_tag("friend_pics/tim.jpg", alt: "Example Image")%>
 					<%=image_tag("friend_pics/norman.jpg", alt: "Example Image")%>
@@ -46,6 +47,7 @@
 			<div id="section4" class="section">
 				<div id="splash-page-4" class="clearfix splash-page-section-wrapper"> <!-- Splash Page Fourth Section -->
 					<h1 class="welcome-page-4-instructions">See Which Gift Gets The Most Votes</h1>
+					<%=image_tag("bg_images/circles_4.png", alt: "circles_1", :class => "circles_4")%>
 					<%= link_to raw("Sign In with Facebook"), user_omniauth_authorize_path(:facebook), class: "btn btn-danger btn-lg sign_in_button", id: "block", method: :get %>
 				</div>
 			</div>
